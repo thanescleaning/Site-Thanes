@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/thanescleaning/Site-Thanes#readme",
   "dependencies": {
-    "@netlify/blobs": "^10.7.9"
+    "@netlify/blobs": "^10.7.9",
+    "axios": "^1.17.0"
   }
 }
