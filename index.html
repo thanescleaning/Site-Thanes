@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,7 +13,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
 <style>
-/* ========== STYLES ORIGINAUX (intacts) ========== */
 :root{
   --primary:#0b3c5d;--primary-dark:#071c2c;--secondary:#f9a825;--secondary-dark:#d98f00;
   --dark:#0f172a;--muted:#64748b;--light:#f8fafc;--line:rgba(15,23,42,.10);
@@ -27,18 +27,8 @@ body{margin:0;font-family:'Plus Jakarta Sans',sans-serif;color:var(--dark);
 a{color:inherit;}img{max-width:100%;display:block;}
 .container{max-width:1200px;margin:auto;padding:0 24px;}
 .section{padding:80px 24px;}
-.fi.fi-qc{display:inline-block;width:20px;height:15px;background:#003399;position:relative;border-radius:2px;margin-right:6px;vertical-align:middle;flex-shrink:0;}
-.fi.fi-qc::before {
-  content: "⚜️";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 11px;
-  color: #003399;
-  line-height: 1;
-}
-.lang-btn .fi.fi-qc,.lang-option .fi.fi-qc{margin-right:8px;}
+
+/* ── HEADER ── */
 header{position:sticky;top:0;z-index:1000;background:rgba(7,28,44,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 8px 30px rgba(0,0,0,.14);}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0;gap:16px;}
 .logo{height:56px;width:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.2));}
@@ -55,12 +45,13 @@ header{position:sticky;top:0;z-index:1000;background:rgba(7,28,44,.88);backdrop-
 .mobile-menu{display:none;flex-direction:column;gap:0;background:rgba(7,28,44,.97);border-top:1px solid rgba(255,255,255,.08);}
 .mobile-menu.open{display:flex;}
 .mobile-menu a{color:#e2e8f0;text-decoration:none;font-weight:600;padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.06);font-size:1rem;}
-.mobile-menu a:last-child{border-bottom:none;}
 .mobile-menu a:hover{background:rgba(255,255,255,.06);}
 .mobile-menu .mob-emp-btn{color:var(--secondary);font-weight:800;}
 .mobile-lang-row{display:flex;gap:8px;padding:14px 24px;flex-wrap:wrap;}
 .mobile-lang-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#e2e8f0;border-radius:999px;padding:7px 14px;font:600 .85rem 'Plus Jakarta Sans',sans-serif;cursor:pointer;}
 .mobile-lang-btn.active{background:var(--secondary);color:#1f2937;border-color:var(--secondary);}
+
+/* ── BUTTONS ── */
 .emp-btn,.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:800;border:none;cursor:pointer;transition:all .28s;border-radius:999px;padding:11px 20px;white-space:nowrap;font-family:inherit;}
 .emp-btn{background:rgba(255,255,255,.10);color:#fff;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);font-size:.88rem;}
 .emp-btn:hover{background:rgba(255,255,255,.20);transform:translateY(-2px);}
@@ -70,8 +61,8 @@ header{position:sticky;top:0;z-index:1000;background:rgba(7,28,44,.88);backdrop-
 .btn-secondary:hover{background:rgba(255,255,255,.08);}
 .btn-danger{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;box-shadow:0 6px 16px rgba(239,68,68,.22);}
 .btn-sm{padding:7px 14px;font-size:.82rem;}
-.btn-outline{background:transparent;border:2px solid var(--primary);color:var(--primary);box-shadow:none;}
-.btn-outline:hover{background:var(--primary);color:#fff;}
+
+/* ── LANG ── */
 .lang-switcher{position:relative;}
 .lang-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.10);color:#e2e8f0;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:7px 12px;font-size:.85rem;font-weight:700;cursor:pointer;backdrop-filter:blur(10px);transition:all .2s;font-family:inherit;}
 .lang-btn:hover{background:rgba(255,255,255,.18);}
@@ -81,10 +72,16 @@ header{position:sticky;top:0;z-index:1000;background:rgba(7,28,44,.88);backdrop-
 .lang-option:hover{background:#f0f7ff;}
 .lang-option.active{background:#e8f4fd;color:var(--primary);}
 .lang-float{position:fixed;left:16px;bottom:80px;z-index:997;}
-.lang-float .lang-btn{background:linear-gradient(135deg,var(--primary),#1d6fa8);border-color:rgba(255,255,255,.3);box-shadow:0 8px 22px rgba(7,28,44,.22);color:#fff;padding:9px 14px;}
+.lang-float .lang-btn{background:linear-gradient(135deg,var(--primary),#1d6fa8);border-color:rgba(255,255,255,.3);box-shadow:0 8px 22px rgba(7,28,44,.22);color:#fff;}
 .lang-float .lang-dropdown{bottom:calc(100% + 8px);top:auto;right:auto;left:0;}
-.fi,.fi.fi-qc,.fi.fi-ca,.fi.fi-es,.fi.fi-ht{width:20px;height:auto;margin-right:6px;border-radius:2px;vertical-align:middle;}
-.lang-option .fi,.lang-option .fi.fi-qc{margin-right:8px;}
+.fi{width:20px;height:auto;border-radius:2px;vertical-align:middle;flex-shrink:0;}
+.lang-option .fi{margin-right:4px;}
+
+/* ── HERO ── */
+.hero{min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,rgba(7,28,44,.92),rgba(11,60,93,.88)),url('logo.png');background-size:cover;background-position:center;}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(249,168,37,.22),transparent 24%),radial-gradient(circle at 80% 30%,rgba(255,255,255,.10),transparent 20%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background-image:url('logo.png'),url('logo.jpg'),url('logo.jpeg');background-repeat:no-repeat;background-position:center;background-size:min(480px,65vw);opacity:.07;filter:blur(.8px);pointer-events:none;}
 .hero-content{position:relative;z-index:1;max-width:960px;padding:24px 20px;}
 .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);color:#e2e8f0;font-size:.9rem;font-weight:600;margin-bottom:18px;backdrop-filter:blur(10px);}
 .hero h1{font-size:clamp(2.6rem,7vw,5.4rem);line-height:1.02;margin:0 0 16px;letter-spacing:-.04em;text-shadow:0 8px 24px rgba(0,0,0,.22);}
@@ -94,6 +91,8 @@ header{position:sticky;top:0;z-index:1000;background:rgba(7,28,44,.88);backdrop-
 .stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(14px);border-radius:18px;padding:16px 14px;}
 .stat strong{display:block;font-size:1.2rem;color:#fff;margin-bottom:4px;}
 .stat span{color:#cbd5e1;font-size:.88rem;}
+
+/* ── SECTIONS ── */
 .section-title{text-align:center;margin-bottom:40px;}
 .section-title h2{margin:0 0 10px;color:var(--primary);font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.03em;}
 .section-title p{margin:0 auto;max-width:700px;color:var(--muted);font-size:1rem;}
@@ -139,6 +138,8 @@ footer{background:#071522;color:#cbd5e1;text-align:center;padding:36px 20px;}
 footer p{margin:6px 0;}
 .to-top{position:fixed;right:16px;bottom:16px;z-index:999;width:48px;height:48px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--secondary),#ffd166);color:#1f2937;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.5);}
 .to-top:hover{transform:translateY(-3px);}
+
+/* ══ PORTAL ══ */
 #portal-overlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(7,28,44,.75);backdrop-filter:blur(6px);align-items:flex-start;justify-content:center;padding:0;overflow-y:auto;}
 #portal-overlay.open{display:flex;}
 .portal-panel{background:#fff;border-radius:0 0 28px 28px;box-shadow:0 30px 80px rgba(7,28,44,.28);width:100%;max-width:860px;min-height:100vh;padding:28px 24px 40px;position:relative;margin:0 auto;}
@@ -151,10 +152,10 @@ footer p{margin:6px 0;}
 .portal-header p{margin:5px 0 0;color:var(--muted);font-size:.9rem;}
 .portal-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted);padding:4px 8px;border-radius:8px;transition:background .2s;flex-shrink:0;}
 .portal-close:hover{background:#f1f5f9;color:var(--dark);}
-#portal-loading{text-align:center;padding:36px 16px;}
-#portal-loading i{font-size:1.8rem;color:var(--muted);}
-#portal-loading p{color:var(--muted);margin-top:12px;}
-#portal-loading .portal-buttons{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap;}
+#portal-loading{text-align:center;padding:40px 20px;background:linear-gradient(145deg,#ffffff,#f8fafc);border-radius:24px;}
+#portal-loading i{font-size:2.8rem;color:var(--primary);}
+#portal-loading p{color:var(--muted);margin:14px 0 20px;}
+.portal-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 .portal-user{display:flex;align-items:center;gap:12px;background:#f0f7ff;border:1px solid #c7dff7;border-radius:14px;padding:12px 16px;margin-bottom:20px;flex-wrap:wrap;}
 .portal-user i{font-size:1.6rem;color:var(--primary);flex-shrink:0;}
 .portal-user-info{flex:1;min-width:0;}
@@ -163,40 +164,41 @@ footer p{margin:6px 0;}
 .admin-badge{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;font-size:.72rem;font-weight:800;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;}
 .portal-logout{background:none;border:1px solid #cbd5e1;border-radius:999px;padding:7px 14px;font-size:.82rem;cursor:pointer;color:var(--muted);font:inherit;font-weight:600;transition:all .2s;white-space:nowrap;}
 .portal-logout:hover{background:#fee2e2;border-color:#fca5a5;color:#dc2626;}
-.portal-tabs{display:flex;gap:6px;margin-bottom:20px;background:#f8fafc;border-radius:12px;padding:5px;flex-wrap:wrap;}
-.portal-tab{flex:1;min-width:120px;padding:9px 12px;border:none;background:none;border-radius:9px;font:inherit;font-weight:700;font-size:.84rem;cursor:pointer;color:var(--muted);transition:all .2s;}
-.portal-tab.active{background:#fff;color:var(--primary);box-shadow:0 2px 6px rgba(11,60,93,.12);}
+.portal-tabs{display:flex;gap:6px;margin-bottom:20px;background:#f0f4f8;border-radius:16px;padding:5px;flex-wrap:wrap;}
+.portal-tab{flex:1;min-width:120px;padding:9px 12px;border:none;background:none;border-radius:12px;font:inherit;font-weight:700;font-size:.84rem;cursor:pointer;color:var(--muted);transition:all .2s;}
+.portal-tab.active{background:#fff;color:var(--primary);box-shadow:0 2px 8px rgba(11,60,93,.12);}
 .tab-content{display:none;}
 .tab-content.active{display:block;}
 .job-list{display:grid;gap:14px;}
-.job-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:18px 20px;transition:box-shadow .2s;}
-.job-card:hover{box-shadow:var(--shadow-soft);}
-.job-card.full{border-color:#bbf7d0;background:#f0fdf4;}
+.job-card{background:#fff;border:1px solid #eef2f6;border-left:4px solid var(--secondary);border-radius:16px;padding:18px 20px;transition:transform .2s,box-shadow .2s;}
+.job-card:hover{transform:translateY(-3px);box-shadow:0 16px 28px rgba(0,0,0,.08);}
+.job-card.full{border-left-color:#22c55e;background:#f0fdf4;}
 .job-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;}
-.job-title{font-size:1rem;font-weight:800;color:var(--dark);margin:0 0 4px;}
+.job-title{font-size:1rem;font-weight:800;color:var(--primary);margin:0 0 6px;background:linear-gradient(135deg,var(--primary),#1e6b9e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .job-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
-.job-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;background:#e8f4fd;color:var(--primary);font-size:.78rem;font-weight:700;}
-.job-chip.pay{background:#fef9c3;color:#92400e;}
+.job-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;background:#f1f5f9;color:#1e293b;font-size:.78rem;font-weight:600;}
+.job-chip i{color:var(--secondary-dark);}
+.job-chip.pay{background:#fef9e3;color:#b45309;}
 .capacity-wrap{margin-top:12px;}
-.capacity-label{display:flex;justify-content:space-between;font-size:.82rem;font-weight:700;color:var(--muted);margin-bottom:5px;}
-.cap-count{color:var(--primary);font-size:.9rem;}
+.capacity-label{display:flex;justify-content:space-between;font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:5px;letter-spacing:.3px;}
+.cap-count{color:var(--primary);font-size:.88rem;font-weight:700;}
 .cap-count.full{color:#16a34a;}
 .capacity-bar-bg{height:8px;background:#e2e8f0;border-radius:999px;overflow:hidden;}
-.capacity-bar-fill{height:100%;background:linear-gradient(90deg,var(--primary),#1d6fa8);border-radius:999px;transition:width .5s;}
+.capacity-bar-fill{height:100%;background:linear-gradient(90deg,var(--primary),#1d6fa8);border-radius:999px;transition:width .5s cubic-bezier(.2,.9,.4,1.1);}
 .capacity-bar-fill.full-bar{background:linear-gradient(90deg,#16a34a,#22c55e);}
 .capacity-bar-fill.warn-bar{background:linear-gradient(90deg,#f59e0b,#fbbf24);}
-.job-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
-.status-badge{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:999px;font-size:.82rem;font-weight:700;}
+.job-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center;}
+.status-badge{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:999px;font-size:.78rem;font-weight:700;}
 .badge-success{background:#dcfce7;color:#16a34a;}
 .badge-danger{background:#fee2e2;color:#dc2626;}
 .badge-warn{background:#fef9c3;color:#92400e;}
 .badge-lock{background:#f1f5f9;color:#64748b;}
 .applicants-section{margin-top:14px;border-top:1px solid #e2e8f0;padding-top:14px;}
-.applicants-section h4{margin:0 0 10px;font-size:.82rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
-.applicant-row{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;background:#fff;border:1px solid #e2e8f0;margin-bottom:6px;flex-wrap:wrap;}
-.applicant-name{flex:1;min-width:100px;font-weight:700;color:var(--dark);font-size:.88rem;}
-.applicant-email{font-size:.78rem;color:var(--muted);word-break:break-all;}
-.applicant-status-badge{font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:999px;}
+.applicants-section h4{margin:0 0 10px;font-size:.78rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;}
+.applicant-row{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;margin-bottom:6px;flex-wrap:wrap;}
+.applicant-name{flex:1;min-width:80px;font-weight:700;color:var(--dark);font-size:.88rem;}
+.applicant-email{font-size:.75rem;color:var(--muted);word-break:break-all;}
+.applicant-status-badge{font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;}
 .st-accepted{background:#dcfce7;color:#16a34a;}
 .st-rejected{background:#fee2e2;color:#dc2626;}
 .st-pending{background:#fef9c3;color:#92400e;}
@@ -204,13 +206,15 @@ footer p{margin:6px 0;}
 .notif-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ef4444;margin-left:5px;vertical-align:middle;}
 .create-form{display:grid;gap:13px;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.section-empty{text-align:center;padding:36px 16px;color:var(--muted);}
-.section-empty i{font-size:2.2rem;margin-bottom:10px;color:#cbd5e1;display:block;}
-@media(max-width:900px){
-  .contact-grid{grid-template-columns:1fr;}
-  .stats{grid-template-columns:1fr 1fr;}
-  .features{grid-template-columns:1fr;}
-}
+.section-empty{text-align:center;padding:40px 20px;color:var(--muted);background:#f8fafc;border-radius:20px;border:1px solid #ecf3fa;}
+.section-empty i{font-size:2.2rem;margin-bottom:12px;color:#cbd5e1;display:block;}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:12px 24px;border-radius:999px;font-weight:700;font-size:.9rem;z-index:10000;box-shadow:0 10px 28px rgba(0,0,0,.12);transition:opacity .3s;pointer-events:none;}
+.toast-success{background:#10b981;color:#fff;}
+.toast-error{background:#ef4444;color:#fff;}
+
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;}.stats{grid-template-columns:1fr 1fr;}.features{grid-template-columns:1fr;}}
 @media(max-width:700px){
   .nav-links,.lang-switcher.desktop-only{display:none;}
   .hamburger{display:flex;}
@@ -219,217 +223,16 @@ footer p{margin:6px 0;}
   .section{padding:60px 16px;}
   .card,.about,.career,.contact-box{padding:22px 18px;}
   .form-row{grid-template-columns:1fr;}
-  .portal-tabs{gap:4px;}
   .portal-tab{min-width:90px;font-size:.78rem;padding:8px 8px;}
   .applicant-row{flex-direction:column;align-items:flex-start;}
+  .applicant-btns{margin-top:6px;width:100%;}
 }
-@media(max-width:480px){
-  .hero-actions .btn{width:100%;}
-  .hero-actions{flex-direction:column;}
-  .emp-btn.hero-emp{width:100%;}
-}
-
-/* ========== AMÉLIORATIONS PORTAIL EMPLOYÉ (ajouts) ========== */
-.portal-panel {
-  background: linear-gradient(145deg, #ffffff 0%, #fefefe 100%);
-}
-.portal-tabs {
-  background: rgba(15, 23, 42, 0.04);
-  border-radius: 20px;
-  padding: 6px;
-  gap: 8px;
-}
-.portal-tab {
-  border-radius: 40px;
-  font-weight: 700;
-  transition: all 0.2s ease;
-  background: transparent;
-  color: #4b5563;
-}
-.portal-tab.active {
-  background: white;
-  color: var(--primary);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-.portal-tab i { margin-right: 8px; }
-.job-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid #eef2f6;
-  background: white;
-}
-.job-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
-  border-color: rgba(11,60,93,0.2);
-}
-.job-title {
-  font-size: 1.1rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--primary), #1e6b9e);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  margin-bottom: 8px;
-}
-.job-meta {
-  gap: 12px;
-  margin-top: 8px;
-}
-.job-chip {
-  background: #f1f5f9;
-  border-radius: 40px;
-  padding: 6px 14px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #1e293b;
-}
-.job-chip i { margin-right: 6px; color: var(--secondary); }
-.job-chip.pay { background: #fef9e3; color: #b45309; }
-.capacity-bar-bg {
-  background: #e2e8f0;
-  border-radius: 20px;
-  height: 10px;
-}
-.capacity-bar-fill {
-  border-radius: 20px;
-  transition: width 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-.capacity-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-.status-badge {
-  border-radius: 40px;
-  font-weight: 700;
-  font-size: 0.7rem;
-  padding: 5px 12px;
-}
-.btn-sm {
-  border-radius: 40px;
-  font-weight: 700;
-  font-size: 0.75rem;
-  padding: 6px 14px;
-  transition: all 0.2s;
-}
-.btn-sm:hover {
-  transform: translateY(-2px);
-}
-.section-empty {
-  background: #f8fafc;
-  border-radius: 28px;
-  padding: 48px 20px;
-  border: 1px solid #ecf3fa;
-}
-.section-empty i {
-  font-size: 2.4rem;
-  color: #cbd5e1;
-  margin-bottom: 16px;
-}
-#available-slots-list .job-card,
-#my-appointments-list .job-card {
-  background: linear-gradient(105deg, #ffffff 0%, #fefcf9 100%);
-  border-left: 4px solid var(--secondary);
-  padding: 16px 20px;
-}
-#available-slots-list .job-card strong,
-#my-appointments-list .job-card strong {
-  color: var(--primary);
-  font-size: 1rem;
-}
-.fa-spinner {
-  animation: spin 1s linear infinite;
-}
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-@media (max-width: 640px) {
-  .portal-tab {
-    min-width: 80px;
-    font-size: 0.7rem;
-  }
-  .job-card {
-    padding: 14px;
-  }
-  .applicant-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .applicant-btns {
-    margin-top: 8px;
-    width: 100%;
-    justify-content: flex-start;
-  }
-}
-
-/* Amélioration écran de connexion */
-#portal-loading {
-  background: linear-gradient(145deg, #ffffff, #f8fafc);
-  border-radius: 32px;
-  padding: 48px 24px;
-}
-#portal-loading i {
-  background: linear-gradient(135deg, var(--primary), #1d6fa8);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  font-size: 3rem;
-}
-#portal-loading .portal-buttons {
-  gap: 16px;
-}
-#portal-loading .btn {
-  background: linear-gradient(135deg, var(--primary), #1d6fa8);
-  color: white;
-  border: none;
-  padding: 12px 28px;
-  font-weight: 700;
-  transition: 0.2s;
-}
-#portal-loading .btn-secondary {
-  background: white;
-  color: var(--primary);
-  border: 1px solid var(--primary);
-}
-#portal-loading .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-/* Fond principal du hero avec votre nouvelle image */
-.hero {
-  min-height: 88vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, rgba(7,28,44,0.88), rgba(11,60,93,0.88)), url('thanes-bg.png');
-  background-size: cover;
-  background-position: center 35%;
-  background-repeat: no-repeat;
-}
-
-/* Pseudo-élément pour le logo en filigrane (uniquement PNG) */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('logo.png'); /* Changez ici si votre logo s'appelle différemment, par exemple 'thanes-logo.png' */
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: min(480px, 65vw);
-  opacity: 0.07;
-  filter: blur(0.8px);
-  pointer-events: none;
-}
+@media(max-width:480px){.hero-actions .btn,.hero-actions .emp-btn{width:100%;}.hero-actions{flex-direction:column;}}
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="container nav">
     <a href="#accueil"><img class="logo" src="logo.png" onerror="this.src='logo.jpg';this.onerror=function(){this.src='logo.jpeg'}" alt="Thanes Cleaning"></a>
@@ -440,11 +243,16 @@ footer p{margin:6px 0;}
         <a href="#recrutement" data-i18n="nav.careers">Carrières</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </div>
-      <a href="#" class="emp-btn" id="nav-emp-btn" onclick="openPortal(event)"><i class="fa-solid fa-user-shield"></i><span data-i18n="nav.employee">Connexion Employé</span></a>
+      <a href="#" class="emp-btn" id="nav-emp-btn" onclick="openPortal(event)">
+        <i class="fa-solid fa-user-shield"></i><span data-i18n="nav.employee">Connexion Employé</span>
+      </a>
       <div class="lang-switcher desktop-only">
-        <button class="lang-btn" onclick="toggleLang('nav')"><span id="flag-nav" class="fi fi-qc"></span><span id="label-nav">FR</span><i class="fa-solid fa-chevron-down"></i></button>
+        <button class="lang-btn" onclick="toggleLang('nav')">
+          <span id="flag-nav" class="fi fi-ca"></span><span id="label-nav">FR</span>
+          <i class="fa-solid fa-chevron-down" style="font-size:.65rem;opacity:.7;"></i>
+        </button>
         <div class="lang-dropdown" id="dd-nav">
-          <button class="lang-option active" onclick="setLang('fr')"><span class="fi fi-qc"></span> Français (QC)</button>
+          <button class="lang-option active" onclick="setLang('fr')"><span class="fi fi-ca"></span> Français (QC)</button>
           <button class="lang-option" onclick="setLang('en')"><span class="fi fi-ca"></span> English (CA)</button>
           <button class="lang-option" onclick="setLang('es')"><span class="fi fi-es"></span> Español</button>
           <button class="lang-option" onclick="setLang('ht')"><span class="fi fi-ht"></span> Kreyòl</button>
@@ -460,7 +268,7 @@ footer p{margin:6px 0;}
     <a href="#contact" onclick="closeMobileMenu()" data-i18n="nav.contact">Contact</a>
     <a href="#" class="mob-emp-btn" onclick="closeMobileMenu();openPortal(event);" data-i18n="nav.employee">Connexion Employé</a>
     <div class="mobile-lang-row">
-      <button class="mobile-lang-btn active" id="mlb-fr" onclick="setLang('fr');closeMobileMenu()">⚜️ FR</button>
+      <button class="mobile-lang-btn active" id="mlb-fr" onclick="setLang('fr');closeMobileMenu()">🏴 FR</button>
       <button class="mobile-lang-btn" id="mlb-en" onclick="setLang('en');closeMobileMenu()">🍁 EN</button>
       <button class="mobile-lang-btn" id="mlb-es" onclick="setLang('es');closeMobileMenu()">🇪🇸 ES</button>
       <button class="mobile-lang-btn" id="mlb-ht" onclick="setLang('ht');closeMobileMenu()">🇭🇹 HT</button>
@@ -469,446 +277,975 @@ footer p{margin:6px 0;}
 </header>
 
 <!-- HERO -->
-<section class="hero" id="accueil"><div class="hero-content"><div class="badge"><i class="fa-solid fa-star"></i><span data-i18n="hero.badge">Service de nettoyage premium à Montréal</span></div><h1>Thanes Cleaning</h1><p data-i18n="hero.desc">Entretien ménager léger, lourd, commercial, professionnel, fiable et minutieux à Pointe-aux-Trembles et dans tout le Grand Montréal.</p><div class="hero-actions"><a class="btn" href="#contact"><i class="fa-solid fa-paper-plane"></i><span data-i18n="hero.cta1">Obtenir une soumission</span></a><a class="btn btn-secondary" href="#services"><i class="fa-solid fa-broom"></i><span data-i18n="hero.cta2">Découvrir nos services</span></a></div><div class="stats"><div class="stat"><strong data-i18n="hero.stat1t">Léger</strong><span data-i18n="hero.stat1d">Entretien régulier, tâches quotidiennes</span></div><div class="stat"><strong data-i18n="hero.stat2t">Lourd</strong><span data-i18n="hero.stat2d">Grand ménage saisonnier en profondeur</span></div><div class="stat"><strong data-i18n="hero.stat3t">Commercial</strong><span data-i18n="hero.stat3d">Bureaux et espaces professionnels</span></div></div></div></section>
+<section class="hero" id="accueil">
+  <div class="hero-content">
+    <div class="badge"><i class="fa-solid fa-star"></i><span data-i18n="hero.badge">Service de nettoyage premium à Montréal</span></div>
+    <h1>Thanes Cleaning</h1>
+    <p data-i18n="hero.desc">Entretien ménager léger, lourd et commercial — professionnel, fiable et minutieux à Pointe-aux-Trembles et dans tout le Grand Montréal.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#contact"><i class="fa-solid fa-paper-plane"></i><span data-i18n="hero.cta1">Obtenir une soumission</span></a>
+      <a class="btn btn-secondary" href="#services"><i class="fa-solid fa-broom"></i><span data-i18n="hero.cta2">Découvrir nos services</span></a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong data-i18n="hero.stat1t">Léger</strong><span data-i18n="hero.stat1d">Entretien régulier, tâches quotidiennes</span></div>
+      <div class="stat"><strong data-i18n="hero.stat2t">Lourd</strong><span data-i18n="hero.stat2d">Grand ménage saisonnier en profondeur</span></div>
+      <div class="stat"><strong data-i18n="hero.stat3t">Commercial</strong><span data-i18n="hero.stat3d">Bureaux et espaces professionnels</span></div>
+    </div>
+  </div>
+</section>
 
 <!-- ABOUT -->
-<section id="apropos" class="section"><div class="container"><div class="about"><div class="section-title"><h2 data-i18n="about.title">À propos de nous</h2><p data-i18n="about.subtitle">Thanes Cleaning est une entreprise locale spécialisée dans l'entretien ménager résidentiel et commercial. Rigueur, ponctualité et satisfaction du client sont au cœur de notre approche.</p></div><p data-i18n="about.body">Basés à Pointe-aux-Trembles, nous offrons un service fiable, minutieux et adapté aux exigences les plus élevées, que vous ayez besoin d'un entretien régulier ou d'un grand ménage saisonnier complet.</p><div class="features"><div class="feature"><i class="fa-solid fa-check"></i><span data-i18n="about.f1">Entretien léger et lourd disponibles</span></div><div class="feature"><i class="fa-solid fa-check"></i><span data-i18n="about.f2">Soumissions rapides et communication claire</span></div><div class="feature"><i class="fa-solid fa-check"></i><span data-i18n="about.f3">Service résidentiel et commercial</span></div><div class="feature"><i class="fa-solid fa-check"></i><span data-i18n="about.f4">Flexibilité horaire selon vos besoins</span></div></div><p><strong data-i18n="about.zones_label">Zones desservies :</strong><span data-i18n="about.zones"> Pointe-aux-Trembles, Montréal-Est, Montréal-Nord, Rivière-des-Prairies, Anjou et tout le Grand Montréal.</span></p></div></div></section>
+<section id="apropos" class="section">
+  <div class="container"><div class="about">
+    <div class="section-title">
+      <h2 data-i18n="about.title">À propos de nous</h2>
+      <p data-i18n="about.subtitle">Thanes Cleaning est une entreprise locale spécialisée dans l'entretien ménager résidentiel et commercial. Rigueur, ponctualité et satisfaction du client sont au cœur de notre approche.</p>
+    </div>
+    <p data-i18n="about.body">Basés à Pointe-aux-Trembles, nous offrons un service fiable, minutieux et adapté aux exigences les plus élevées — que vous ayez besoin d'un entretien régulier ou d'un grand ménage saisonnier complet.</p>
+    <div class="features">
+      <div class="feature"><i class="fa-solid fa-check"></i><span data-i18n="about.f1">Entretien léger et lourd disponibles</span></div>
+      <div class="feature"><i class="fa-solid fa-check"></i><span data-i18n="about.f2">Soumissions rapides et communication claire</span></div>
+      <div class="feature"><i class="fa-solid fa-check"></i><span data-i18n="about.f3">Service résidentiel et commercial</span></div>
+      <div class="feature"><i class="fa-solid fa-check"></i><span data-i18n="about.f4">Flexibilité horaire selon vos besoins</span></div>
+    </div>
+    <p style="margin-top:16px;"><strong data-i18n="about.zones_label">Zones desservies :</strong><span data-i18n="about.zones"> Pointe-aux-Trembles, Montréal-Est, Montréal-Nord, Rivière-des-Prairies, Anjou et tout le Grand Montréal.</span></p>
+  </div></div>
+</section>
 
 <!-- SERVICES -->
-<section id="services" class="section" style="background:linear-gradient(180deg,#f0f7ff 0%,#ffffff 100%);"><div class="container"><div class="section-title"><h2 data-i18n="services.title">Nos services en détail</h2><p data-i18n="services.subtitle">Nous distinguons clairement l'entretien léger, l'entretien lourd et le nettoyage commercial pour que vous sachiez exactement ce que vous commandez.</p></div><div class="grid services-grid"><div class="card"><div class="service-tag tag-light"><i class="fa-solid fa-feather"></i> <span data-i18n="services.tag_light">Entretien léger</span></div><div class="card-icon"><i class="fa-solid fa-house"></i></div><h3 data-i18n="services.s1t">Nettoyage résidentiel régulier</h3><p data-i18n="services.s1d">L'entretien courant de votre domicile, en visite régulière ou ponctuelle. Idéal pour maintenir un intérieur propre au quotidien.</p><ul><li data-i18n="services.s1l1">Cuisinière, hotte, réfrigérateur, comptoirs</li><li data-i18n="services.s1l2">Salle de bain : toilette, bain, lavabo, miroirs</li><li data-i18n="services.s1l3">Époussetage, faire les lits, changer la literie</li><li data-i18n="services.s1l4">Aspirateur, balai, vadrouille sur tous les planchers</li><li data-i18n="services.s1l5">Lessive et repassage (sur demande)</li></ul></div><div class="card"><div class="service-tag tag-heavy"><i class="fa-solid fa-fire"></i> <span data-i18n="services.tag_heavy">Entretien lourd</span></div><div class="card-icon"><i class="fa-solid fa-sparkles"></i></div><h3 data-i18n="services.s2t">Grand ménage saisonnier</h3><p data-i18n="services.s2d">Un nettoyage en profondeur pour chaque début de saison ou après déménagement. On atteint les zones que l'entretien régulier ne couvre pas.</p><ul><li data-i18n="services.s2l1">Lavage des murs, plafonds et boiseries</li><li data-i18n="services.s2l2">Nettoyage complet des fenêtres (intérieur et extérieur)</li><li data-i18n="services.s2l3">Armoires, garde-robes et espaces de rangement</li><li data-i18n="services.s2l4">Derrière et sous les appareils (frigo, cuisinière, laveuse)</li><li data-i18n="services.s2l5">Cadrages de portes, interrupteurs, prises électriques</li></ul></div><div class="card"><div class="service-tag tag-commercial"><i class="fa-solid fa-building"></i> <span data-i18n="services.tag_commercial">Commercial</span></div><div class="card-icon"><i class="fa-solid fa-building"></i></div><h3 data-i18n="services.s3t">Nettoyage commercial</h3><p data-i18n="services.s3d">Service professionnel pour bureaux, commerces et locaux. Nous adaptons la fréquence et les tâches à vos besoins opérationnels.</p><ul><li data-i18n="services.s3l1">Salles de réunion, bureaux individuels</li><li data-i18n="services.s3l2">Cuisines et salles de pause</li><li data-i18n="services.s3l3">Salles de bain communes</li><li data-i18n="services.s3l4">Réceptions et espaces communs</li><li data-i18n="services.s3l5">Vitrines et entrées</li></ul></div></div><div class="about" style="margin-top:28px;"><div class="section-title" style="margin-bottom:20px;"><h2 style="font-size:clamp(1.4rem,3vw,2rem);" data-i18n="services.diff_title">Entretien léger vs lourd (quelle différence ?)</h2></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="diff-grid"><div style="padding:18px;background:#e0f2fe;border-radius:16px;"><div><i class="fa-solid fa-feather"></i> <span data-i18n="services.diff_light_title">Entretien léger</span></div><ul><li data-i18n="services.diff_l1">Visites régulières (hebdomadaire, bimensuel)</li><li data-i18n="services.diff_l2">Tâches de surface : planchers, salles de bain, cuisine</li><li data-i18n="services.diff_l3">Maintenir un foyer propre au quotidien</li><li data-i18n="services.diff_l4">Durée typique : 2 à 4 heures</li></ul></div><div style="padding:18px;background:#fef3c7;border-radius:16px;"><div><i class="fa-solid fa-fire"></i> <span data-i18n="services.diff_heavy_title">Entretien lourd</span></div><ul><li data-i18n="services.diff_h1">Ponctuel ou saisonnier (1 à 4 fois/an)</li><li data-i18n="services.diff_h2">Zones difficiles d'accès : murs, fenêtres, armoires</li><li data-i18n="services.diff_h3">Avant/après déménagement, saisons, rénovations</li><li data-i18n="services.diff_h4">Durée typique : 4 à 8 heures</li></ul></div></div></div></div></section>
+<section id="services" class="section" style="background:linear-gradient(180deg,#f0f7ff 0%,#ffffff 100%);">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-i18n="services.title">Nos services en détail</h2>
+      <p data-i18n="services.subtitle">Nous distinguons clairement l'entretien léger, l'entretien lourd et le nettoyage commercial — pour que vous sachiez exactement ce que vous commandez.</p>
+    </div>
+    <div class="grid services-grid">
+      <div class="card">
+        <div class="service-tag tag-light"><i class="fa-solid fa-feather"></i> <span data-i18n="services.tag_light">Entretien léger</span></div>
+        <div class="card-icon"><i class="fa-solid fa-house"></i></div>
+        <h3 data-i18n="services.s1t">Nettoyage résidentiel régulier</h3>
+        <p data-i18n="services.s1d">L'entretien courant de votre domicile, en visite régulière ou ponctuelle. Idéal pour maintenir un intérieur propre au quotidien.</p>
+        <ul>
+          <li data-i18n="services.s1l1">Cuisinière, hotte, réfrigérateur, comptoirs</li>
+          <li data-i18n="services.s1l2">Salle de bain : toilette, bain, lavabo, miroirs</li>
+          <li data-i18n="services.s1l3">Époussetage, faire les lits, changer la literie</li>
+          <li data-i18n="services.s1l4">Aspirateur, balai, vadrouille sur tous les planchers</li>
+          <li data-i18n="services.s1l5">Lessive et repassage (sur demande)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="service-tag tag-heavy"><i class="fa-solid fa-fire"></i> <span data-i18n="services.tag_heavy">Entretien lourd</span></div>
+        <div class="card-icon"><i class="fa-solid fa-sparkles"></i></div>
+        <h3 data-i18n="services.s2t">Grand ménage saisonnier</h3>
+        <p data-i18n="services.s2d">Un nettoyage en profondeur pour chaque début de saison ou après déménagement. On atteint les zones que l'entretien régulier ne couvre pas.</p>
+        <ul>
+          <li data-i18n="services.s2l1">Lavage des murs, plafonds et boiseries</li>
+          <li data-i18n="services.s2l2">Nettoyage complet des fenêtres (intérieur et extérieur)</li>
+          <li data-i18n="services.s2l3">Armoires, garde-robes et espaces de rangement</li>
+          <li data-i18n="services.s2l4">Derrière et sous les appareils (frigo, cuisinière, laveuse)</li>
+          <li data-i18n="services.s2l5">Cadrages de portes, interrupteurs, prises électriques</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="service-tag tag-commercial"><i class="fa-solid fa-building"></i> <span data-i18n="services.tag_commercial">Commercial</span></div>
+        <div class="card-icon"><i class="fa-solid fa-building"></i></div>
+        <h3 data-i18n="services.s3t">Nettoyage commercial</h3>
+        <p data-i18n="services.s3d">Service professionnel pour bureaux, commerces et locaux. Nous adaptons la fréquence et les tâches à vos besoins opérationnels.</p>
+        <ul>
+          <li data-i18n="services.s3l1">Salles de réunion, bureaux individuels</li>
+          <li data-i18n="services.s3l2">Cuisines et salles de pause</li>
+          <li data-i18n="services.s3l3">Salles de bain communes</li>
+          <li data-i18n="services.s3l4">Réceptions et espaces communs</li>
+          <li data-i18n="services.s3l5">Vitrines et entrées</li>
+        </ul>
+      </div>
+    </div>
 
-<section class="section"><div class="container"><div class="about"><div class="section-title"><h2 data-i18n="why.title">Pourquoi choisir Thanes Cleaning ?</h2><p data-i18n="why.subtitle">Qualité constante, communication transparente et résultats qui parlent d'eux-mêmes.</p></div><div class="features"><div class="feature"><i class="fa-solid fa-circle-check"></i><span data-i18n="why.f1">Service fiable et constant</span></div><div class="feature"><i class="fa-solid fa-circle-check"></i><span data-i18n="why.f2">Soumissions rapides</span></div><div class="feature"><i class="fa-solid fa-circle-check"></i><span data-i18n="why.f3">Personnel minutieux et formé</span></div><div class="feature"><i class="fa-solid fa-circle-check"></i><span data-i18n="why.f4">Satisfaction client prioritaire</span></div><div class="feature"><i class="fa-solid fa-circle-check"></i><span data-i18n="why.f5">Léger et lourd clairement distincts</span></div><div class="feature"><i class="fa-solid fa-circle-check"></i><span data-i18n="why.f6">Horaires flexibles, week-end inclus</span></div></div></div></div></section>
+    <!-- Diff léger vs lourd -->
+    <div class="about" style="margin-top:28px;">
+      <div class="section-title" style="margin-bottom:20px;">
+        <h2 style="font-size:clamp(1.4rem,3vw,2rem);" data-i18n="services.diff_title">Entretien léger vs lourd — quelle différence ?</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="diff-grid">
+        <div style="padding:18px;background:#e0f2fe;border-radius:16px;border:1px solid #bae6fd;">
+          <div style="font-weight:800;color:#0369a1;margin-bottom:10px;"><i class="fa-solid fa-feather" style="margin-right:6px;"></i><span data-i18n="services.diff_light_title">Entretien léger</span></div>
+          <ul style="margin:0;padding-left:16px;color:#0c4a6e;font-size:.88rem;line-height:1.9;">
+            <li data-i18n="services.diff_l1">Visites régulières (hebdomadaire, bimensuel)</li>
+            <li data-i18n="services.diff_l2">Tâches de surface : planchers, salles de bain, cuisine</li>
+            <li data-i18n="services.diff_l3">Maintenir un foyer propre au quotidien</li>
+            <li data-i18n="services.diff_l4">Durée typique : 2 à 4 heures</li>
+          </ul>
+        </div>
+        <div style="padding:18px;background:#fef3c7;border-radius:16px;border:1px solid #fde68a;">
+          <div style="font-weight:800;color:#92400e;margin-bottom:10px;"><i class="fa-solid fa-fire" style="margin-right:6px;"></i><span data-i18n="services.diff_heavy_title">Entretien lourd</span></div>
+          <ul style="margin:0;padding-left:16px;color:#78350f;font-size:.88rem;line-height:1.9;">
+            <li data-i18n="services.diff_h1">Ponctuel ou saisonnier (1 à 4 fois/an)</li>
+            <li data-i18n="services.diff_h2">Zones difficiles d'accès : murs, fenêtres, armoires</li>
+            <li data-i18n="services.diff_h3">Avant/après déménagement, saisons, rénovations</li>
+            <li data-i18n="services.diff_h4">Durée typique : 4 à 8 heures</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section id="recrutement" class="section" style="background:linear-gradient(180deg,#f0f7ff 0%,#ffffff 100%);"><div class="container"><div class="career"><div class="section-title"><h2 data-i18n="careers.title">Joindre notre équipe</h2><p data-i18n="careers.subtitle">Nous recherchons des personnes fiables, professionnelles et autonomes pour accompagner notre croissance.</p></div><p data-i18n="careers.body">Si tu souhaites faire partie d'une entreprise qui valorise le sérieux, la qualité du travail et le respect, nous serions heureux de recevoir ta candidature.</p><p style="display:flex;gap:12px;flex-wrap:wrap;"><a class="btn" href="mailto:eslinthanisma@gmail.com"><i class="fa-solid fa-envelope"></i><span data-i18n="careers.apply">Postuler par courriel</span></a><a class="emp-btn" href="#" onclick="openPortal(event)"><i class="fa-solid fa-right-to-bracket"></i><span data-i18n="careers.login">Connexion / Créer un compte</span></a></p></div></div></section>
+<!-- WHY -->
+<section class="section">
+  <div class="container"><div class="about">
+    <div class="section-title">
+      <h2 data-i18n="why.title">Pourquoi choisir Thanes Cleaning ?</h2>
+      <p data-i18n="why.subtitle">Qualité constante, communication transparente et résultats qui parlent d'eux-mêmes.</p>
+    </div>
+    <div class="features">
+      <div class="feature"><i class="fa-solid fa-circle-check"></i><span data-i18n="why.f1">Service fiable et constant</span></div>
+      <div class="feature"><i class="fa-solid fa-circle-check"></i><span data-i18n="why.f2">Soumissions rapides</span></div>
+      <div class="feature"><i class="fa-solid fa-circle-check"></i><span data-i18n="why.f3">Personnel minutieux et formé</span></div>
+      <div class="feature"><i class="fa-solid fa-circle-check"></i><span data-i18n="why.f4">Satisfaction client prioritaire</span></div>
+      <div class="feature"><i class="fa-solid fa-circle-check"></i><span data-i18n="why.f5">Léger et lourd clairement distincts</span></div>
+      <div class="feature"><i class="fa-solid fa-circle-check"></i><span data-i18n="why.f6">Horaires flexibles, week-end inclus</span></div>
+    </div>
+  </div></div>
+</section>
 
-<section id="contact" class="section"><div class="container"><div class="section-title"><h2 data-i18n="contact.title">Obtenir une soumission</h2><p data-i18n="contact.subtitle">Remplissez le formulaire — nous vous répondons dès que possible.</p></div><div class="contact-grid"><div class="contact-box"><h3 data-i18n="contact.box_title">Contact</h3><div class="contact-item"><p><strong><i class="fa-solid fa-phone"></i> <span data-i18n="contact.phone_label">Téléphone</span></strong><br>514-290-4629</p></div><div class="contact-item"><p><strong><i class="fa-solid fa-envelope"></i> <span data-i18n="contact.email_label">Courriel</span></strong><br>eslinthanisma@gmail.com</p></div><div class="contact-item"><p><strong><i class="fa-solid fa-location-dot"></i> <span data-i18n="contact.zone_label">Zone desservie</span></strong><br><span data-i18n="contact.zone_val">Pointe-aux-Trembles, Montréal</span></p></div></div><div class="contact-box"><form id="soumission-form" name="soumission" method="POST"><label><span data-i18n="form.name">Nom</span><input type="text" name="nom" required data-i18n-placeholder="form.name_ph" autocomplete="name"></label><label><span data-i18n="form.phone">Téléphone</span><input type="tel" name="telephone" required placeholder="(514) 000-0000" autocomplete="tel"></label><label><span data-i18n="form.service_label">Type de service</span><select name="service"><option data-i18n="form.svc1">Entretien léger (régulier)</option><option data-i18n="form.svc2">Entretien lourd (grand ménage)</option><option data-i18n="form.svc3">Nettoyage commercial</option></select></label><label><span data-i18n="form.message">Message</span><textarea name="message" rows="4" data-i18n-placeholder="form.message_ph"></textarea></label><button class="btn" type="submit" id="submit-btn"><i class="fa-solid fa-paper-plane"></i><span data-i18n="form.submit">Envoyer la demande</span></button></form><div class="form-success" id="form-success"><i class="fa-solid fa-circle-check"></i><h4 data-i18n="form.success_title">Demande envoyée !</h4><p data-i18n="form.success_body">Merci ! Nous vous répondrons dans les plus brefs délais.</p></div></div></div></div></section>
+<!-- CAREERS -->
+<section id="recrutement" class="section" style="background:linear-gradient(180deg,#f0f7ff 0%,#ffffff 100%);">
+  <div class="container"><div class="career">
+    <div class="section-title">
+      <h2 data-i18n="careers.title">Joindre notre équipe</h2>
+      <p data-i18n="careers.subtitle">Nous recherchons des personnes fiables, professionnelles et autonomes pour accompagner notre croissance.</p>
+    </div>
+    <p data-i18n="careers.body">Si tu souhaites faire partie d'une entreprise qui valorise le sérieux, la qualité du travail et le respect, nous serions heureux de recevoir ta candidature.</p>
+    <p style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;">
+      <a class="btn" href="mailto:thanescleaning@gmail.com"><i class="fa-solid fa-envelope"></i><span data-i18n="careers.apply">Postuler par courriel</span></a>
+      <a class="emp-btn" href="#" onclick="openPortal(event)"><i class="fa-solid fa-right-to-bracket"></i><span data-i18n="careers.login">Connexion / Créer un compte</span></a>
+    </p>
+  </div></div>
+</section>
 
-<div class="container"><div class="footer-cta"><p><strong>Thanes Cleaning</strong> — <span data-i18n="footer.cta">entretien léger, lourd et commercial à Montréal. Propre, élégant, professionnel.</span></p></div></div>
-<footer><p>Thanes Cleaning • Pointe-aux-Trembles, Montréal, Québec</p><p>514-290-4629 • eslinthanisma@gmail.com</p><p>© 2026 Thanes Cleaning. <span data-i18n="footer.rights">Tous droits réservés.</span></p></footer>
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-i18n="contact.title">Obtenir une soumission</h2>
+      <p data-i18n="contact.subtitle">Remplissez le formulaire — nous vous répondons dès que possible.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-box">
+        <h3 data-i18n="contact.box_title">Contact</h3>
+        <div class="contact-item"><p><strong><i class="fa-solid fa-phone"></i> <span data-i18n="contact.phone_label">Téléphone</span></strong><br>514-290-4629</p></div>
+        <div class="contact-item"><p><strong><i class="fa-solid fa-envelope"></i> <span data-i18n="contact.email_label">Courriel</span></strong><br>thanescleaning@gmail.com</p></div>
+        <div class="contact-item"><p><strong><i class="fa-solid fa-location-dot"></i> <span data-i18n="contact.zone_label">Zone desservie</span></strong><br><span data-i18n="contact.zone_val">Pointe-aux-Trembles, Montréal</span></p></div>
+      </div>
+      <div class="contact-box">
+        <form id="soumission-form" name="soumission" method="POST">
+          <label><span data-i18n="form.name">Nom</span><input type="text" name="nom" required data-i18n-placeholder="form.name_ph" autocomplete="name"></label>
+          <label><span data-i18n="form.phone">Téléphone</span><input type="tel" name="telephone" required placeholder="(514) 000-0000" autocomplete="tel"></label>
+          <label><span data-i18n="form.service_label">Type de service</span>
+            <select name="service">
+              <option data-i18n="form.svc1">Entretien léger (régulier)</option>
+              <option data-i18n="form.svc2">Entretien lourd (grand ménage)</option>
+              <option data-i18n="form.svc3">Nettoyage commercial</option>
+            </select>
+          </label>
+          <label><span data-i18n="form.message">Message</span><textarea name="message" rows="4" data-i18n-placeholder="form.message_ph"></textarea></label>
+          <button class="btn" type="submit" id="submit-btn">
+            <i class="fa-solid fa-paper-plane"></i><span data-i18n="form.submit">Envoyer la demande</span>
+          </button>
+        </form>
+        <div class="form-success" id="form-success">
+          <i class="fa-solid fa-circle-check"></i>
+          <h4 data-i18n="form.success_title">Demande envoyée !</h4>
+          <p data-i18n="form.success_body">Merci ! Nous vous répondrons dans les plus brefs délais.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="footer-cta"><p><strong>Thanes Cleaning</strong> — <span data-i18n="footer.cta">entretien léger, lourd et commercial à Montréal. Propre, élégant, professionnel.</span></p></div>
+</div>
+<footer>
+  <p>Thanes Cleaning • Pointe-aux-Trembles, Montréal, Québec</p>
+  <p>514-290-4629 • thanescleaning@gmail.com</p>
+  <p>© 2026 Thanes Cleaning. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+</footer>
 <a href="#accueil" class="to-top"><i class="fa-solid fa-arrow-up"></i></a>
 
-<div class="lang-float"><button class="lang-btn" onclick="toggleLang('float')"><span id="flag-float" class="fi fi-qc"></span><span id="label-float">FR</span><i class="fa-solid fa-chevron-up"></i></button><div class="lang-dropdown" id="dd-float"><button class="lang-option active" onclick="setLang('fr')"><span class="fi fi-qc"></span> Français (QC)</button><button class="lang-option" onclick="setLang('en')"><span class="fi fi-ca"></span> English (CA)</button><button class="lang-option" onclick="setLang('es')"><span class="fi fi-es"></span> Español</button><button class="lang-option" onclick="setLang('ht')"><span class="fi fi-ht"></span> Kreyòl</button></div></div>
+<!-- FLOATING LANG -->
+<div class="lang-float">
+  <button class="lang-btn" onclick="toggleLang('float')">
+    <span id="flag-float" class="fi fi-ca"></span><span id="label-float">FR</span>
+    <i class="fa-solid fa-chevron-up" style="font-size:.65rem;opacity:.7;"></i>
+  </button>
+  <div class="lang-dropdown" id="dd-float">
+    <button class="lang-option active" onclick="setLang('fr')"><span class="fi fi-ca"></span> Français (QC)</button>
+    <button class="lang-option" onclick="setLang('en')"><span class="fi fi-ca"></span> English (CA)</button>
+    <button class="lang-option" onclick="setLang('es')"><span class="fi fi-es"></span> Español</button>
+    <button class="lang-option" onclick="setLang('ht')"><span class="fi fi-ht"></span> Kreyòl</button>
+  </div>
+</div>
 
-<!-- PORTAIL -->
-<div id="portal-overlay"><div class="portal-panel"><div class="portal-header"><div><h2><i class="fa-solid fa-user-shield"></i> <span data-i18n="portal.title">Portail Employé</span></h2><p id="portal-subtitle" data-i18n="portal.subtitle_login">Connectez-vous pour accéder à votre espace.</p></div><button class="portal-close" onclick="closePortal()"><i class="fa-solid fa-xmark"></i></button></div>
-<div id="portal-loading"><i class="fa-solid fa-user-circle"></i><p data-i18n="portal.loading_msg">Pour accéder à votre espace, connectez-vous ou créez un compte.</p><div class="portal-buttons"><button class="btn" id="manual-login-btn" onclick="triggerLogin()"><i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="portal.login_btn">Se connecter</span></button><button class="btn btn-secondary" id="manual-signup-btn" onclick="triggerSignup()"><i class="fa-solid fa-user-plus"></i> <span data-i18n="portal.signup_btn">Créer un compte</span></button></div><p style="margin-top:12px;font-size:.8rem;color:var(--muted);" data-i18n="portal.loading_hint">Une fenêtre sécurisée s'ouvrira.</p></div>
-<div id="portal-authenticated" style="display:none;"><div class="portal-user"><i class="fa-solid fa-circle-user"></i><div class="portal-user-info"><strong id="portal-username">Employé</strong><span id="portal-email-display"></span></div><button class="portal-logout" onclick="logoutUser()"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="portal.logout">Déconnexion</span></button></div>
-<div id="admin-tabs" style="display:none;"><div class="portal-tabs"><button class="portal-tab active" onclick="switchTab(this,'tab-admin-jobs')"><i class="fa-solid fa-briefcase"></i> <span data-i18n="admin.tab_jobs">Gérer les jobs</span></button><button class="portal-tab" onclick="switchTab(this,'tab-admin-create')"><i class="fa-solid fa-plus-circle"></i> <span data-i18n="admin.tab_create">Créer un job</span></button><button class="portal-tab" onclick="switchTab(this,'tab-admin-slots')"><i class="fa-solid fa-calendar-alt"></i> <span data-i18n="admin.tab_slots">Créneaux RDV</span></button></div>
-<div class="tab-content active" id="tab-admin-jobs"><div id="admin-jobs-list" class="job-list"></div></div>
-<div class="tab-content" id="tab-admin-create"><div class="create-form" id="create-form-wrap"><div class="form-row"><label><span data-i18n="admin.job_date">Date</span><input type="date" id="aj-date" required></label><label><span data-i18n="admin.job_time">Heure de début</span><input type="time" id="aj-time" required value="09:00"></label></div><label><span data-i18n="admin.job_type">Type de nettoyage</span><select id="aj-type"><option data-i18n="form.svc1">Entretien léger (régulier)</option><option data-i18n="form.svc2">Entretien lourd (grand ménage)</option><option data-i18n="form.svc3">Nettoyage commercial</option></select></label><label><span data-i18n="admin.job_address">Adresse du client</span><input type="text" id="aj-address" required data-i18n-placeholder="admin.job_address_ph"></label><div class="form-row"><label><span data-i18n="admin.job_slots">Employés requis</span><input type="number" id="aj-slots" min="1" max="20" value="1" required></label><label><span data-i18n="admin.job_pay">Rémunération</span><input type="text" id="aj-pay" data-i18n-placeholder="admin.job_pay_ph"></label></div><label><span data-i18n="admin.job_notes">Notes pour les employés</span><textarea id="aj-notes" rows="3" data-i18n-placeholder="admin.job_notes_ph"></textarea></label><button class="btn" onclick="createJob()"><i class="fa-solid fa-plus-circle"></i> <span data-i18n="admin.create_btn">Publier le job</span></button></div><div id="create-success" style="display:none;"><i class="fa-solid fa-circle-check"></i><h4 data-i18n="admin.created_title">Job publié !</h4><button class="btn" onclick="resetCreateForm()"><i class="fa-solid fa-plus"></i> <span data-i18n="admin.create_another">Créer un autre job</span></button></div></div>
-<div class="tab-content" id="tab-admin-slots"><div class="create-form"><div class="form-row"><label>Date <input type="date" id="slot-date" required></label><label>Heure début <input type="time" id="slot-start" required></label></div><div class="form-row"><label>Durée (min) <input type="number" id="slot-duration" value="30" step="15"></label><label>Places max <input type="number" id="slot-places" value="1" min="1"></label></div><label>Type <select id="slot-type"><option value="online">En ligne</option><option value="onsite">Présentiel</option></select></label><button class="btn" onclick="createSlot()">Ajouter créneau</button></div><hr><h3>Créneaux existants</h3><div id="slots-list"></div></div></div>
-<div id="employee-tabs" style="display:none;"><div class="portal-tabs"><button class="portal-tab active" onclick="switchTab(this,'tab-emp-available')"><i class="fa-solid fa-calendar-days"></i> <span data-i18n="emp.tab_available">Jobs disponibles</span></button><button class="portal-tab" onclick="switchTab(this,'tab-emp-mine')"><i class="fa-solid fa-list-check"></i> <span data-i18n="emp.tab_mine">Mes candidatures</span></button><button class="portal-tab" onclick="switchTab(this,'tab-emp-appointments')"><i class="fa-solid fa-calendar-plus"></i> <span data-i18n="emp.tab_appointments">Prendre RDV</span></button><button class="portal-tab" onclick="switchTab(this,'tab-emp-myappointments')"><i class="fa-solid fa-calendar-check"></i> <span data-i18n="emp.my_appointments">Mes RDV</span></button></div>
-<div class="tab-content active" id="tab-emp-available"><div id="emp-jobs-list" class="job-list"></div></div>
-<div class="tab-content" id="tab-emp-mine"><div id="emp-mine-list" class="job-list"></div></div>
-<div class="tab-content" id="tab-emp-appointments"><div id="available-slots-list" class="job-list"></div></div>
-<div class="tab-content" id="tab-emp-myappointments"><div id="my-appointments-list" class="job-list"></div></div></div></div></div></div>
+<!-- PORTAIL EMPLOYÉ / ADMIN -->
+<div id="portal-overlay" role="dialog" aria-modal="true">
+  <div class="portal-panel">
+    <div class="portal-header">
+      <div>
+        <h2><i class="fa-solid fa-user-shield" style="color:var(--primary);margin-right:8px;"></i><span data-i18n="portal.title">Portail Employé</span></h2>
+        <p id="portal-subtitle" data-i18n="portal.subtitle_login">Connectez-vous pour accéder à votre espace.</p>
+      </div>
+      <button class="portal-close" onclick="closePortal()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
 
-<form name="soumission" data-netlify="true" netlify-honeypot="bot-field" hidden><input type="hidden" name="form-name" value="soumission"><input name="bot-field"><input name="nom"><input name="telephone"><input name="service"><textarea name="message"></textarea></form>
-<form name="job-application" data-netlify="true" hidden><input type="hidden" name="form-name" value="job-application"><input name="employee_name"><input name="employee_email"><input name="job_date"><input name="job_address"><input name="job_type"></form>
+    <!-- Écran de connexion -->
+    <div id="portal-loading">
+      <i class="fa-solid fa-user-circle"></i>
+      <p data-i18n="portal.loading_msg">Pour accéder à votre espace, connectez-vous ou créez un compte.</p>
+      <div class="portal-buttons">
+        <button class="btn" onclick="triggerLogin()">
+          <i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="portal.login_btn">Se connecter</span>
+        </button>
+        <button class="btn" style="background:linear-gradient(135deg,var(--primary),#1d6fa8);color:#fff;" onclick="triggerSignup()">
+          <i class="fa-solid fa-user-plus"></i> <span data-i18n="portal.signup_btn">Créer un compte</span>
+        </button>
+      </div>
+      <p style="margin-top:12px;font-size:.8rem;color:var(--muted);" data-i18n="portal.loading_hint">Une fenêtre sécurisée s'ouvrira.</p>
+    </div>
+
+    <!-- Espace connecté -->
+    <div id="portal-authenticated" style="display:none;">
+      <div class="portal-user">
+        <i class="fa-solid fa-circle-user"></i>
+        <div class="portal-user-info">
+          <strong id="portal-username">Employé</strong>
+          <span id="portal-email-display"></span>
+        </div>
+        <button class="portal-logout" onclick="logoutUser()"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="portal.logout">Déconnexion</span></button>
+      </div>
+
+      <!-- ADMIN TABS -->
+      <div id="admin-tabs" style="display:none;">
+        <div class="portal-tabs">
+          <button class="portal-tab active" onclick="switchTab(this,'tab-admin-jobs')">
+            <i class="fa-solid fa-briefcase"></i> <span data-i18n="admin.tab_jobs">Gérer les jobs</span>
+          </button>
+          <button class="portal-tab" onclick="switchTab(this,'tab-admin-create')">
+            <i class="fa-solid fa-plus-circle"></i> <span data-i18n="admin.tab_create">Créer un job</span>
+          </button>
+        </div>
+        <div class="tab-content active" id="tab-admin-jobs">
+          <div id="admin-jobs-list" class="job-list"></div>
+        </div>
+        <div class="tab-content" id="tab-admin-create">
+          <div class="create-form" id="create-form-wrap">
+            <div class="form-row">
+              <label><span data-i18n="admin.job_date">Date</span><input type="date" id="aj-date" required></label>
+              <label><span data-i18n="admin.job_time">Heure de début</span><input type="time" id="aj-time" required value="09:00"></label>
+            </div>
+            <label><span data-i18n="admin.job_type">Type de nettoyage</span>
+              <select id="aj-type">
+                <option data-i18n="form.svc1">Entretien léger (régulier)</option>
+                <option data-i18n="form.svc2">Entretien lourd (grand ménage)</option>
+                <option data-i18n="form.svc3">Nettoyage commercial</option>
+              </select>
+            </label>
+            <label><span data-i18n="admin.job_address">Adresse du client</span><input type="text" id="aj-address" required data-i18n-placeholder="admin.job_address_ph"></label>
+            <div class="form-row">
+              <label><span data-i18n="admin.job_slots">Employés requis</span><input type="number" id="aj-slots" min="1" max="20" value="1" required></label>
+              <label><span data-i18n="admin.job_pay">Rémunération</span><input type="text" id="aj-pay" data-i18n-placeholder="admin.job_pay_ph"></label>
+            </div>
+            <label><span data-i18n="admin.job_notes">Notes pour les employés</span><textarea id="aj-notes" rows="3" data-i18n-placeholder="admin.job_notes_ph"></textarea></label>
+            <button class="btn" onclick="createJob()"><i class="fa-solid fa-plus-circle"></i> <span data-i18n="admin.create_btn">Publier le job</span></button>
+          </div>
+          <div id="create-success" style="display:none;text-align:center;padding:28px 16px;">
+            <i class="fa-solid fa-circle-check" style="font-size:2.6rem;color:#22c55e;margin-bottom:10px;display:block;"></i>
+            <h4 style="color:var(--primary);margin:0 0 6px;" data-i18n="admin.created_title">Job publié !</h4>
+            <p style="color:var(--muted);" data-i18n="admin.created_body">Les employés peuvent maintenant voir et postuler.</p>
+            <button class="btn" style="margin-top:14px;" onclick="resetCreateForm()"><i class="fa-solid fa-plus"></i> <span data-i18n="admin.create_another">Créer un autre job</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMPLOYEE TABS -->
+      <div id="employee-tabs" style="display:none;">
+        <div class="portal-tabs">
+          <button class="portal-tab active" onclick="switchTab(this,'tab-emp-available')">
+            <i class="fa-solid fa-calendar-days"></i> <span data-i18n="emp.tab_available">Jobs disponibles</span>
+          </button>
+          <button class="portal-tab" onclick="switchTab(this,'tab-emp-mine')">
+            <i class="fa-solid fa-list-check"></i> <span data-i18n="emp.tab_mine">Mes candidatures</span>
+          </button>
+        </div>
+        <div class="tab-content active" id="tab-emp-available">
+          <div id="emp-jobs-list" class="job-list"></div>
+        </div>
+        <div class="tab-content" id="tab-emp-mine">
+          <div id="emp-mine-list" class="job-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Netlify forms fantômes -->
+<form name="soumission" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="soumission">
+  <input name="bot-field"><input name="nom"><input name="telephone"><input name="service"><textarea name="message"></textarea>
+</form>
+<form name="job-application" data-netlify="true" hidden>
+  <input type="hidden" name="form-name" value="job-application">
+  <input name="employee_name"><input name="employee_email"><input name="job_date"><input name="job_address"><input name="job_type">
+</form>
 
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
 <script>
-// ==================== CONFIGURATION ====================
+/* ════════════════════════════════════════
+   CONFIG — un seul endroit à modifier
+════════════════════════════════════════ */
 const ADMIN_EMAIL = 'thanescleaning@gmail.com';
-let CUR = null;
+const API = '/.netlify/functions';
 
-// ==================== TRADUCTIONS (version allégée, garde tes anciennes traductions si besoin) ====================
+/* ════════════════════════════════════════
+   TRADUCTIONS
+════════════════════════════════════════ */
 const TR = {
-  fr: {
-    "nav.about":"À propos","nav.services":"Services","nav.careers":"Carrières","nav.contact":"Contact","nav.employee":"Connexion Employé",
-    "hero.badge":"Service de nettoyage premium à Montréal","hero.desc":"Entretien ménager léger, lourd, commercial...","hero.cta1":"Obtenir une soumission","hero.cta2":"Découvrir nos services",
-    "hero.stat1t":"Léger","hero.stat1d":"Entretien régulier","hero.stat2t":"Lourd","hero.stat2d":"Grand ménage","hero.stat3t":"Commercial","hero.stat3d":"Bureaux",
-    "about.title":"À propos de nous","about.subtitle":"Entreprise locale","about.body":"Basés à Pointe-aux-Trembles...","about.f1":"Entretien léger et lourd","about.f2":"Soumissions rapides","about.f3":"Résidentiel et commercial","about.f4":"Horaires flexibles","about.zones_label":"Zones desservies :","about.zones":" Grand Montréal",
-    "services.title":"Nos services","services.subtitle":"Distinction claire","services.tag_light":"Léger","services.tag_heavy":"Lourd","services.tag_commercial":"Commercial",
-    "services.s1t":"Nettoyage résidentiel","services.s1d":"Entretien courant","services.s1l1":"Cuisinière","services.s1l2":"Salle de bain","services.s1l3":"Époussetage","services.s1l4":"Aspirateur","services.s1l5":"Lessive",
-    "services.s2t":"Grand ménage","services.s2d":"Nettoyage profond","services.s2l1":"Murs","services.s2l2":"Fenêtres","services.s2l3":"Armoires","services.s2l4":"Derrière appareils","services.s2l5":"Interrupteurs",
-    "services.s3t":"Commercial","services.s3d":"Bureaux","services.s3l1":"Salles réunion","services.s3l2":"Cuisines","services.s3l3":"Toilettes","services.s3l4":"Réceptions","services.s3l5":"Vitrines",
-    "services.diff_title":"Léger vs lourd","services.diff_light_title":"Léger","services.diff_heavy_title":"Lourd",
-    "services.diff_l1":"Visites régulières","services.diff_l2":"Surface","services.diff_l3":"Quotidien","services.diff_l4":"2-4h",
-    "services.diff_h1":"Saisonnier","services.diff_h2":"Zones difficiles","services.diff_h3":"Déménagement","services.diff_h4":"4-8h",
-    "why.title":"Pourquoi nous","why.subtitle":"Qualité constante","why.f1":"Fiable","why.f2":"Devis rapide","why.f3":"Personnel formé","why.f4":"Satisfaction","why.f5":"Distinction claire","why.f6":"Horaires flexibles",
-    "careers.title":"Carrières","careers.subtitle":"Rejoignez-nous","careers.body":"Postulez ou créez un compte.","careers.apply":"Postuler","careers.login":"Connexion",
-    "contact.title":"Contact","contact.subtitle":"Formulaire rapide","contact.box_title":"Contact","contact.phone_label":"Téléphone","contact.email_label":"Email","contact.zone_label":"Zone","contact.zone_val":"Montréal",
-    "form.name":"Nom","form.name_ph":"Votre nom","form.phone":"Téléphone","form.service_label":"Service","form.svc1":"Léger","form.svc2":"Lourd","form.svc3":"Commercial","form.message":"Message","form.message_ph":"Détails","form.submit":"Envoyer","form.sending":"Envoi...","form.success_title":"Envoyé","form.success_body":"Merci",
-    "footer.cta":"Nettoyage professionnel","footer.rights":"Tous droits réservés",
-    "portal.title":"Portail","portal.subtitle_login":"Connectez-vous","portal.loading_msg":"Connectez-vous ou créez un compte","portal.login_btn":"Se connecter","portal.signup_btn":"Créer un compte","portal.loading_hint":"Fenêtre sécurisée","portal.logout":"Déconnexion","portal.welcome":"Bienvenue",
-    "admin.tab_jobs":"Jobs","admin.tab_create":"Créer job","admin.tab_slots":"Créneaux",
-    "admin.job_date":"Date","admin.job_time":"Heure","admin.job_type":"Type","admin.job_address":"Adresse","admin.job_address_ph":"123 rue Principale","admin.job_slots":"Employés","admin.job_pay":"Paye","admin.job_pay_ph":"25$/h","admin.job_notes":"Notes","admin.job_notes_ph":"Instructions","admin.create_btn":"Publier","admin.created_title":"Publié","admin.create_another":"Créer autre","admin.no_jobs":"Aucun job","admin.applicants":"Candidats","admin.no_applicants":"Aucun","admin.accept":"Accepter","admin.reject":"Rejeter","admin.delete_job":"Supprimer","admin.status_accepted":"Accepté","admin.status_rejected":"Rejeté","admin.status_pending":"En attente","admin.slots_full":"Complet","admin.spots_left":"places",
-    "emp.tab_available":"Jobs dispo","emp.tab_mine":"Mes candidatures","emp.tab_appointments":"Prendre RDV","emp.my_appointments":"Mes RDV","emp.apply":"Postuler","emp.pending":"En attente","emp.accepted":"Accepté","emp.rejected":"Rejeté","emp.no_jobs":"Aucun job","emp.no_applications":"Aucune candidature","emp.full_badge":"Complet","emp.book_appointment":"Réserver","emp.slot_type_online":"En ligne","emp.slot_type_onsite":"Présentiel","emp.cancel":"Annuler",
-    "emp.apply_success":"Candidature envoyée !","emp.already_applied":"Vous avez déjà postulé","emp.slot_booked":"Rendez-vous réservé","emp.slot_cancelled":"Rendez-vous annulé","admin.job_created":"Job créé avec succès","admin.slot_created":"Créneau ajouté"
-  },
-  en: { "portal.signup_btn":"Sign up", "portal.login_btn":"Log in", "emp.apply":"Apply", "admin.accept":"Accept", "admin.reject":"Reject", "admin.delete_job":"Delete", "emp.cancel":"Cancel", "emp.apply_success":"Application sent!" },
-  es: { "portal.signup_btn":"Registrarse", "portal.login_btn":"Iniciar sesión", "emp.apply":"Postular" },
-  ht: { "portal.signup_btn":"Kreye kont", "portal.login_btn":"Konekte", "emp.apply":"Aplike" }
+  fr:{
+    'nav.about':'À propos','nav.services':'Services','nav.careers':'Carrières','nav.contact':'Contact','nav.employee':'Connexion Employé',
+    'hero.badge':'Service de nettoyage premium à Montréal',
+    'hero.desc':'Entretien ménager léger, lourd et commercial — professionnel, fiable et minutieux à Pointe-aux-Trembles et dans tout le Grand Montréal.',
+    'hero.cta1':'Obtenir une soumission','hero.cta2':'Découvrir nos services',
+    'hero.stat1t':'Léger','hero.stat1d':'Entretien régulier, tâches quotidiennes',
+    'hero.stat2t':'Lourd','hero.stat2d':'Grand ménage saisonnier en profondeur',
+    'hero.stat3t':'Commercial','hero.stat3d':'Bureaux et espaces professionnels',
+    'about.title':'À propos de nous',
+    'about.subtitle':"Thanes Cleaning est une entreprise locale spécialisée dans l'entretien ménager résidentiel et commercial. Rigueur, ponctualité et satisfaction du client sont au cœur de notre approche.",
+    'about.body':"Basés à Pointe-aux-Trembles, nous offrons un service fiable, minutieux et adapté aux exigences les plus élevées — que vous ayez besoin d'un entretien régulier ou d'un grand ménage saisonnier complet.",
+    'about.f1':'Entretien léger et lourd disponibles','about.f2':'Soumissions rapides et communication claire',
+    'about.f3':'Service résidentiel et commercial','about.f4':'Flexibilité horaire selon vos besoins',
+    'about.zones_label':'Zones desservies :','about.zones':' Pointe-aux-Trembles, Montréal-Est, Montréal-Nord, Rivière-des-Prairies, Anjou et tout le Grand Montréal.',
+    'services.title':'Nos services en détail',
+    'services.subtitle':"Nous distinguons clairement l'entretien léger, l'entretien lourd et le nettoyage commercial — pour que vous sachiez exactement ce que vous commandez.",
+    'services.tag_light':'Entretien léger','services.tag_heavy':'Entretien lourd','services.tag_commercial':'Commercial',
+    'services.s1t':'Nettoyage résidentiel régulier','services.s1d':"L'entretien courant de votre domicile, en visite régulière ou ponctuelle.",
+    'services.s1l1':'Cuisinière, hotte, réfrigérateur, comptoirs','services.s1l2':'Salle de bain : toilette, bain, lavabo, miroirs',
+    'services.s1l3':'Époussetage, faire les lits, changer la literie','services.s1l4':'Aspirateur, balai, vadrouille sur tous les planchers','services.s1l5':'Lessive et repassage (sur demande)',
+    'services.s2t':'Grand ménage saisonnier','services.s2d':"Un nettoyage en profondeur pour chaque début de saison ou après déménagement.",
+    'services.s2l1':'Lavage des murs, plafonds et boiseries','services.s2l2':'Nettoyage complet des fenêtres (intérieur et extérieur)',
+    'services.s2l3':'Armoires, garde-robes et espaces de rangement','services.s2l4':'Derrière et sous les appareils (frigo, cuisinière, laveuse)','services.s2l5':'Cadrages de portes, interrupteurs, prises électriques',
+    'services.s3t':'Nettoyage commercial','services.s3d':"Service professionnel pour bureaux, commerces et locaux.",
+    'services.s3l1':'Salles de réunion, bureaux individuels','services.s3l2':'Cuisines et salles de pause',
+    'services.s3l3':'Salles de bain communes','services.s3l4':'Réceptions et espaces communs','services.s3l5':'Vitrines et entrées',
+    'services.diff_title':'Entretien léger vs lourd — quelle différence ?',
+    'services.diff_light_title':'Entretien léger','services.diff_heavy_title':'Entretien lourd',
+    'services.diff_l1':'Visites régulières (hebdomadaire, bimensuel)','services.diff_l2':'Tâches de surface : planchers, salles de bain, cuisine',
+    'services.diff_l3':'Maintenir un foyer propre au quotidien','services.diff_l4':'Durée typique : 2 à 4 heures',
+    'services.diff_h1':'Ponctuel ou saisonnier (1 à 4 fois/an)','services.diff_h2':"Zones difficiles d'accès : murs, fenêtres, armoires",
+    'services.diff_h3':'Avant/après déménagement, saisons, rénovations','services.diff_h4':'Durée typique : 4 à 8 heures',
+    'why.title':'Pourquoi choisir Thanes Cleaning ?','why.subtitle':"Qualité constante, communication transparente et résultats qui parlent d'eux-mêmes.",
+    'why.f1':'Service fiable et constant','why.f2':'Soumissions rapides','why.f3':'Personnel minutieux et formé',
+    'why.f4':'Satisfaction client prioritaire','why.f5':'Léger et lourd clairement distincts','why.f6':'Horaires flexibles, week-end inclus',
+    'careers.title':'Joindre notre équipe','careers.subtitle':"Nous recherchons des personnes fiables, professionnelles et autonomes pour accompagner notre croissance.",
+    'careers.body':"Si tu souhaites faire partie d'une entreprise qui valorise le sérieux, la qualité du travail et le respect, nous serions heureux de recevoir ta candidature.",
+    'careers.apply':'Postuler par courriel','careers.login':'Connexion / Créer un compte',
+    'contact.title':'Obtenir une soumission','contact.subtitle':'Remplissez le formulaire — nous vous répondons dès que possible.',
+    'contact.box_title':'Contact','contact.phone_label':'Téléphone','contact.email_label':'Courriel','contact.zone_label':'Zone desservie','contact.zone_val':'Pointe-aux-Trembles, Montréal',
+    'form.name':'Nom','form.name_ph':'Votre nom complet','form.phone':'Téléphone','form.service_label':'Type de service',
+    'form.svc1':'Entretien léger (régulier)','form.svc2':'Entretien lourd (grand ménage)','form.svc3':'Nettoyage commercial',
+    'form.message':'Message','form.message_ph':'Décrivez vos besoins (fréquence, superficie, accès…)',
+    'form.submit':'Envoyer la demande','form.sending':'Envoi en cours…',
+    'form.success_title':'Demande envoyée !','form.success_body':'Merci ! Nous vous répondrons dans les plus brefs délais.',
+    'footer.cta':'entretien léger, lourd et commercial à Montréal. Propre, élégant, professionnel.','footer.rights':'Tous droits réservés.',
+    'portal.title':'Portail Employé','portal.subtitle_login':'Connectez-vous pour accéder à votre espace.',
+    'portal.loading_msg':'Pour accéder à votre espace, connectez-vous ou créez un compte.',
+    'portal.login_btn':'Se connecter','portal.signup_btn':'Créer un compte','portal.loading_hint':"Une fenêtre sécurisée s'ouvrira.",
+    'portal.logout':'Déconnexion','portal.welcome':'Bienvenue dans votre espace.',
+    'admin.tab_jobs':'Gérer les jobs','admin.tab_create':'Créer un job',
+    'admin.job_date':'Date','admin.job_time':'Heure de début','admin.job_type':'Type de nettoyage',
+    'admin.job_address':'Adresse du client','admin.job_address_ph':'123 rue Principale, Montréal',
+    'admin.job_slots':'Employés requis','admin.job_pay':'Rémunération','admin.job_pay_ph':'Ex: 25$/h ou 120$ forfait',
+    'admin.job_notes':'Notes pour les employés','admin.job_notes_ph':'Instructions, accès, matériel…',
+    'admin.create_btn':'Publier le job','admin.created_title':'Job publié !','admin.created_body':'Les employés peuvent maintenant voir et postuler.',
+    'admin.create_another':'Créer un autre job','admin.no_jobs':'Aucun job créé pour le moment.',
+    'admin.applicants':'Candidatures','admin.no_applicants':'Aucune candidature pour ce job.',
+    'admin.accept':'Accepter','admin.reject':'Rejeter','admin.delete_job':'Supprimer',
+    'admin.status_accepted':'Accepté','admin.status_rejected':'Rejeté','admin.status_pending':'En attente',
+    'admin.slots_full':'Complet','admin.spots_left':'places restantes',
+    'emp.tab_available':'Jobs disponibles','emp.tab_mine':'Mes candidatures',
+    'emp.apply':'Postuler','emp.pending':'En attente de réponse','emp.accepted':'Accepté ✓','emp.rejected':'Non retenu',
+    'emp.no_jobs':'Aucun job disponible pour le moment. Revenez bientôt !',
+    'emp.no_applications':"Vous n'avez postulé à aucun job pour le moment.",'emp.full_badge':'Complet — plus de places',
+  }
 };
-for (let lang of ['en','es','ht']) {
-  for (let key in TR.fr) if (!TR[lang][key]) TR[lang][key] = TR.fr[key];
+
+// Langues supplémentaires — on hérite du français pour les clés manquantes
+const TR_EXTRA = {
+  en:{
+    'nav.about':'About','nav.services':'Services','nav.careers':'Careers','nav.contact':'Contact','nav.employee':'Employee Login',
+    'hero.badge':'Premium cleaning service in Montreal',
+    'hero.desc':'Light, heavy and commercial cleaning — professional, reliable and thorough in Pointe-aux-Trembles and throughout Greater Montreal.',
+    'hero.cta1':'Get a quote','hero.cta2':'Discover our services',
+    'hero.stat1t':'Light','hero.stat1d':'Regular upkeep, daily tasks',
+    'hero.stat2t':'Heavy','hero.stat2d':'Deep seasonal cleaning',
+    'hero.stat3t':'Commercial','hero.stat3d':'Offices and professional spaces',
+    'about.title':'About us','about.subtitle':'Thanes Cleaning is a local company specializing in residential and commercial cleaning.',
+    'about.body':'Based in Pointe-aux-Trembles, we offer reliable, thorough service — whether you need regular upkeep or a full seasonal deep clean.',
+    'about.f1':'Light and heavy cleaning available','about.f2':'Fast quotes and clear communication',
+    'about.f3':'Residential and commercial service','about.f4':'Flexible scheduling',
+    'about.zones_label':'Areas served:','about.zones':' Pointe-aux-Trembles, Montréal-Est, Montréal-Nord, Rivière-des-Prairies, Anjou and all of Greater Montreal.',
+    'services.title':'Our services in detail','services.subtitle':'We clearly distinguish light cleaning, heavy cleaning and commercial cleaning.',
+    'services.tag_light':'Light cleaning','services.tag_heavy':'Heavy cleaning','services.tag_commercial':'Commercial',
+    'services.s1t':'Regular residential cleaning','services.s1d':'Routine upkeep for your home.',
+    'services.s1l1':'Stove, hood, fridge, countertops','services.s1l2':'Bathroom: toilet, tub, sink, mirrors',
+    'services.s1l3':'Dusting, making beds, changing linens','services.s1l4':'Vacuuming, sweeping, mopping','services.s1l5':'Laundry and ironing (on request)',
+    'services.s2t':'Seasonal deep cleaning','services.s2d':'In-depth cleaning at season start or after moving.',
+    'services.s2l1':'Washing walls, ceilings and trim','services.s2l2':'Full window cleaning (inside and outside)',
+    'services.s2l3':'Cabinets, wardrobes and storage','services.s2l4':'Behind and under appliances','services.s2l5':'Door frames, switches, outlets',
+    'services.s3t':'Commercial cleaning','services.s3d':'Professional service for offices and businesses.',
+    'services.s3l1':'Meeting rooms, individual offices','services.s3l2':'Kitchens and break rooms',
+    'services.s3l3':'Common bathrooms','services.s3l4':'Lobbies and common areas','services.s3l5':'Storefronts and entrances',
+    'services.diff_title':'Light vs heavy cleaning — what is the difference?',
+    'services.diff_light_title':'Light cleaning','services.diff_heavy_title':'Heavy cleaning',
+    'services.diff_l1':'Regular visits (weekly, biweekly)','services.diff_l2':'Surface tasks: floors, bathrooms, kitchen',
+    'services.diff_l3':'Keeping your home clean day to day','services.diff_l4':'Typical duration: 2 to 4 hours',
+    'services.diff_h1':'One-time or seasonal (1–4 times/year)','services.diff_h2':'Hard-to-reach areas: walls, windows, cabinets',
+    'services.diff_h3':'Before/after moving, seasons, renovations','services.diff_h4':'Typical duration: 4 to 8 hours',
+    'why.title':'Why choose Thanes Cleaning?','why.subtitle':'Consistent quality, transparent communication.',
+    'why.f1':'Reliable service','why.f2':'Fast quotes','why.f3':'Thorough staff','why.f4':'Customer satisfaction','why.f5':'Light and heavy clearly distinct','why.f6':'Flexible hours including weekends',
+    'careers.title':'Join our team','careers.subtitle':'We are looking for reliable, professional people.',
+    'careers.body':'If you want to join a company that values quality work and respect, we would love to receive your application.',
+    'careers.apply':'Apply by email','careers.login':'Login / Create account',
+    'contact.title':'Get a quote','contact.subtitle':'Fill out the form — we will get back to you ASAP.',
+    'contact.box_title':'Contact','contact.phone_label':'Phone','contact.email_label':'Email','contact.zone_label':'Service area','contact.zone_val':'Pointe-aux-Trembles, Montreal',
+    'form.name':'Name','form.name_ph':'Your full name','form.phone':'Phone','form.service_label':'Service type',
+    'form.svc1':'Light cleaning (regular)','form.svc2':'Heavy cleaning (deep clean)','form.svc3':'Commercial cleaning',
+    'form.message':'Message','form.message_ph':'Describe your needs…',
+    'form.submit':'Send request','form.sending':'Sending…',
+    'form.success_title':'Request sent!','form.success_body':'Thank you! We will get back to you soon.',
+    'footer.cta':'light, heavy and commercial cleaning in Montreal.','footer.rights':'All rights reserved.',
+    'portal.title':'Employee Portal','portal.subtitle_login':'Log in to access your workspace.',
+    'portal.loading_msg':'To access your workspace, log in or create an account.',
+    'portal.login_btn':'Log in','portal.signup_btn':'Create account','portal.loading_hint':'A secure window will open.',
+    'portal.logout':'Logout','portal.welcome':'Welcome to your workspace.',
+    'admin.tab_jobs':'Manage jobs','admin.tab_create':'Create a job',
+    'admin.job_date':'Date','admin.job_time':'Start time','admin.job_type':'Cleaning type',
+    'admin.job_address':'Client address','admin.job_address_ph':'123 Main St, Montreal',
+    'admin.job_slots':'Employees required','admin.job_pay':'Pay','admin.job_pay_ph':'E.g. $25/h',
+    'admin.job_notes':'Notes for employees','admin.job_notes_ph':'Instructions, access, materials…',
+    'admin.create_btn':'Publish job','admin.created_title':'Job published!','admin.created_body':'Employees can now apply.',
+    'admin.create_another':'Create another job','admin.no_jobs':'No jobs created yet.',
+    'admin.applicants':'Applications','admin.no_applicants':'No applications yet.',
+    'admin.accept':'Accept','admin.reject':'Reject','admin.delete_job':'Delete',
+    'admin.status_accepted':'Accepted','admin.status_rejected':'Rejected','admin.status_pending':'Pending',
+    'admin.slots_full':'Full','admin.spots_left':'spots left',
+    'emp.tab_available':'Available jobs','emp.tab_mine':'My applications',
+    'emp.apply':'Apply','emp.pending':'Awaiting response','emp.accepted':'Accepted ✓','emp.rejected':'Not selected',
+    'emp.no_jobs':'No jobs available right now. Check back soon!',
+    'emp.no_applications':'You have not applied to any jobs yet.','emp.full_badge':'Full — no more spots',
+  },
+  es:{
+    'nav.about':'Nosotros','nav.services':'Servicios','nav.careers':'Empleos','nav.contact':'Contacto','nav.employee':'Acceso Empleados',
+    'hero.badge':'Servicio de limpieza premium en Montreal',
+    'hero.desc':'Limpieza ligera, pesada y comercial — profesional y minuciosa en Pointe-aux-Trembles y todo el Gran Montreal.',
+    'hero.cta1':'Obtener presupuesto','hero.cta2':'Ver nuestros servicios',
+    'hero.stat1t':'Ligera','hero.stat1d':'Mantenimiento regular','hero.stat2t':'Pesada','hero.stat2d':'Limpieza profunda','hero.stat3t':'Comercial','hero.stat3d':'Oficinas y negocios',
+    'about.title':'Sobre nosotros','about.subtitle':'Thanes Cleaning, empresa local de limpieza residencial y comercial.',
+    'about.body':'Con sede en Pointe-aux-Trembles, ofrecemos un servicio confiable y minucioso.',
+    'about.f1':'Limpieza ligera y pesada','about.f2':'Presupuestos rápidos','about.f3':'Residencial y comercial','about.f4':'Horarios flexibles',
+    'about.zones_label':'Zonas:','about.zones':' Pointe-aux-Trembles, Montréal-Est, Montréal-Nord, Anjou y todo el Gran Montreal.',
+    'services.title':'Nuestros servicios','services.subtitle':'Distinción clara entre limpieza ligera, pesada y comercial.',
+    'services.tag_light':'Limpieza ligera','services.tag_heavy':'Limpieza pesada','services.tag_commercial':'Comercial',
+    'services.s1t':'Limpieza residencial regular','services.s1d':'Mantenimiento rutinario del hogar.',
+    'services.s1l1':'Cocina y mesones','services.s1l2':'Baño completo','services.s1l3':'Quitar polvo, camas','services.s1l4':'Aspirar y fregar pisos','services.s1l5':'Lavandería (pedido)',
+    'services.s2t':'Limpieza profunda de temporada','services.s2d':'Limpieza a fondo cada inicio de temporada.',
+    'services.s2l1':'Paredes y techos','services.s2l2':'Ventanas completas','services.s2l3':'Armarios y alacenas','services.s2l4':'Detrás de electrodomésticos','services.s2l5':'Marcos de puertas e interruptores',
+    'services.s3t':'Limpieza comercial','services.s3d':'Servicio para oficinas y locales.',
+    'services.s3l1':'Salas de reunión','services.s3l2':'Cocinas de oficina','services.s3l3':'Baños comunes','services.s3l4':'Áreas comunes','services.s3l5':'Vitrinas y entradas',
+    'services.diff_title':'Limpieza ligera vs pesada — ¿cuál es la diferencia?',
+    'services.diff_light_title':'Ligera','services.diff_heavy_title':'Pesada',
+    'services.diff_l1':'Visitas regulares','services.diff_l2':'Tareas superficiales','services.diff_l3':'Hogar limpio a diario','services.diff_l4':'Duración: 2–4 horas',
+    'services.diff_h1':'Puntual o estacional','services.diff_h2':'Zonas difíciles','services.diff_h3':'Mudanzas y renovaciones','services.diff_h4':'Duración: 4–8 horas',
+    'why.title':'¿Por qué elegirnos?','why.subtitle':'Calidad constante y comunicación transparente.',
+    'why.f1':'Servicio fiable','why.f2':'Presupuestos rápidos','why.f3':'Personal capacitado','why.f4':'Satisfacción primero','why.f5':'Distinción clara','why.f6':'Horarios flexibles',
+    'careers.title':'Únete al equipo','careers.subtitle':'Buscamos personas confiables y profesionales.',
+    'careers.body':'Si deseas unirte a un equipo que valora la calidad, envíanos tu candidatura.',
+    'careers.apply':'Aplicar por correo','careers.login':'Iniciar sesión / Crear cuenta',
+    'contact.title':'Obtener presupuesto','contact.subtitle':'Complete el formulario y le responderemos pronto.',
+    'contact.box_title':'Contacto','contact.phone_label':'Teléfono','contact.email_label':'Correo','contact.zone_label':'Zona','contact.zone_val':'Pointe-aux-Trembles, Montreal',
+    'form.name':'Nombre','form.name_ph':'Su nombre completo','form.phone':'Teléfono','form.service_label':'Tipo de servicio',
+    'form.svc1':'Limpieza ligera (regular)','form.svc2':'Limpieza pesada (profunda)','form.svc3':'Limpieza comercial',
+    'form.message':'Mensaje','form.message_ph':'Describa sus necesidades…',
+    'form.submit':'Enviar solicitud','form.sending':'Enviando…',
+    'form.success_title':'¡Solicitud enviada!','form.success_body':'Gracias, le responderemos pronto.',
+    'footer.cta':'limpieza ligera, pesada y comercial en Montreal.','footer.rights':'Todos los derechos reservados.',
+    'portal.title':'Portal Empleados','portal.subtitle_login':'Inicie sesión para acceder.',
+    'portal.loading_msg':'Para acceder, inicie sesión o cree una cuenta.',
+    'portal.login_btn':'Iniciar sesión','portal.signup_btn':'Crear cuenta','portal.loading_hint':'Se abrirá una ventana segura.',
+    'portal.logout':'Cerrar sesión','portal.welcome':'Bienvenido a su espacio.',
+    'admin.tab_jobs':'Gestionar trabajos','admin.tab_create':'Crear trabajo',
+    'admin.job_date':'Fecha','admin.job_time':'Hora inicio','admin.job_type':'Tipo',
+    'admin.job_address':'Dirección','admin.job_address_ph':'123 Calle Principal',
+    'admin.job_slots':'Empleados','admin.job_pay':'Pago','admin.job_pay_ph':'Ej: $25/h',
+    'admin.job_notes':'Notas','admin.job_notes_ph':'Instrucciones…',
+    'admin.create_btn':'Publicar','admin.created_title':'¡Publicado!','admin.created_body':'Los empleados ya pueden postularse.',
+    'admin.create_another':'Crear otro','admin.no_jobs':'Sin trabajos creados.',
+    'admin.applicants':'Candidatos','admin.no_applicants':'Sin candidatos.',
+    'admin.accept':'Aceptar','admin.reject':'Rechazar','admin.delete_job':'Eliminar',
+    'admin.status_accepted':'Aceptado','admin.status_rejected':'Rechazado','admin.status_pending':'Pendiente',
+    'admin.slots_full':'Completo','admin.spots_left':'lugares',
+    'emp.tab_available':'Trabajos','emp.tab_mine':'Mis candidaturas',
+    'emp.apply':'Postularse','emp.pending':'En espera','emp.accepted':'Aceptado ✓','emp.rejected':'No seleccionado',
+    'emp.no_jobs':'Sin trabajos disponibles.','emp.no_applications':'No te has postulado aún.','emp.full_badge':'Completo',
+  },
+  ht:{
+    'nav.about':'Sou Nou','nav.services':'Sèvis','nav.careers':'Travay','nav.contact':'Kontakte','nav.employee':'Koneksyon Anplwaye',
+    'hero.badge':'Sèvis netwayaj premye kalite nan Monreyal',
+    'hero.desc':'Netwayaj lejè, lou ak komèsyal — pwofesyonèl ak fyab nan Pointe-aux-Trembles ak tout Monreyal.',
+    'hero.cta1':'Jwenn yon devis','hero.cta2':'Dekouvri sèvis nou yo',
+    'hero.stat1t':'Lejè','hero.stat1d':'Antretyen regilye','hero.stat2t':'Lou','hero.stat2d':'Gwo netwayaj','hero.stat3t':'Komèsyal','hero.stat3d':'Biwo ak espas travay',
+    'about.title':'Sou nou','about.subtitle':'Thanes Cleaning, konpayi lokal netwayaj rezidansyèl ak komèsyal.',
+    'about.body':'Ki gen baz nan Pointe-aux-Trembles, nou ofri yon sèvis fyab ak minisye.',
+    'about.f1':'Netwayaj lejè ak lou disponib','about.f2':'Devis rapid','about.f3':'Rezidansyèl ak komèsyal','about.f4':'Fleksibilite',
+    'about.zones_label':'Zòn sèvis:','about.zones':' Pointe-aux-Trembles, Montréal-Est, Montréal-Nord, Anjou ak tout Monreyal.',
+    'services.title':'Sèvis nou yo an detay','services.subtitle':'Distinksyon klè ant netwayaj lejè, lou ak komèsyal.',
+    'services.tag_light':'Netwayaj lejè','services.tag_heavy':'Netwayaj lou','services.tag_commercial':'Komèsyal',
+    'services.s1t':'Netwayaj rezidansyèl regilye','services.s1d':'Antretyen kouran pou kay ou.',
+    'services.s1l1':'Kizin ak kontwa','services.s1l2':'Twalèt konplè','services.s1l3':'Depousiè ak kabann','services.s1l4':'Aspire ak mope planché','services.s1l5':'Lesiv (sou demann)',
+    'services.s2t':'Gwo netwayaj sezonal','services.s2d':'Netwayaj an pwofondè chak kòmansman sezon.',
+    'services.s2l1':'Mi ak plafon','services.s2l2':'Fenèt konplè','services.s2l3':'Amwa ak estokaj','services.s2l4':'Dèyè aparèy','services.s2l5':'Kad pòt ak entèriptè',
+    'services.s3t':'Netwayaj komèsyal','services.s3d':'Sèvis pwofesyonèl pou biwo ak biznis.',
+    'services.s3l1':'Sal reyinyon','services.s3l2':'Kizin biwo','services.s3l3':'Twalèt komen','services.s3l4':'Espas komen','services.s3l5':'Vitrin ak antre',
+    'services.diff_title':'Netwayaj lejè vs lou — ki diferans?',
+    'services.diff_light_title':'Netwayaj lejè','services.diff_heavy_title':'Netwayaj lou',
+    'services.diff_l1':'Vizit regilye','services.diff_l2':'Travay sifas','services.diff_l3':'Kay pwòp chak jou','services.diff_l4':'Dire: 2–4 è',
+    'services.diff_h1':'Yon sèl fwa oswa sezonal','services.diff_h2':'Zòn difisil','services.diff_h3':'Demenajman ak renovasyon','services.diff_h4':'Dire: 4–8 è',
+    'why.title':'Poukisa chwazi nou?','why.subtitle':'Kalite konsistan ak kominikasyon transparan.',
+    'why.f1':'Sèvis fyab','why.f2':'Devis rapid','why.f3':'Pèsonèl minisye','why.f4':'Satisfaksyon an premye','why.f5':'Distinksyon klè','why.f6':'Orè fleksib',
+    'careers.title':'Rantre nan ekip la','careers.subtitle':'Nou ap chèche moun ki fyab ak pwofesyonèl.',
+    'careers.body':'Si ou vle fè pati ekip nou, voye kandidati ou.',
+    'careers.apply':'Aplike pa imèl','careers.login':'Konekte / Kreye kont',
+    'contact.title':'Jwenn yon devis','contact.subtitle':'Ranpli fòm lan epi nou pral reponn ou.',
+    'contact.box_title':'Kontakte','contact.phone_label':'Telefòn','contact.email_label':'Imèl','contact.zone_label':'Zòn','contact.zone_val':'Pointe-aux-Trembles, Monreyal',
+    'form.name':'Non','form.name_ph':'Non konplè ou','form.phone':'Telefòn','form.service_label':'Tip sèvis',
+    'form.svc1':'Netwayaj lejè (regilye)','form.svc2':'Netwayaj lou (pwofon)','form.svc3':'Netwayaj komèsyal',
+    'form.message':'Mesaj','form.message_ph':'Dekri bezwen ou yo…',
+    'form.submit':'Voye demann','form.sending':'Ap voye…',
+    'form.success_title':'Demann voye!','form.success_body':'Mèsi! Nou pral reponn ou pi vit posib.',
+    'footer.cta':'netwayaj lejè, lou ak komèsyal nan Monreyal.','footer.rights':'Tout dwa rezève.',
+    'portal.title':'Pòtay Anplwaye','portal.subtitle_login':'Konekte pou jwenn aksè.',
+    'portal.loading_msg':'Pou jwenn aksè, konekte oswa kreye yon kont.',
+    'portal.login_btn':'Konekte','portal.signup_btn':'Kreye kont','portal.loading_hint':"Yon fenèt sekire ap ouvri.",
+    'portal.logout':'Dekonekte','portal.welcome':'Byenveni nan espas ou a.',
+    'admin.tab_jobs':'Jere travay yo','admin.tab_create':'Kreye travay',
+    'admin.job_date':'Dat','admin.job_time':'Lè','admin.job_type':'Tip',
+    'admin.job_address':'Adrès','admin.job_address_ph':'123 Ri Prensipal',
+    'admin.job_slots':'Anplwaye','admin.job_pay':'Pèman','admin.job_pay_ph':'Ex: 25$/h',
+    'admin.job_notes':'Nòt','admin.job_notes_ph':'Enstriksyon…',
+    'admin.create_btn':'Pibliye','admin.created_title':'Pibliye!','admin.created_body':'Anplwaye yo ka aplike kounye a.',
+    'admin.create_another':'Kreye yon lòt','admin.no_jobs':'Pa gen travay kreye.',
+    'admin.applicants':'Kandida','admin.no_applicants':'Pa gen kandida.',
+    'admin.accept':'Aksepte','admin.reject':'Rejte','admin.delete_job':'Efase',
+    'admin.status_accepted':'Aksepte','admin.status_rejected':'Rejte','admin.status_pending':'Annatant',
+    'admin.slots_full':'Konplè','admin.spots_left':'plas',
+    'emp.tab_available':'Travay disponib','emp.tab_mine':'Aplikasyon mwen',
+    'emp.apply':'Aplike','emp.pending':'Annatant','emp.accepted':'Aksepte ✓','emp.rejected':'Pa chwazi',
+    'emp.no_jobs':'Pa gen travay disponib.','emp.no_applications':'Ou pa aplike pou okenn travay.','emp.full_badge':'Konplè',
+  }
+};
+
+// Fusionner avec fallback français
+for(const lang of ['en','es','ht']){
+  TR[lang] = TR[lang] || {};
+  for(const key in TR.fr) if(!TR[lang][key]) TR[lang][key] = (TR_EXTRA[lang]||{})[key] || TR.fr[key];
+  Object.assign(TR[lang], TR_EXTRA[lang]||{});
 }
-const LANG_META = { fr: { flag: 'fi fi-qc', label: 'FR' }, en: { flag: 'fi fi-ca', label: 'EN' }, es: { flag: 'fi fi-es', label: 'ES' }, ht: { flag: 'fi fi-ht', label: 'HT' } };
+
+const LANG_META = { fr:{label:'FR'}, en:{label:'EN'}, es:{label:'ES'}, ht:{label:'HT'} };
 let LANG = localStorage.getItem('thanes_lang') || 'fr';
 function t(k){ return (TR[LANG] && TR[LANG][k]) || TR.fr[k] || k; }
-function applyTR() {
+
+function applyTR(){
   document.documentElement.lang = LANG;
   document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => el.placeholder = t(el.dataset.i18nPlaceholder));
-  ['nav', 'float'].forEach(id => {
-    const flagSpan = document.getElementById('flag-' + id);
-    const labelSpan = document.getElementById('label-' + id);
-    if (flagSpan) flagSpan.className = LANG_META[LANG].flag;
-    if (labelSpan) labelSpan.textContent = LANG_META[LANG].label;
+  ['nav','float'].forEach(id=>{
+    const l = document.getElementById('label-'+id);
+    if(l) l.textContent = LANG_META[LANG].label;
+    const dd = document.getElementById('dd-'+id);
+    if(dd) dd.querySelectorAll('.lang-option').forEach(b=>{
+      const lc = b.getAttribute('onclick').match(/'(\w+)'/)?.[1];
+      if(lc) b.classList.toggle('active', lc===LANG);
+    });
   });
+  ['fr','en','es','ht'].forEach(l=>{
+    const b = document.getElementById('mlb-'+l);
+    if(b) b.classList.toggle('active', l===LANG);
+  });
+  // diff-grid mobile
+  const dg = document.querySelector('.diff-grid');
+  if(dg) dg.style.gridTemplateColumns = window.innerWidth < 600 ? '1fr' : '1fr 1fr';
 }
-function toggleLang(id){ document.getElementById('dd-'+id).classList.toggle('open'); }
-function setLang(l){ LANG=l; localStorage.setItem('thanes_lang',l); applyTR(); }
-document.addEventListener('click', e => { if (!e.target.closest('.lang-switcher') && !e.target.closest('.lang-float')) { document.getElementById('dd-nav')?.classList.remove('open'); document.getElementById('dd-float')?.classList.remove('open'); } });
 
-// ==================== FORMULAIRE SOUMISSION ====================
-document.getElementById('soumission-form')?.addEventListener('submit', async function(e){
+function toggleLang(id){
+  const dd = document.getElementById('dd-'+id), other = id==='nav'?'float':'nav';
+  document.getElementById('dd-'+other)?.classList.remove('open');
+  dd.classList.toggle('open');
+}
+function setLang(l){ LANG=l; localStorage.setItem('thanes_lang',l); document.getElementById('dd-nav')?.classList.remove('open'); document.getElementById('dd-float')?.classList.remove('open'); applyTR(); }
+document.addEventListener('click', e=>{ if(!e.target.closest('.lang-switcher')&&!e.target.closest('.lang-float')){ document.getElementById('dd-nav')?.classList.remove('open'); document.getElementById('dd-float')?.classList.remove('open'); } });
+window.addEventListener('resize', applyTR);
+
+/* ════════════════════════════════════════
+   MOBILE MENU
+════════════════════════════════════════ */
+function toggleMobileMenu(){ const h=document.getElementById('hamburger'),m=document.getElementById('mobile-menu'); h.classList.toggle('open'); m.classList.toggle('open'); }
+function closeMobileMenu(){ document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobile-menu').classList.remove('open'); }
+
+/* ════════════════════════════════════════
+   TOAST
+════════════════════════════════════════ */
+function showToast(msg, type='success'){
+  const el = document.createElement('div');
+  el.className = 'toast toast-'+(type==='success'?'success':'error');
+  el.textContent = msg;
+  document.body.appendChild(el);
+  setTimeout(()=>{ el.style.opacity='0'; setTimeout(()=>el.remove(),400); }, 3000);
+}
+
+/* ════════════════════════════════════════
+   FORMULAIRE SOUMISSION
+════════════════════════════════════════ */
+document.getElementById('soumission-form').addEventListener('submit', async function(e){
   e.preventDefault();
   const btn = document.getElementById('submit-btn');
-  btn.style.opacity = '.7';
-  btn.style.pointerEvents = 'none';
+  btn.style.opacity='.7'; btn.style.pointerEvents='none';
   btn.querySelector('span').textContent = t('form.sending');
-  const fd = new FormData(this);
-  fd.set('form-name', 'soumission');
-  try {
-    await fetch(window.location.pathname, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(fd).toString() });
-  } catch(err) { console.warn(err); }
-  this.style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
+  const fd = new FormData(this); fd.set('form-name','soumission');
+  try{
+    await fetch(window.location.pathname,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()});
+  }catch(err){ console.warn(err); }
+  this.style.display='none'; document.getElementById('form-success').style.display='block';
 });
 
-// ==================== PORTAIL & NETLIFY IDENTITY ====================
-function openPortal(e){ if(e){ e.preventDefault(); e.stopPropagation(); } document.getElementById('portal-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; if(CUR) showAuthenticated(CUR); }
-function closePortal(){ document.getElementById('portal-overlay').classList.remove('open'); document.body.style.overflow = ''; }
-document.getElementById('portal-overlay').addEventListener('click', e => { if(e.target === document.getElementById('portal-overlay')) closePortal(); });
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closePortal(); });
+/* ════════════════════════════════════════
+   API HELPERS
+════════════════════════════════════════ */
+async function apiGet(path){
+  const r = await fetch(API+path); return r.json();
+}
+async function apiPost(path, body){
+  const r = await fetch(API+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}); return r.json();
+}
+async function apiPatch(path, body){
+  const r = await fetch(API+path,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}); return r.json();
+}
+async function apiDelete(path, body){
+  const r = await fetch(API+path,{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}); return r.json();
+}
 
-function triggerLogin() {
-  closePortal();
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.open('login');
-    window.netlifyIdentity.on('login', (user) => {
-      CUR = user;
-      openPortal();
-      showAuthenticated(user);
-    });
-  } else alert("Netlify Identity non disponible.");
+/* ════════════════════════════════════════
+   PORTAIL — ouverture / fermeture
+════════════════════════════════════════ */
+let CUR = null;
+
+function openPortal(e){
+  if(e){ e.preventDefault(); e.stopPropagation(); }
+  document.getElementById('portal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if(CUR) showAuthenticated(CUR);
 }
-function triggerSignup() {
+function closePortal(){ document.getElementById('portal-overlay').classList.remove('open'); document.body.style.overflow=''; }
+document.getElementById('portal-overlay').addEventListener('click', e=>{ if(e.target===document.getElementById('portal-overlay')) closePortal(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closePortal(); });
+
+function triggerLogin(){
+  if(!window.netlifyIdentity){ showToast('Netlify Identity non disponible','error'); return; }
   closePortal();
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.open('signup');
-    window.netlifyIdentity.on('login', (user) => {
-      CUR = user;
-      openPortal();
-      showAuthenticated(user);
-    });
-  } else alert("Netlify Identity non disponible.");
+  netlifyIdentity.open('login');
 }
-function isAdmin(user){ return user && user.email === ADMIN_EMAIL; }
+function triggerSignup(){
+  if(!window.netlifyIdentity){ showToast('Netlify Identity non disponible','error'); return; }
+  closePortal();
+  netlifyIdentity.open('signup');
+}
+
+function isAdmin(u){ return u && u.email === ADMIN_EMAIL; }
+
 function showAuthenticated(user){
   CUR = user;
   document.getElementById('portal-loading').style.display = 'none';
   document.getElementById('portal-authenticated').style.display = 'block';
   document.getElementById('portal-subtitle').textContent = t('portal.welcome');
-  const name = (user.user_metadata?.full_name) || user.email.split('@')[0];
-  const adminBadge = isAdmin(user) ? '<span class="admin-badge"><i class="fa-solid fa-crown"></i> Admin</span>' : '';
-  document.getElementById('portal-username').innerHTML = name + adminBadge;
+  const name = user.user_metadata?.full_name || user.email.split('@')[0];
+  const badge = isAdmin(user) ? '<span class="admin-badge"><i class="fa-solid fa-crown"></i> Admin</span>' : '';
+  document.getElementById('portal-username').innerHTML = escH(name) + badge;
   document.getElementById('portal-email-display').textContent = user.email;
-  if (isAdmin(user)) {
+  if(isAdmin(user)){
     document.getElementById('admin-tabs').style.display = 'block';
     document.getElementById('employee-tabs').style.display = 'none';
-    renderAdminJobs(); renderSlotsList();
+    renderAdminJobs();
   } else {
     document.getElementById('admin-tabs').style.display = 'none';
     document.getElementById('employee-tabs').style.display = 'block';
-    renderEmpJobs(); renderEmpMine(); renderAvailableSlots(); renderMyAppointments();
+    renderEmpJobs(); renderEmpMine();
   }
 }
-function logoutUser() {
-  if (window.netlifyIdentity) window.netlifyIdentity.logout();
+
+function logoutUser(){
+  if(window.netlifyIdentity) netlifyIdentity.logout();
   CUR = null;
+  document.getElementById('portal-loading').style.display = 'block';
+  document.getElementById('portal-authenticated').style.display = 'none';
   closePortal();
-  setTimeout(() => window.location.reload(), 200);
 }
+
 function switchTab(btn, tabId){
   const panel = btn.closest('.portal-tabs').parentElement;
-  panel.querySelectorAll('.portal-tab').forEach(b => b.classList.remove('active'));
-  panel.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById(tabId).classList.add('active');
-  if(tabId === 'tab-admin-jobs') renderAdminJobs();
-  if(tabId === 'tab-admin-slots') renderSlotsList();
-  if(tabId === 'tab-emp-available') renderEmpJobs();
-  if(tabId === 'tab-emp-mine') renderEmpMine();
-  if(tabId === 'tab-emp-appointments') renderAvailableSlots();
-  if(tabId === 'tab-emp-myappointments') renderMyAppointments();
+  panel.querySelectorAll('.portal-tab').forEach(b=>b.classList.remove('active'));
+  panel.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active'); document.getElementById(tabId).classList.add('active');
+  if(tabId==='tab-admin-jobs') renderAdminJobs();
+  if(tabId==='tab-emp-available') renderEmpJobs();
+  if(tabId==='tab-emp-mine') renderEmpMine();
 }
 
-// ==================== TOAST NOTIFICATIONS ====================
-function showToast(message, type = 'success') {
-  const toast = document.createElement('div');
-  toast.innerText = message;
-  toast.style.position = 'fixed';
-  toast.style.bottom = '20px';
-  toast.style.left = '50%';
-  toast.style.transform = 'translateX(-50%)';
-  toast.style.backgroundColor = type === 'success' ? '#10b981' : '#ef4444';
-  toast.style.color = 'white';
-  toast.style.padding = '12px 24px';
-  toast.style.borderRadius = '40px';
-  toast.style.fontWeight = 'bold';
-  toast.style.fontSize = '0.9rem';
-  toast.style.zIndex = '10000';
-  toast.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 3000);
+/* ── Helpers ── */
+function accCount(job){ return (job.applicants||[]).filter(a=>a.status==='accepted').length; }
+function isFull(job){ return accCount(job) >= (job.slots||1); }
+function pctBar(job){ return Math.min(100, Math.round(accCount(job)/(job.slots||1)*100)); }
+function barCls(job){ const r=accCount(job)/(job.slots||1); return r>=1?'full-bar':r>=0.6?'warn-bar':''; }
+function fmtDate(date,time){
+  try{ const d=new Date(date+'T'+time); if(isNaN(d))return date+' '+time;
+    const loc=LANG==='fr'?'fr-CA':LANG==='es'?'es-MX':'en-CA';
+    return d.toLocaleDateString(loc,{weekday:'short',month:'short',day:'numeric'})+' '+d.toLocaleTimeString('fr-CA',{hour:'2-digit',minute:'2-digit'});
+  }catch{ return date+' '+time; }
 }
+function escH(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function escA(s){ return String(s||'').replace(/'/g,"\\'"); }
 
-// ==================== FONCTIONS AIRTABLE ====================
-async function loadJobs() {
-  const res = await fetch('/.netlify/functions/airtable-jobs');
-  const data = await res.json();
-  return data.jobs || [];
-}
-
-async function createJobOnAirtable(jobData, adminEmail) {
-  const res = await fetch('/.netlify/functions/airtable-jobs', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...jobData, adminEmail })
-  });
-  return await res.json();
-}
-
-async function applyToJob(jobId, employeeEmail, employeeName) {
-  const res = await fetch('/.netlify/functions/airtable-apply', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ jobId, employeeEmail, employeeName })
-  });
-  return await res.json();
-}
-
-// ==================== RENDU ADMIN ====================
-async function renderAdminJobs() {
-  const listDiv = document.getElementById('admin-jobs-list');
-  if (!listDiv) return;
-  listDiv.innerHTML = '<div class="section-empty"><i class="fa-solid fa-spinner fa-spin"></i> Chargement...</div>';
-  try {
-    const jobs = await loadJobs();
-    if (!jobs.length) {
-      listDiv.innerHTML = '<div class="section-empty"><i class="fa-solid fa-briefcase"></i> '+t('admin.no_jobs')+'</div>';
-      return;
-    }
-    listDiv.innerHTML = jobs.map(job => {
-      const acc = (job.applicants ? JSON.parse(job.applicants) : []).filter(a => a.status === 'accepted').length;
-      const full = acc >= (job.slots || 1);
-      const ratio = acc / (job.slots || 1);
-      const pct = Math.min(100, Math.round(ratio*100));
-      const pending = (job.applicants ? JSON.parse(job.applicants) : []).filter(a => a.status === 'pending').length;
-      const dot = pending > 0 ? '<span class="notif-dot"></span>' : '';
-      const applicantsList = job.applicants ? JSON.parse(job.applicants) : [];
-      const appRows = applicantsList.map(a => `
-        <div class="applicant-row">
-          <div><div class="applicant-name">${escapeHtml(a.name)}</div><div class="applicant-email">${escapeHtml(a.email)}</div></div>
-          <span class="applicant-status-badge st-${a.status}">${t('admin.status_'+a.status)}</span>
-          <div class="applicant-btns">
-            ${a.status !== 'accepted' && !full ? `<button class="btn btn-sm" onclick="reviewApplicant('${escapeAttr(job.id)}','${escapeAttr(a.email)}','accepted')">${t('admin.accept')}</button>` : ''}
-            ${a.status !== 'rejected' ? `<button class="btn btn-sm btn-danger" onclick="reviewApplicant('${escapeAttr(job.id)}','${escapeAttr(a.email)}','rejected')">${t('admin.reject')}</button>` : ''}
-          </div>
-        </div>
-      `).join('');
-      const barClass = ratio >= 1 ? 'full-bar' : (ratio >= 0.6 ? 'warn-bar' : '');
-      return `
-        <div class="job-card ${full ? 'full' : ''}">
-          <div class="job-card-top">
-            <div>
-              <div class="job-title">${escapeHtml(job.type)}</div>
-              <div class="job-meta">
-                <span class="job-chip"><i class="fa-solid fa-calendar"></i> ${fmtDate(job.date, job.time)}</span>
-                <span class="job-chip"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.address)}</span>
-                ${job.pay ? `<span class="job-chip pay">${escapeHtml(job.pay)}</span>` : ''}
-              </div>
-              ${job.notes ? `<div style="font-size:.84rem;color:var(--muted);">${escapeHtml(job.notes)}</div>` : ''}
+/* ════════════════════════════════════════
+   ADMIN — RENDER JOBS
+════════════════════════════════════════ */
+async function renderAdminJobs(){
+  const list = document.getElementById('admin-jobs-list');
+  list.innerHTML = '<div class="section-empty"><i class="fa-solid fa-spinner fa-spin"></i><p>Chargement…</p></div>';
+  try{
+    const { jobs } = await apiGet('/airtable-jobs');
+    if(!jobs||!jobs.length){ list.innerHTML='<div class="section-empty"><i class="fa-solid fa-briefcase"></i>'+t('admin.no_jobs')+'</div>'; return; }
+    list.innerHTML = jobs.map(job=>{
+      // applicants est un string JSON stocké dans Airtable
+      const applicants = typeof job.applicants==='string' ? JSON.parse(job.applicants||'[]') : (job.applicants||[]);
+      const acc = applicants.filter(a=>a.status==='accepted').length;
+      const full = acc >= (job.slots||1);
+      const ratio = acc/(job.slots||1);
+      const pct = Math.min(100,Math.round(ratio*100));
+      const pending = applicants.filter(a=>a.status==='pending').length;
+      const dot = pending>0 ? '<span class="notif-dot"></span>' : '';
+      const bc = ratio>=1?'full-bar':ratio>=0.6?'warn-bar':'';
+      const appRows = applicants.length
+        ? applicants.map(a=>`
+          <div class="applicant-row">
+            <div><div class="applicant-name">${escH(a.name)}</div><div class="applicant-email">${escH(a.email)}</div></div>
+            <span class="applicant-status-badge st-${a.status}">${t('admin.status_'+a.status)}</span>
+            <div class="applicant-btns">
+              ${a.status!=='accepted'&&!full?`<button class="btn btn-sm" onclick="reviewApplicant('${escA(job.id)}','${escA(a.email)}','accepted')">${t('admin.accept')}</button>`:''}
+              ${a.status!=='rejected'?`<button class="btn btn-sm btn-danger" onclick="reviewApplicant('${escA(job.id)}','${escA(a.email)}','rejected')">${t('admin.reject')}</button>`:''}
             </div>
-            <button class="btn btn-sm btn-danger" onclick="deleteJob('${escapeAttr(job.id)}')">${t('admin.delete_job')}</button>
+          </div>`).join('')
+        : `<div style="color:var(--muted);font-size:.88rem;">${t('admin.no_applicants')}</div>`;
+      return `<div class="job-card${full?' full':''}">
+        <div class="job-card-top">
+          <div style="flex:1;">
+            <div class="job-title">${escH(job.type)}</div>
+            <div class="job-meta">
+              <span class="job-chip"><i class="fa-solid fa-calendar"></i> ${fmtDate(job.date,job.time)}</span>
+              <span class="job-chip"><i class="fa-solid fa-location-dot"></i> ${escH(job.address)}</span>
+              ${job.pay?`<span class="job-chip pay"><i class="fa-solid fa-dollar-sign"></i> ${escH(job.pay)}</span>`:''}
+            </div>
+            ${job.notes?`<div style="margin-top:6px;font-size:.84rem;color:var(--muted);">${escH(job.notes)}</div>`:''}
           </div>
-          <div class="capacity-wrap">
-            <div class="capacity-label"><span>${t('admin.applicants')} ${dot}</span><span class="cap-count${full ? ' full' : ''}"><b>${acc}</b>/${job.slots} ${full ? '— '+t('admin.slots_full') : t('admin.spots_left')}</span></div>
-            <div class="capacity-bar-bg"><div class="capacity-bar-fill ${barClass}" style="width:${pct}%"></div></div>
-          </div>
-          <div class="applicants-section"><h4>${t('admin.applicants')}</h4>${appRows}</div>
+          <button class="btn btn-sm btn-danger" onclick="deleteJob('${escA(job.id)}')" style="flex-shrink:0;">${t('admin.delete_job')}</button>
         </div>
-      `;
+        <div class="capacity-wrap">
+          <div class="capacity-label">
+            <span>${t('admin.applicants')} ${dot}</span>
+            <span class="cap-count${full?' full':''}"><b>${acc}</b>/${job.slots} ${full?'— '+t('admin.slots_full'):t('admin.spots_left')}</span>
+          </div>
+          <div class="capacity-bar-bg"><div class="capacity-bar-fill ${bc}" style="width:${pct}%"></div></div>
+        </div>
+        <div class="applicants-section"><h4>${t('admin.applicants')}</h4>${appRows}</div>
+      </div>`;
     }).join('');
-  } catch(e) { console.error(e); listDiv.innerHTML = '<div class="section-empty">Erreur chargement</div>'; }
+  }catch(err){ console.error(err); list.innerHTML='<div class="section-empty"><i class="fa-solid fa-triangle-exclamation"></i><p>Erreur de chargement. Vérifiez votre connexion.</p></div>'; }
 }
 
-async function reviewApplicant(jobId, applicantEmail, status) {
-  // À implémenter : appel à une fonction Airtable pour mettre à jour le statut
-  // Pour l'instant, on va juste recharger les jobs (on ne fait pas la modification persistante)
-  // Idéalement, il faudrait une fonction airtable-review-applicant.js.
-  // Pour simplifier, on peut dire à l'utilisateur que cette fonctionnalité viendra plus tard.
-  showToast("Fonctionnalité en cours de développement", "error");
+async function reviewApplicant(jobId, email, status){
+  const res = await apiPatch('/airtable-jobs', { jobId, applicantEmail:email, status });
+  if(res.success){ showToast(status==='accepted'?t('admin.status_accepted'):t('admin.status_rejected')); renderAdminJobs(); }
+  else showToast(res.error||'Erreur','error');
 }
 
-async function deleteJob(jobId) {
-  // À implémenter : suppression dans Airtable
-  showToast("Suppression non encore disponible", "error");
+async function deleteJob(jobId){
+  if(!confirm(t('admin.delete_job')+'?')) return;
+  const res = await apiDelete('/airtable-jobs', { jobId });
+  if(res.success){ showToast(t('admin.delete_job')+' ✓'); renderAdminJobs(); }
+  else showToast(res.error||'Erreur','error');
 }
 
-async function createJob() {
-  const date = document.getElementById('aj-date').value;
-  const time = document.getElementById('aj-time').value;
-  const type = document.getElementById('aj-type').value;
+/* ════════════════════════════════════════
+   ADMIN — CRÉER UN JOB
+════════════════════════════════════════ */
+async function createJob(){
+  const date    = document.getElementById('aj-date').value;
+  const time    = document.getElementById('aj-time').value;
+  const type    = document.getElementById('aj-type').value;
   const address = document.getElementById('aj-address').value.trim();
-  const slots = parseInt(document.getElementById('aj-slots').value) || 1;
-  const pay = document.getElementById('aj-pay').value.trim();
-  const notes = document.getElementById('aj-notes').value.trim();
-  if(!date || !address){ alert('Veuillez remplir date et adresse'); return; }
-  const result = await createJobOnAirtable({ date, time, type, address, slots, pay, notes }, CUR.email);
-  if(result.success) {
-    showToast(t('admin.job_created'), 'success');
-    document.getElementById('create-form-wrap').style.display = 'none';
-    document.getElementById('create-success').style.display = 'block';
-    renderAdminJobs();
-  } else {
-    showToast("Erreur lors de la création", "error");
-  }
+  const slots   = parseInt(document.getElementById('aj-slots').value)||1;
+  const pay     = document.getElementById('aj-pay').value.trim();
+  const notes   = document.getElementById('aj-notes').value.trim();
+  if(!date||!address){ showToast('Veuillez remplir la date et l\'adresse.','error'); return; }
+  const btn = document.querySelector('#create-form-wrap .btn');
+  btn.style.opacity='.7'; btn.style.pointerEvents='none';
+  const res = await apiPost('/airtable-jobs',{date,time,type,address,slots,pay,notes,adminEmail:CUR.email});
+  btn.style.opacity=''; btn.style.pointerEvents='';
+  if(res.success){
+    document.getElementById('create-form-wrap').style.display='none';
+    document.getElementById('create-success').style.display='block';
+  } else { showToast(res.error||'Erreur création','error'); }
 }
 
-// ==================== RENDU EMPLOYÉ ====================
-async function renderEmpJobs() {
-  const listDiv = document.getElementById('emp-jobs-list');
-  if (!listDiv) return;
-  listDiv.innerHTML = '<div class="section-empty"><i class="fa-solid fa-spinner fa-spin"></i> Chargement...</div>';
-  try {
-    let jobs = await loadJobs();
+function resetCreateForm(){
+  document.getElementById('create-form-wrap').style.display='grid';
+  document.getElementById('create-success').style.display='none';
+  ['aj-date','aj-address','aj-pay','aj-notes'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('aj-slots').value=1;
+}
+
+/* ════════════════════════════════════════
+   EMPLOYÉ — JOBS DISPONIBLES
+════════════════════════════════════════ */
+async function renderEmpJobs(){
+  const list = document.getElementById('emp-jobs-list');
+  list.innerHTML = '<div class="section-empty"><i class="fa-solid fa-spinner fa-spin"></i><p>Chargement…</p></div>';
+  try{
+    const { jobs } = await apiGet('/airtable-jobs');
     const today = new Date().toISOString().slice(0,10);
-    jobs = jobs.filter(j => j.date >= today);
-    if(!jobs.length) { listDiv.innerHTML = '<div class="section-empty"><i class="fa-solid fa-calendar-xmark"></i> '+t('emp.no_jobs')+'</div>'; return; }
-    listDiv.innerHTML = jobs.map(job => {
-      const acc = (job.applicants ? JSON.parse(job.applicants) : []).filter(a => a.status === 'accepted').length;
-      const full = acc >= (job.slots || 1);
-      const ratio = acc / (job.slots || 1);
-      const pct = Math.min(100, Math.round(ratio*100));
-      const applicants = job.applicants ? JSON.parse(job.applicants) : [];
-      const myApp = applicants.find(a => a.email === CUR.email);
-      let action = '';
-      if(myApp) {
-        if(myApp.status === 'accepted') action = `<span class="status-badge badge-success"><i class="fa-solid fa-circle-check"></i> ${t('emp.accepted')}</span>`;
-        else if(myApp.status === 'rejected') action = `<span class="status-badge badge-danger"><i class="fa-solid fa-circle-xmark"></i> ${t('emp.rejected')}</span>`;
-        else action = `<span class="status-badge badge-warn"><i class="fa-solid fa-clock"></i> ${t('emp.pending')}</span>`;
-      } else if(full) {
-        action = `<span class="status-badge badge-lock"><i class="fa-solid fa-lock"></i> ${t('emp.full_badge')}</span>`;
+    const visible = (jobs||[]).filter(j=>j.date>=today);
+    if(!visible.length){ list.innerHTML='<div class="section-empty"><i class="fa-solid fa-calendar-xmark"></i>'+t('emp.no_jobs')+'</div>'; return; }
+    list.innerHTML = visible.map(job=>{
+      const applicants = typeof job.applicants==='string' ? JSON.parse(job.applicants||'[]') : (job.applicants||[]);
+      const acc = applicants.filter(a=>a.status==='accepted').length;
+      const full = acc >= (job.slots||1);
+      const ratio = acc/(job.slots||1);
+      const pct = Math.min(100,Math.round(ratio*100));
+      const bc = ratio>=1?'full-bar':ratio>=0.6?'warn-bar':'';
+      const myApp = applicants.find(a=>a.email===CUR.email);
+      let action;
+      if(myApp){
+        if(myApp.status==='accepted') action=`<span class="status-badge badge-success"><i class="fa-solid fa-circle-check"></i> ${t('emp.accepted')}</span>`;
+        else if(myApp.status==='rejected') action=`<span class="status-badge badge-danger"><i class="fa-solid fa-circle-xmark"></i> ${t('emp.rejected')}</span>`;
+        else action=`<span class="status-badge badge-warn"><i class="fa-solid fa-clock"></i> ${t('emp.pending')}</span>`;
+      } else if(full){
+        action=`<span class="status-badge badge-lock"><i class="fa-solid fa-lock"></i> ${t('emp.full_badge')}</span>`;
       } else {
-        action = `<button class="btn btn-sm" onclick="applyJob('${escapeAttr(job.id)}')"><i class="fa-solid fa-paper-plane"></i> ${t('emp.apply')}</button>`;
+        action=`<button class="btn btn-sm" onclick="applyJob('${escA(job.id)}')"><i class="fa-solid fa-paper-plane"></i> ${t('emp.apply')}</button>`;
       }
-      const barClass = ratio >= 1 ? 'full-bar' : (ratio >= 0.6 ? 'warn-bar' : '');
-      return `
-        <div class="job-card">
-          <div>
-            <div class="job-title">${escapeHtml(job.type)}</div>
+      return `<div class="job-card${full&&!myApp?' full':''}">
+        <div class="job-card-top">
+          <div style="flex:1;">
+            <div class="job-title">${escH(job.type)}</div>
             <div class="job-meta">
-              <span class="job-chip"><i class="fa-solid fa-calendar"></i> ${fmtDate(job.date, job.time)}</span>
-              <span class="job-chip"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.address)}</span>
-              ${job.pay ? `<span class="job-chip pay">${escapeHtml(job.pay)}</span>` : ''}
+              <span class="job-chip"><i class="fa-solid fa-calendar"></i> ${fmtDate(job.date,job.time)}</span>
+              <span class="job-chip"><i class="fa-solid fa-location-dot"></i> ${escH(job.address)}</span>
+              ${job.pay?`<span class="job-chip pay"><i class="fa-solid fa-dollar-sign"></i> ${escH(job.pay)}</span>`:''}
             </div>
-            ${job.notes ? `<div style="font-size:.84rem;color:var(--muted);">${escapeHtml(job.notes)}</div>` : ''}
+            ${job.notes?`<div style="margin-top:6px;font-size:.84rem;color:var(--muted);">${escH(job.notes)}</div>`:''}
           </div>
-          <div class="capacity-wrap">
-            <div class="capacity-label"><span></span><span class="cap-count${full ? ' full' : ''}"><b>${acc}</b>/${job.slots} ${full ? '— '+t('admin.slots_full') : t('admin.spots_left')}</span></div>
-            <div class="capacity-bar-bg"><div class="capacity-bar-fill ${barClass}" style="width:${pct}%"></div></div>
-          </div>
-          <div class="job-actions">${action}</div>
         </div>
-      `;
+        <div class="capacity-wrap">
+          <div class="capacity-label">
+            <span></span>
+            <span class="cap-count${full?' full':''}"><b>${acc}</b>/${job.slots} ${full?'— '+t('admin.slots_full'):t('admin.spots_left')}</span>
+          </div>
+          <div class="capacity-bar-bg"><div class="capacity-bar-fill ${bc}" style="width:${pct}%"></div></div>
+        </div>
+        <div class="job-actions">${action}</div>
+      </div>`;
     }).join('');
-  } catch(e) { console.error(e); listDiv.innerHTML = '<div class="section-empty">Erreur</div>'; }
+  }catch(err){ console.error(err); list.innerHTML='<div class="section-empty"><i class="fa-solid fa-triangle-exclamation"></i><p>Erreur de chargement.</p></div>'; }
 }
 
-async function applyJob(jobId) {
+async function applyJob(jobId){
   if(!CUR) return;
-  const name = (CUR.user_metadata?.full_name) || CUR.email.split('@')[0];
-  const result = await applyToJob(jobId, CUR.email, name);
-  if(result.success) {
-    showToast(t('emp.apply_success'), 'success');
-    renderEmpJobs();
-    renderEmpMine();
-  } else {
-    showToast(result.body || "Erreur lors de la candidature", "error");
-  }
+  const name = CUR.user_metadata?.full_name || CUR.email.split('@')[0];
+  const btn = document.querySelector(`[onclick="applyJob('${jobId}')"]`);
+  if(btn){ btn.style.opacity='.6'; btn.style.pointerEvents='none'; }
+  const res = await apiPost('/airtable-apply',{jobId, employeeEmail:CUR.email, employeeName:name});
+  if(res.success){
+    showToast(t('emp.apply')+' ✓');
+    renderEmpJobs(); renderEmpMine();
+    // Notif Netlify Forms → email à l'owner
+    const fd = new URLSearchParams({'form-name':'job-application',employee_name:name,employee_email:CUR.email,job_type:jobId});
+    fetch(window.location.pathname,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:fd.toString()}).catch(()=>{});
+  } else { showToast(res.error||'Erreur','error'); if(btn){ btn.style.opacity=''; btn.style.pointerEvents=''; } }
 }
 
-async function renderEmpMine() {
-  const listDiv = document.getElementById('emp-mine-list');
-  if (!listDiv) return;
-  listDiv.innerHTML = '<div class="section-empty"><i class="fa-solid fa-spinner fa-spin"></i> Chargement...</div>';
-  try {
-    const jobs = await loadJobs();
-    const myApps = jobs.filter(job => {
-      const applicants = job.applicants ? JSON.parse(job.applicants) : [];
-      return applicants.some(a => a.email === CUR.email);
-    }).map(job => {
-      const applicants = job.applicants ? JSON.parse(job.applicants) : [];
-      const myApp = applicants.find(a => a.email === CUR.email);
-      return { ...job, myStatus: myApp.status };
+/* ════════════════════════════════════════
+   EMPLOYÉ — MES CANDIDATURES
+════════════════════════════════════════ */
+async function renderEmpMine(){
+  const list = document.getElementById('emp-mine-list');
+  list.innerHTML = '<div class="section-empty"><i class="fa-solid fa-spinner fa-spin"></i><p>Chargement…</p></div>';
+  try{
+    const { jobs } = await apiGet('/airtable-jobs');
+    const mine = (jobs||[]).filter(job=>{
+      const applicants = typeof job.applicants==='string' ? JSON.parse(job.applicants||'[]') : (job.applicants||[]);
+      return applicants.some(a=>a.email===CUR.email);
     });
-    if(!myApps.length) { listDiv.innerHTML = '<div class="section-empty"><i class="fa-solid fa-list-check"></i> '+t('emp.no_applications')+'</div>'; return; }
-    listDiv.innerHTML = myApps.map(job => {
-      const cls = job.myStatus === 'accepted' ? 'badge-success' : (job.myStatus === 'rejected' ? 'badge-danger' : 'badge-warn');
-      return `
-        <div class="job-card">
-          <div>
-            <div class="job-title">${escapeHtml(job.type)}</div>
+    if(!mine.length){ list.innerHTML='<div class="section-empty"><i class="fa-solid fa-list-check"></i>'+t('emp.no_applications')+'</div>'; return; }
+    list.innerHTML = mine.map(job=>{
+      const applicants = typeof job.applicants==='string' ? JSON.parse(job.applicants||'[]') : (job.applicants||[]);
+      const myApp = applicants.find(a=>a.email===CUR.email);
+      const cls = myApp.status==='accepted'?'badge-success':myApp.status==='rejected'?'badge-danger':'badge-warn';
+      return `<div class="job-card">
+        <div class="job-card-top">
+          <div style="flex:1;">
+            <div class="job-title">${escH(job.type)}</div>
             <div class="job-meta">
-              <span class="job-chip"><i class="fa-solid fa-calendar"></i> ${fmtDate(job.date, job.time)}</span>
-              <span class="job-chip"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.address)}</span>
-              ${job.pay ? `<span class="job-chip pay">${escapeHtml(job.pay)}</span>` : ''}
+              <span class="job-chip"><i class="fa-solid fa-calendar"></i> ${fmtDate(job.date,job.time)}</span>
+              <span class="job-chip"><i class="fa-solid fa-location-dot"></i> ${escH(job.address)}</span>
+              ${job.pay?`<span class="job-chip pay"><i class="fa-solid fa-dollar-sign"></i> ${escH(job.pay)}</span>`:''}
             </div>
           </div>
-          <span class="status-badge ${cls}">${t('emp.'+job.myStatus)}</span>
+          <span class="status-badge ${cls}">${t('emp.'+myApp.status)}</span>
         </div>
-      `;
+      </div>`;
     }).join('');
-  } catch(e) { console.error(e); listDiv.innerHTML = '<div class="section-empty">Erreur</div>'; }
+  }catch(err){ console.error(err); list.innerHTML='<div class="section-empty"><i class="fa-solid fa-triangle-exclamation"></i><p>Erreur de chargement.</p></div>'; }
 }
 
-// ==================== FONCTIONS CRÉNEAUX (on garde localStorage provisoirement, mais à migrer aussi vers Airtable) ====================
-// Pour l'instant, on laisse les anciennes fonctions si elles existent, sinon on affiche un message
-async function renderSlotsList() { document.getElementById('slots-list').innerHTML = '<div class="section-empty">Fonctionnalité à venir</div>'; }
-async function createSlot() { showToast("Créneaux non encore migrés vers Airtable", "error"); }
-async function deleteSlot(slotId) {}
-async function renderAvailableSlots() { document.getElementById('available-slots-list').innerHTML = '<div class="section-empty">Fonctionnalité à venir</div>'; }
-async function bookSlot(slotId) { showToast("Réservation de créneaux bientôt disponible", "error"); }
-async function renderMyAppointments() { document.getElementById('my-appointments-list').innerHTML = '<div class="section-empty">Fonctionnalité à venir</div>'; }
-async function cancelAppointment(appId) {}
-
-// ==================== UTILITAIRES ====================
-function fmtDate(date, time) {
-  try {
-    const d = new Date(date + 'T' + time);
-    if (isNaN(d.getTime())) return date + ' ' + time;
-    return d.toLocaleDateString('fr-CA', { weekday:'short', month:'short', day:'numeric' }) + ' ' + d.toLocaleTimeString('fr-CA', { hour:'2-digit', minute:'2-digit' });
-  } catch { return date + ' ' + time; }
-}
-function escapeHtml(str) { return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function escapeAttr(str) { return String(str||'').replace(/'/g,"\\'"); }
-
-// ==================== INITIALISATION ====================
-applyTR();
-document.addEventListener('DOMContentLoaded', () => {
-  if(window.netlifyIdentity) {
-    netlifyIdentity.on('login', user => { CUR = user; netlifyIdentity.close(); if(document.getElementById('portal-overlay').classList.contains('open')) showAuthenticated(user); });
-    netlifyIdentity.on('logout', () => { CUR = null; });
+/* ════════════════════════════════════════
+   NETLIFY IDENTITY
+════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', ()=>{
+  if(window.netlifyIdentity){
+    netlifyIdentity.on('login', user=>{
+      CUR = user;
+      netlifyIdentity.close();
+      const overlay = document.getElementById('portal-overlay');
+      if(!overlay.classList.contains('open')){ overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+      showAuthenticated(user);
+    });
+    netlifyIdentity.on('logout', ()=>{ CUR=null; });
+    // Session persistée
     const u = netlifyIdentity.currentUser();
     if(u) CUR = u;
   }
   const dg = document.querySelector('.diff-grid');
-  if(dg && window.innerWidth < 600) dg.style.gridTemplateColumns = '1fr';
+  if(dg && window.innerWidth<600) dg.style.gridTemplateColumns='1fr';
 });
+
+applyTR();
 </script>
 </body>
 </html>
