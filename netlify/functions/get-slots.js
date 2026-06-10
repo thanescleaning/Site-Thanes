@@ -5,12 +5,12 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
   try {
-    const store = getStore('jobs-db');
-    const raw = await store.get('jobs');
-    const jobs = raw ? JSON.parse(raw) : [];
+    const store = getStore('slots-db');
+    const raw = await store.get('slots');
+    const slots = raw ? JSON.parse(raw) : [];
     return {
       statusCode: 200,
-      body: JSON.stringify({ jobs }),
+      body: JSON.stringify({ slots }),
     };
   } catch (error) {
     return {

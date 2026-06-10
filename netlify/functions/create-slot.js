@@ -5,30 +5,27 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
   try {
-    const { date, time, type, address, slots, pay, notes, adminEmail } = JSON.parse(event.body);
+    const { date, start, duration, maxPlaces, type, adminEmail } = JSON.parse(event.body);
     if (adminEmail !== 'thanescleaning@gmail.com') {
       return { statusCode: 403, body: 'Unauthorized' };
     }
-    const store = getStore('jobs-db');
-    const raw = await store.get('jobs');
-    const jobs = raw ? JSON.parse(raw) : [];
-    const newJob = {
-      id: 'job_' + Date.now(),
+    const store = getStore('slots-db');
+    const raw = await store.get('slots');
+    const slots = raw ? JSON.parse(raw) : [];
+    const newSlot = {
+      id: 'slot_' + Date.now(),
       date,
-      time,
+      start,
+      duration: parseInt(duration),
+      maxPlaces: parseInt(maxPlaces),
       type,
-      address,
-      slots: parseInt(slots) || 1,
-      pay: pay || '',
-      notes: notes || '',
-      applicants: [],
       createdAt: new Date().toISOString(),
     };
-    jobs.unshift(newJob);
-    await store.set('jobs', JSON.stringify(jobs));
+    slots.push(newSlot);
+    await store.set('slots', JSON.stringify(slots));
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: true, job: newJob }),
+      body: JSON.stringify({ success: true, slot: newSlot }),
     };
   } catch (error) {
     return {

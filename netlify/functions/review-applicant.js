@@ -7,7 +7,7 @@ exports.handler = async (event) => {
   try {
     const { jobId, applicantEmail, status, adminEmail } = JSON.parse(event.body);
     if (adminEmail !== 'thanescleaning@gmail.com') {
-      return { statusCode: 403, body: 'Non autorisé' };
+      return { statusCode: 403, body: 'Unauthorized' };
     }
     const store = getStore('jobs-db');
     const raw = await store.get('jobs');
@@ -16,7 +16,7 @@ exports.handler = async (event) => {
     if (jobIndex === -1) return { statusCode: 404, body: 'Job not found' };
     const job = jobs[jobIndex];
     const applicant = (job.applicants || []).find(a => a.email === applicantEmail);
-    if (!applicant) return { statusCode: 404, body: 'Candidat non trouvé' };
+    if (!applicant) return { statusCode: 404, body: 'Applicant not found' };
     applicant.status = status;
     jobs[jobIndex] = job;
     await store.set('jobs', JSON.stringify(jobs));

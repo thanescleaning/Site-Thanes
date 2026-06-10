@@ -5,15 +5,15 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
   try {
-    const { jobId, adminEmail } = JSON.parse(event.body);
+    const { slotId, adminEmail } = JSON.parse(event.body);
     if (adminEmail !== 'thanescleaning@gmail.com') {
       return { statusCode: 403, body: 'Unauthorized' };
     }
-    const store = getStore('jobs-db');
-    const raw = await store.get('jobs');
-    let jobs = raw ? JSON.parse(raw) : [];
-    jobs = jobs.filter(j => j.id !== jobId);
-    await store.set('jobs', JSON.stringify(jobs));
+    const store = getStore('slots-db');
+    const raw = await store.get('slots');
+    let slots = raw ? JSON.parse(raw) : [];
+    slots = slots.filter(s => s.id !== slotId);
+    await store.set('slots', JSON.stringify(slots));
     return {
       statusCode: 200,
       body: JSON.stringify({ success: true }),
