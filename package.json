@@ -20,6 +20,7 @@
   "homepage": "https://github.com/thanescleaning/Site-Thanes#readme",
   "dependencies": {
     "@netlify/blobs": "^10.7.9",
+    "airtable": "^0.12.2",
     "axios": "^1.17.0"
   }
 }

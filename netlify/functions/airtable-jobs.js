@@ -8,14 +8,19 @@ exports.handler = async (event) => {
   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
   const url = `https://api.airtable.com/v0/${baseId}/${table}`;
 
+  // GET - lister les jobs (public)
   if (event.httpMethod === 'GET') {
     try {
       const resp = await axios.get(url, { headers });
       const records = resp.data.records.map(r => ({ id: r.id, ...r.fields }));
       return { statusCode: 200, body: JSON.stringify({ jobs: records }) };
-    } catch (err) { console.error(err); return { statusCode: 500, body: JSON.stringify({ error: err.message }) }; }
+    } catch (err) {
+      console.error(err);
+      return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+    }
   }
 
+  // POST - créer un job (admin seulement)
   if (event.httpMethod === 'POST') {
     try {
       const { date, time, type, address, slots, pay, notes, adminEmail } = JSON.parse(event.body);
@@ -23,28 +28,42 @@ exports.handler = async (event) => {
       const fields = { id: 'job_' + Date.now(), date, time, type, address, slots: parseInt(slots), pay, notes, applicants: '[]', createdAt: new Date().toISOString() };
       const resp = await axios.post(url, { fields }, { headers });
       return { statusCode: 200, body: JSON.stringify({ success: true, job: { id: resp.data.id, ...resp.data.fields } }) };
-    } catch (err) { console.error(err); return { statusCode: 500, body: JSON.stringify({ error: err.message }) }; }
+    } catch (err) {
+      console.error(err);
+      return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+    }
   }
 
+  // PATCH - modifier le statut d'un candidat (admin seulement)
   if (event.httpMethod === 'PATCH') {
     try {
-      const { jobId, applicantEmail, status } = JSON.parse(event.body);
+      const { jobId, applicantEmail, status, adminEmail } = JSON.parse(event.body);
+      if (adminEmail !== 'thanescleaning@gmail.com') return { statusCode: 403, body: 'Unauthorized' };
       const recordUrl = `${url}/${jobId}`;
       const record = await axios.get(recordUrl, { headers });
       let applicants = record.data.fields.applicants ? JSON.parse(record.data.fields.applicants) : [];
       const idx = applicants.findIndex(a => a.email === applicantEmail);
       if (idx !== -1) applicants[idx].status = status;
+      else applicants.push({ email: applicantEmail, status });
       await axios.patch(recordUrl, { fields: { applicants: JSON.stringify(applicants) } }, { headers });
       return { statusCode: 200, body: JSON.stringify({ success: true }) };
-    } catch (err) { console.error(err); return { statusCode: 500, body: JSON.stringify({ error: err.message }) }; }
+    } catch (err) {
+      console.error(err);
+      return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+    }
   }
 
+  // DELETE - supprimer un job (admin seulement)
   if (event.httpMethod === 'DELETE') {
     try {
-      const { jobId } = JSON.parse(event.body);
+      const { jobId, adminEmail } = JSON.parse(event.body);
+      if (adminEmail !== 'thanescleaning@gmail.com') return { statusCode: 403, body: 'Unauthorized' };
       await axios.delete(`${url}/${jobId}`, { headers });
       return { statusCode: 200, body: JSON.stringify({ success: true }) };
-    } catch (err) { console.error(err); return { statusCode: 500, body: JSON.stringify({ error: err.message }) }; }
+    } catch (err) {
+      console.error(err);
+      return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+    }
   }
 
   return { statusCode: 405, body: 'Method Not Allowed' };

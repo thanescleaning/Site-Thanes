@@ -1281,15 +1281,56 @@ function setLang(l) {
   const ADMIN_EMAIL = 'thanescleaning@gmail.com';
   function isAdmin(u) { return u && u.email === ADMIN_EMAIL; }
   function showAuthenticated(user) { CUR = user; document.getElementById('portal-loading').style.display = 'none'; document.getElementById('portal-authenticated').style.display = 'block'; document.getElementById('portal-subtitle').textContent = t('portal.welcome'); const name = user.user_metadata?.full_name || user.email.split('@')[0]; const badge = isAdmin(user) ? '<span class="admin-badge"><i class="fa-solid fa-crown"></i> Admin</span>' : ''; document.getElementById('portal-username').innerHTML = escapeHtml(name) + badge; document.getElementById('portal-email-display').textContent = user.email; if (isAdmin(user)) { document.getElementById('admin-tabs').style.display = 'block'; document.getElementById('employee-tabs').style.display = 'none'; renderAdminJobs(); renderSlotsList(); } else { document.getElementById('admin-tabs').style.display = 'none'; document.getElementById('employee-tabs').style.display = 'block'; renderEmpJobs(); renderEmpMine(); renderAvailableSlots(); renderMyAppointments(); } }
-  function logoutUser() { if (window.netlifyIdentity) window.netlifyIdentity.logout(); CUR = null; closePortal(); location.reload(); }
+  function logoutUser() {
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.logout();
+    setTimeout(() => {
+      CUR = null;
+      closePortal();
+      localStorage.removeItem('netlifyIdentityUser');
+      location.reload();
+    }, 500);
+  } else {
+    CUR = null;
+    closePortal();
+    localStorage.removeItem('netlifyIdentityUser');
+    location.reload();
+  }
+}
   function switchTab(btn, tabId) { const panel = btn.closest('.portal-tabs').parentElement; panel.querySelectorAll('.portal-tab').forEach(b => b.classList.remove('active')); panel.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active')); btn.classList.add('active'); document.getElementById(tabId).classList.add('active'); if (tabId === 'tab-admin-jobs') renderAdminJobs(); if (tabId === 'tab-admin-slots') renderSlotsList(); if (tabId === 'tab-emp-available') renderEmpJobs(); if (tabId === 'tab-emp-mine') renderEmpMine(); if (tabId === 'tab-emp-appointments') renderAvailableSlots(); if (tabId === 'tab-emp-myappointments') renderMyAppointments(); }
   function escapeHtml(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function escapeAttr(s) { return String(s || '').replace(/'/g, "\\'"); }
   function fmtDate(date, time) { try { const d = new Date(date + 'T' + time); if (isNaN(d)) return date + ' ' + time; return d.toLocaleDateString('fr-CA', { weekday: 'short', month: 'short', day: 'numeric' }) + ' ' + d.toLocaleTimeString('fr-CA', { hour: '2-digit', minute: '2-digit' }); } catch (e) { return date + ' ' + time; } }
   function barCls(ratio) { return ratio >= 1 ? 'full-bar' : ratio >= 0.6 ? 'warn-bar' : ''; }
   async function renderAdminJobs() { const list = document.getElementById('admin-jobs-list'); list.innerHTML = '<div class="section-empty"><i class="fa-solid fa-spinner fa-spin"></i> Chargement…</div>'; try { const { jobs } = await apiGet('/airtable-jobs'); if (!jobs || !jobs.length) { list.innerHTML = '<div class="section-empty"><i class="fa-solid fa-briefcase"></i> ' + t('admin.no_jobs') + '</div>'; return; } list.innerHTML = jobs.map(job => { const applicants = typeof job.applicants === 'string' ? JSON.parse(job.applicants || '[]') : (job.applicants || []); const acc = applicants.filter(a => a.status === 'accepted').length; const full = acc >= (job.slots || 1); const ratio = acc / (job.slots || 1); const pct = Math.min(100, Math.round(ratio * 100)); const pending = applicants.filter(a => a.status === 'pending').length; const dot = pending > 0 ? '<span class="notif-dot"></span>' : ''; const bc = barCls(ratio); const appRows = applicants.length ? applicants.map(a => `<div class="applicant-row"><div><div class="applicant-name">${escapeHtml(a.name)}</div><div class="applicant-email">${escapeHtml(a.email)}</div></div><span class="applicant-status-badge st-${a.status}">${t('admin.status_' + a.status)}</span><div class="applicant-btns">${a.status !== 'accepted' && !full ? `<button class="btn btn-sm" onclick="reviewApplicant('${escapeAttr(job.id)}','${escapeAttr(a.email)}','accepted')">${t('admin.accept')}</button>` : ''}${a.status !== 'rejected' ? `<button class="btn btn-sm btn-danger" onclick="reviewApplicant('${escapeAttr(job.id)}','${escapeAttr(a.email)}','rejected')">${t('admin.reject')}</button>` : ''}</div></div>`).join('') : `<div>${t('admin.no_applicants')}</div>`; return `<div class="job-card${full ? ' full' : ''}"><div class="job-card-top"><div><div class="job-title">${escapeHtml(job.type)}</div><div class="job-meta"><span class="job-chip"><i class="fa-solid fa-calendar"></i> ${fmtDate(job.date, job.time)}</span><span class="job-chip"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.address)}</span>${job.pay ? `<span class="job-chip pay">${escapeHtml(job.pay)}</span>` : ''}</div>${job.notes ? `<div style="margin-top:6px;font-size:.84rem;color:var(--muted);">${escapeHtml(job.notes)}</div>` : ''}</div><button class="btn btn-sm btn-danger" onclick="deleteJob('${escapeAttr(job.id)}')">${t('admin.delete_job')}</button></div><div class="capacity-wrap"><div class="capacity-label"><span>${t('admin.applicants')} ${dot}</span><span class="cap-count${full ? ' full' : ''}"><b>${acc}</b>/${job.slots} ${full ? '— ' + t('admin.slots_full') : t('admin.spots_left')}</span></div><div class="capacity-bar-bg"><div class="capacity-bar-fill ${bc}" style="width:${pct}%"></div></div></div><div class="applicants-section"><h4>${t('admin.applicants')}</h4>${appRows}</div></div>`; }).join(''); } catch (e) { console.error(e); list.innerHTML = '<div class="section-empty">Erreur chargement</div>'; } }
-  async function reviewApplicant(jobId, email, status) { const res = await apiPatch('/airtable-jobs', { jobId, applicantEmail: email, status }); if (res.success) { showToast(t('admin.status_' + status)); renderAdminJobs(); } else showToast(res.error || 'Erreur', 'error'); }
-  async function deleteJob(jobId) { if (!confirm(t('admin.delete_job') + ' ?')) return; const res = await apiDelete('/airtable-jobs', { jobId }); if (res.success) { showToast(t('admin.delete_job') + ' ✓'); renderAdminJobs(); } else showToast(res.error || 'Erreur', 'error'); }
+async function reviewApplicant(jobId, email, status) {
+  const res = await apiPatch('/airtable-jobs', {
+    jobId,
+    applicantEmail: email,
+    status,
+    adminEmail: CUR.email
+  });
+  if (res.success) {
+    showToast(t('admin.status_' + status));
+    renderAdminJobs();
+  } else {
+    showToast(res.error || 'Erreur', 'error');
+  }
+}
+
+async function deleteJob(jobId) {
+  if (!confirm(t('admin.delete_job') + ' ?')) return;
+  const res = await apiDelete('/airtable-jobs', {
+    jobId,
+    adminEmail: CUR.email
+  });
+  if (res.success) {
+    showToast(t('admin.delete_job') + ' ✓');
+    renderAdminJobs();
+  } else {
+    showToast(res.error || 'Erreur', 'error');
+  }
+}
   async function createJob() { const date = document.getElementById('aj-date').value; const time = document.getElementById('aj-time').value; const type = document.getElementById('aj-type').value; const address = document.getElementById('aj-address').value.trim(); const slots = parseInt(document.getElementById('aj-slots').value) || 1; const pay = document.getElementById('aj-pay').value.trim(); const notes = document.getElementById('aj-notes').value.trim(); if (!date || !address) { showToast('Veuillez remplir date et adresse', 'error'); return; } const res = await apiPost('/airtable-jobs', { date, time, type, address, slots, pay, notes, adminEmail: CUR.email }); if (res.success) { showToast(t('admin.job_created')); document.getElementById('create-form-wrap').style.display = 'none'; document.getElementById('create-success').style.display = 'block'; renderAdminJobs(); } else showToast(res.error || 'Erreur création', 'error'); }
   function resetCreateForm() { document.getElementById('create-form-wrap').style.display = 'grid'; document.getElementById('create-success').style.display = 'none'; document.getElementById('aj-date').value = ''; document.getElementById('aj-address').value = ''; document.getElementById('aj-pay').value = ''; document.getElementById('aj-notes').value = ''; document.getElementById('aj-slots').value = '1'; }
   async function renderEmpJobs() { const list = document.getElementById('emp-jobs-list'); list.innerHTML = '<div class="section-empty"><i class="fa-solid fa-spinner fa-spin"></i> Chargement…</div>'; try { const { jobs } = await apiGet('/airtable-jobs'); const today = new Date().toISOString().slice(0, 10); const visible = jobs.filter(j => j.date >= today); if (!visible.length) { list.innerHTML = '<div class="section-empty"><i class="fa-solid fa-calendar-xmark"></i> ' + t('emp.no_jobs') + '</div>'; return; } list.innerHTML = visible.map(job => { const applicants = typeof job.applicants === 'string' ? JSON.parse(job.applicants || '[]') : (job.applicants || []); const acc = applicants.filter(a => a.status === 'accepted').length; const full = acc >= (job.slots || 1); const ratio = acc / (job.slots || 1); const pct = Math.min(100, Math.round(ratio * 100)); const bc = barCls(ratio); const myApp = applicants.find(a => a.email === CUR.email); let action; if (myApp) { if (myApp.status === 'accepted') action = `<span class="status-badge badge-success"><i class="fa-solid fa-circle-check"></i> ${t('emp.accepted')}</span>`; else if (myApp.status === 'rejected') action = `<span class="status-badge badge-danger"><i class="fa-solid fa-circle-xmark"></i> ${t('emp.rejected')}</span>`; else action = `<span class="status-badge badge-warn"><i class="fa-solid fa-clock"></i> ${t('emp.pending')}</span>`; } else if (full) { action = `<span class="status-badge badge-lock"><i class="fa-solid fa-lock"></i> ${t('emp.full_badge')}</span>`; } else { action = `<button class="btn btn-sm" onclick="applyJob('${escapeAttr(job.id)}')"><i class="fa-solid fa-paper-plane"></i> ${t('emp.apply')}</button>`; } return `<div class="job-card${full && !myApp ? ' full' : ''}"><div><div class="job-title">${escapeHtml(job.type)}</div><div class="job-meta"><span class="job-chip"><i class="fa-solid fa-calendar"></i> ${fmtDate(job.date, job.time)}</span><span class="job-chip"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.address)}</span>${job.pay ? `<span class="job-chip pay">${escapeHtml(job.pay)}</span>` : ''}</div>${job.notes ? `<div style="margin-top:6px;font-size:.84rem;color:var(--muted);">${escapeHtml(job.notes)}</div>` : ''}</div><div class="capacity-wrap"><div class="capacity-label"><span></span><span class="cap-count${full ? ' full' : ''}"><b>${acc}</b>/${job.slots} ${full ? '— ' + t('admin.slots_full') : t('admin.spots_left')}</span></div><div class="capacity-bar-bg"><div class="capacity-bar-fill ${bc}" style="width:${pct}%"></div></div></div><div class="job-actions">${action}</div></div>`; }).join(''); } catch (e) { console.error(e); list.innerHTML = '<div class="section-empty">Erreur chargement</div>'; } }
@@ -1301,7 +1342,20 @@ function setLang(l) {
   async function renderAvailableSlots() { const container = document.getElementById('available-slots-list'); try { const { slots } = await apiGet('/airtable-slots'); const now = new Date(); const available = slots.filter(slot => { const slotDateTime = new Date(slot.date + 'T' + slot.start); return slotDateTime > now; }); if (!available.length) { container.innerHTML = '<div class="section-empty"><i class="fa-solid fa-calendar-xmark"></i> Aucun créneau disponible</div>'; return; } container.innerHTML = available.map(slot => `<div class="slot-card"><div><strong>${slot.date} à ${slot.start}</strong> (${slot.duration} min) - ${slot.type === 'online' ? '💻 En ligne' : '📍 Présentiel'}</div><button class="btn btn-sm" onclick="bookSlot('${escapeAttr(slot.id)}')">${t('emp.book_appointment')}</button></div>`).join(''); } catch (e) { container.innerHTML = '<div class="section-empty">Erreur chargement</div>'; } }
   async function bookSlot(slotId) { const name = CUR.user_metadata?.full_name || CUR.email.split('@')[0]; const res = await apiPost('/airtable-book', { slotId, employeeEmail: CUR.email, employeeName: name }); if (res.success) { showToast(t('emp.slot_booked')); renderAvailableSlots(); renderMyAppointments(); } else showToast(res.error || 'Erreur', 'error'); }
   async function renderMyAppointments() { const container = document.getElementById('my-appointments-list'); try { const { appointments } = await apiPost('/airtable-my-appointments', { employeeEmail: CUR.email }); if (!appointments.length) { container.innerHTML = '<div class="section-empty"><i class="fa-solid fa-calendar-check"></i> Aucun rendez-vous</div>'; return; } container.innerHTML = appointments.map(app => `<div class="slot-card"><div><strong>${app.slotDate} à ${app.slotStart}</strong><br>Type: ${app.slotType === 'online' ? 'En ligne' : 'Présentiel'}<br>Réservé le ${new Date(app.bookedAt).toLocaleDateString()}</div><button class="btn btn-sm btn-danger" onclick="cancelAppointment('${escapeAttr(app.id)}')">${t('emp.cancel')}</button></div>`).join(''); } catch (e) { container.innerHTML = '<div class="section-empty">Erreur chargement</div>'; } }
-  async function cancelAppointment(appId) { const res = await apiDelete('/airtable-book', { appointmentId: appId, employeeEmail: CUR.email }); if (res.success) { showToast(t('emp.slot_cancelled')); renderMyAppointments(); renderAvailableSlots(); } else showToast(res.error || 'Erreur', 'error'); }
+  async function cancelAppointment(appId) {
+  const res = await apiDelete('/airtable-book', {
+    appointmentId: appId,
+    employeeEmail: CUR.email,
+    adminEmail: CUR.email
+  });
+  if (res.success) {
+    showToast(t('emp.slot_cancelled'));
+    renderMyAppointments();
+    renderAvailableSlots();
+  } else {
+    showToast(res.error || 'Erreur', 'error');
+  }
+}
   document.addEventListener('DOMContentLoaded', () => { if (window.netlifyIdentity) { netlifyIdentity.on('login', user => { CUR = user; netlifyIdentity.close(); if (document.getElementById('portal-overlay').classList.contains('open')) showAuthenticated(user); }); netlifyIdentity.on('logout', () => { CUR = null; }); const u = netlifyIdentity.currentUser(); if (u) CUR = u; } applyTR(); });
 </script>
 </body>
