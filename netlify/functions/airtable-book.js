@@ -10,17 +10,14 @@ exports.handler = async (event) => {
 
   if (event.httpMethod === 'POST') {
     try {
-      const body = JSON.parse(event.body);
-      console.log('📥 Réservation reçue:', body);
-      const { slotId, employeeEmail, employeeName } = body;
+      const { slotId, employeeEmail, employeeName } = JSON.parse(event.body);
+      console.log('📥 Réservation reçue:', { slotId, employeeEmail, employeeName });
 
-      // Récupérer le créneau
       const slotUrl = `https://api.airtable.com/v0/${baseId}/${slotsTable}/${slotId}`;
       const slotResp = await axios.get(slotUrl, { headers });
       const slot = slotResp.data.fields;
       console.log('📋 Créneau trouvé:', slot);
 
-      // Vérifier les places
       const appsUrl = `https://api.airtable.com/v0/${baseId}/${appointmentsTable}?filterByFormula={slotId}="${slotId}"`;
       const appsResp = await axios.get(appsUrl, { headers });
       const taken = appsResp.data.records.length;
@@ -28,25 +25,23 @@ exports.handler = async (event) => {
         return { statusCode: 400, body: JSON.stringify({ error: 'Slot complet' }) };
       }
 
-      // Vérifier doublon
       const userApps = appsResp.data.records.filter(r => r.fields.employeeEmail === employeeEmail);
       if (userApps.length > 0) {
         return { statusCode: 400, body: JSON.stringify({ error: 'Déjà réservé' }) };
       }
 
-      // Créer la réservation (sans id personnalisé)
+      // Plus de champ bookedAt
       const fields = {
         slotId,
         employeeEmail,
         employeeName,
         slotDate: slot.date,
         slotStart: slot.start,
-        slotType: slot.type,
-        bookedAt: new Date().toISOString()
+        slotType: slot.type
       };
       console.log('📤 Envoi à Airtable (appointments):', fields);
-      const postResp = await axios.post(`https://api.airtable.com/v0/${baseId}/${appointmentsTable}`, { fields }, { headers });
-      console.log('✅ Réservation créée:', postResp.data);
+      await axios.post(`https://api.airtable.com/v0/${baseId}/${appointmentsTable}`, { fields }, { headers });
+      console.log('✅ Réservation créée');
 
       return { statusCode: 200, body: JSON.stringify({ success: true }) };
     } catch (err) {
