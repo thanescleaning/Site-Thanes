@@ -41,7 +41,7 @@ Langue du site : ${langue}
 
     // Envoi via Resend
     const response = await axios.post('https://api.resend.com/emails', {
-      from: 'Thanes Cleaning <thanescleaning@gmail.com>', // ← utilise votre domaine validé
+      from: 'Thanes Cleaning <eslin@thanescleaning.ca>', // ← utilise votre domaine validé
       to: ['thanescleaning@gmail.com'],
       subject: subject,
       text: text,
