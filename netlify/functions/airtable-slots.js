@@ -13,17 +13,24 @@ exports.handler = async (event) => {
       const resp = await axios.get(url, { headers });
       const slots = resp.data.records.map(r => ({ id: r.id, ...r.fields }));
       return { statusCode: 200, body: JSON.stringify({ slots }) };
-    } catch (err) { console.error(err); return { statusCode: 500, body: JSON.stringify({ error: err.message }) }; }
+    } catch (err) {
+      console.error(err);
+      return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+    }
   }
 
   if (event.httpMethod === 'POST') {
     try {
       const { date, start, duration, maxPlaces, type, adminEmail } = JSON.parse(event.body);
       if (adminEmail !== 'thanescleaning@gmail.com') return { statusCode: 403, body: 'Unauthorized' };
-      const fields = { id: 'slot_' + Date.now(), date, start, duration, maxPlaces, type };
+      // Pas de champ 'id' personnalisé
+      const fields = { date, start, duration, maxPlaces, type };
       const resp = await axios.post(url, { fields }, { headers });
       return { statusCode: 200, body: JSON.stringify({ success: true, slot: { id: resp.data.id, ...resp.data.fields } }) };
-    } catch (err) { console.error(err); return { statusCode: 500, body: JSON.stringify({ error: err.message }) }; }
+    } catch (err) {
+      console.error(err);
+      return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+    }
   }
 
   if (event.httpMethod === 'DELETE') {
@@ -32,7 +39,10 @@ exports.handler = async (event) => {
       if (adminEmail !== 'thanescleaning@gmail.com') return { statusCode: 403, body: 'Unauthorized' };
       await axios.delete(`${url}/${slotId}`, { headers });
       return { statusCode: 200, body: JSON.stringify({ success: true }) };
-    } catch (err) { console.error(err); return { statusCode: 500, body: JSON.stringify({ error: err.message }) }; }
+    } catch (err) {
+      console.error(err);
+      return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+    }
   }
 
   return { statusCode: 405, body: 'Method Not Allowed' };

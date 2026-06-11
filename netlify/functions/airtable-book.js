@@ -32,9 +32,8 @@ exports.handler = async (event) => {
         return { statusCode: 400, body: JSON.stringify({ error: 'Déjà réservé' }) };
       }
 
-      // 4. Créer la réservation
+      // 4. Créer la réservation (sans champ 'id' personnalisé)
       const fields = {
-        id: 'app_' + Date.now(),
         slotId,
         employeeEmail,
         employeeName,
