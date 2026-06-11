@@ -496,42 +496,43 @@
         <div class="contact-item"><i class="fa-solid fa-envelope"></i> <strong>Email :</strong> <a href="mailto:thanescleaning@gmail.com">thanescleaning@gmail.com</a></div>
         <div class="contact-item"><i class="fa-solid fa-location-dot"></i> <strong data-i18n="contact.zone_label">Zone :</strong> <span data-i18n="contact.zone_val">Pointe-aux-Trembles & Grand Montréal</span></div>
       </div>
-      <div class="contact-box">
-        <h3>Demande de soumission</h3>
-        <form id="soumission-form" name="soumission" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="soumission">
-          <p hidden><label>bot <input name="bot-field"></label></p>
-          <div style="margin-bottom: 16px;">
-            <label style="display: block; font-weight: 700; margin-bottom: 6px;">Nom</label>
-            <input type="text" name="nom" required placeholder="Votre nom" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #d9e3ee;">
-          </div>
-          <div style="margin-bottom: 16px;">
-            <label style="display: block; font-weight: 700; margin-bottom: 6px;">Email</label>
-            <input type="email" name="email" required placeholder="exemple@courriel.com" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #d9e3ee;">
-          </div>
-          <div style="margin-bottom: 16px;">
-            <label style="display: block; font-weight: 700; margin-bottom: 6px;">Téléphone</label>
-            <input type="tel" name="telephone" required placeholder="Votre numéro" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #d9e3ee;">
-          </div>
-          <div style="margin-bottom: 16px;">
-            <label style="display: block; font-weight: 700; margin-bottom: 6px;">Service</label>
-            <select name="service" required style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #d9e3ee;">
-              <option value="leger">Entretien léger</option>
-              <option value="lourd">Grand ménage (lourd)</option>
-              <option value="commercial">Nettoyage commercial</option>
-            </select>
-          </div>
-          <div style="margin-bottom: 16px;">
-            <label style="display: block; font-weight: 700; margin-bottom: 6px;">Message</label>
-            <textarea name="message" rows="3" required placeholder="Détails de votre demande" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #d9e3ee;"></textarea>
-          </div>
-          <button type="submit" class="btn" id="submit-btn"><span>Envoyer</span> <i class="fa-solid fa-paper-plane"></i></button>
-        </form>
-        <div id="form-success" class="form-success"><i class="fa-regular fa-circle-check"></i><h4>Message envoyé !</h4><p>Nous vous répondrons rapidement.</p></div>
-      </div>
+<div class="contact-box">
+  <h3 data-i18n="form.title">Demande de soumission</h3>
+  <form id="soumission-form" name="soumission" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="soumission">
+    <p hidden><label>bot <input name="bot-field"></label></p>
+    <div style="margin-bottom: 16px;">
+      <label data-i18n="form.name" style="display: block; font-weight: 700; margin-bottom: 6px;">Nom</label>
+      <input type="text" name="nom" required data-i18n-placeholder="form.name_ph" placeholder="Votre nom" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #d9e3ee;">
     </div>
+    <div style="margin-bottom: 16px;">
+      <label style="display: block; font-weight: 700; margin-bottom: 6px;">Email</label>
+      <input type="email" name="email" required placeholder="exemple@courriel.com" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #d9e3ee;">
+    </div>
+    <div style="margin-bottom: 16px;">
+      <label data-i18n="form.phone" style="display: block; font-weight: 700; margin-bottom: 6px;">Téléphone</label>
+      <input type="tel" name="telephone" required placeholder="Votre numéro" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #d9e3ee;">
+    </div>
+    <div style="margin-bottom: 16px;">
+      <label data-i18n="form.service_label" style="display: block; font-weight: 700; margin-bottom: 6px;">Service</label>
+      <select name="service" required style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #d9e3ee;">
+        <option value="leger" data-i18n="form.svc1">Entretien léger</option>
+        <option value="lourd" data-i18n="form.svc2">Grand ménage (lourd)</option>
+        <option value="commercial" data-i18n="form.svc3">Nettoyage commercial</option>
+      </select>
+    </div>
+    <div style="margin-bottom: 16px;">
+      <label data-i18n="form.message" style="display: block; font-weight: 700; margin-bottom: 6px;">Message</label>
+      <textarea name="message" rows="3" required data-i18n-placeholder="form.message_ph" placeholder="Détails de votre demande" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #d9e3ee;"></textarea>
+    </div>
+    <button type="submit" class="btn" id="submit-btn"><span data-i18n="form.submit">Envoyer</span> <i class="fa-solid fa-paper-plane"></i></button>
+  </form>
+  <div id="form-success" class="form-success">
+    <i class="fa-regular fa-circle-check"></i>
+    <h4 data-i18n="form.success_title">Message envoyé !</h4>
+    <p data-i18n="form.success_body">Nous vous répondrons rapidement.</p>
   </div>
-</section>
+</div>
 
 <!-- FLOATING LANG -->
 <div class="lang-float">
@@ -576,39 +577,695 @@
 <form name="job-application" data-netlify="true" hidden><input type="hidden" name="form-name" value="job-application"><input name="employee_name"><input name="employee_email"><input name="job_date"><input name="job_address"><input name="job_type"></form>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
 <script>
-  // ==================== TRADUCTIONS ====================
-  const TR = { fr: {} };
-  TR.fr = {
-    "nav.about":"À propos","nav.services":"Services","nav.why":"Pourquoi nous","nav.careers":"Carrières","nav.contact":"Contact","nav.employee":"Connexion Employé",
-    "hero.badge":"Service de nettoyage premium à Montréal","hero.desc":"Entretien ménager léger, lourd et commercial — professionnel, fiable et minutieux à Pointe-aux-Trembles et dans tout le Grand Montréal.","hero.cta1":"Obtenir une soumission","hero.cta2":"Découvrir nos services",
-    "hero.stat1t":"Léger","hero.stat1d":"Entretien régulier, tâches quotidiennes","hero.stat2t":"Lourd","hero.stat2d":"Grand ménage saisonnier en profondeur","hero.stat3t":"Commercial","hero.stat3d":"Bureaux et espaces professionnels",
-    "about.title":"À propos de nous","about.subtitle":"Entreprise locale au service des particuliers et professionnels","about.body":"Basés à Pointe-aux-Trembles, nous offrons des services de nettoyage adaptés à vos besoins. Notre équipe est formée, fiable et respecte vos espaces.","about.f1":"Entretien léger et lourd","about.f2":"Soumissions rapides et gratuites","about.f3":"Résidentiel et commercial","about.f4":"Horaires flexibles (jours, soirs, week-ends)","about.zones_label":"Zones desservies :","about.zones":"Pointe-aux-Trembles, Rivière-des-Prairies, Montréal-Est, Anjou, et tout le Grand Montréal.",
-    "services.title":"Nos services","services.subtitle":"Une distinction claire pour répondre à tous vos besoins","services.tag_light":"Léger","services.tag_heavy":"Lourd","services.tag_commercial":"Commercial",
-    "services.s1t":"Nettoyage résidentiel","services.s1d":"Entretien courant – régulier ou ponctuel","services.s1l1":"Cuisinière, hotte, comptoirs","services.s1l2":"Salle de bain complète","services.s1l3":"Époussetage et surfaces","services.s1l4":"Aspirateur et lavage des planchers","services.s1l5":"Lessive (option)",
-    "services.s2t":"Grand ménage","services.s2d":"Nettoyage en profondeur – saisonnier ou pré-déménagement","services.s2l1":"Murs, plinthes, portes","services.s2l2":"Fenêtres intérieures et extérieures","services.s2l3":"Armoires et tiroirs","services.s2l4":"Derrière les appareils","services.s2l5":"Interrupteurs, prises, luminaires",
-    "services.s3t":"Nettoyage commercial","services.s3d":"Espaces professionnels, bureaux, commerces","services.s3l1":"Salles de réunion","services.s3l2":"Cuisines et salles de pause","services.s3l3":"Toilettes et vestiaires","services.s3l4":"Nettoyage des vitrines","services.s3l5":"Gestion des déchets",
-    "services.diff_title":"Léger vs lourd – la différence","services.diff_light_title":"✨ Entretien léger","services.diff_heavy_title":"💪 Entretien lourd",
-    "services.diff_l1":"Visites régulières (1 à 7x/semaine)","services.diff_l2":"Nettoyage de surface","services.diff_l3":"Idéal pour un maintien quotidien","services.diff_l4":"Durée : 2 à 4 heures",
-    "services.diff_h1":"Saisonnier ou occasionnel (1 à 4x/an)","services.diff_h2":"Zones difficiles (dessous de meubles, joints)","services.diff_h3":"Parfait avant emménagement ou après chantier","services.diff_h4":"Durée : 4 à 8 heures",
-    "why.title":"Pourquoi nous choisir","why.subtitle":"Qualité constante, transparence et respect de vos délais","why.f1":"Fiable et ponctuel","why.f2":"Devis rapide sans engagement","why.f3":"Personnel formé et assuré","why.f4":"Satisfaction garantie","why.f5":"Distinction claire léger/lourd","why.f6":"Horaires flexibles (soirs, week-ends)",
-    "careers.title":"Rejoignez notre équipe","careers.subtitle":"Des opportunités pour les nettoyeurs professionnels","careers.body":"Vous souhaitez travailler avec Thanes Cleaning ? Créez votre compte employé pour postuler aux missions disponibles.","careers.login":"Connexion / Créer un compte",
-    "contact.title":"Contactez-nous","contact.subtitle":"Un devis gratuit en 24h","contact.box_title":"Coordonnées","contact.phone_label":"Téléphone :","contact.zone_label":"Zone :","contact.zone_val":"Pointe-aux-Trembles & Grand Montréal",
-    "form.title":"Demande de soumission","form.name":"Nom","form.name_ph":"Votre nom","form.phone":"Téléphone","form.service_label":"Service","form.svc1":"Entretien léger","form.svc2":"Grand ménage (lourd)","form.svc3":"Nettoyage commercial","form.message":"Message","form.message_ph":"Détails de votre demande","form.submit":"Envoyer","form.sending":"Envoi...","form.success_title":"Message envoyé !","form.success_body":"Nous vous répondrons rapidement.",
-    "footer.cta":"Nettoyage professionnel à Montréal – Devis gratuit","footer.rights":"Tous droits réservés",
-    "portal.title":"Portail Employé","portal.subtitle_login":"Connectez-vous pour accéder à votre espace.","portal.loading_msg":"Pour accéder à votre espace, connectez-vous ou créez un compte.","portal.login_btn":"Se connecter","portal.signup_btn":"Créer un compte","portal.loading_hint":"Une fenêtre sécurisée s'ouvrira.","portal.logout":"Déconnexion","portal.welcome":"Bienvenue",
-    "admin.tab_jobs":"Gérer les jobs","admin.tab_create":"Créer un job","admin.tab_slots":"Créneaux RDV","admin.job_date":"Date","admin.job_time":"Heure","admin.job_type":"Type","admin.job_address":"Adresse","admin.job_address_ph":"123 rue Principale","admin.job_slots":"Employés requis","admin.job_pay":"Rémunération","admin.job_pay_ph":"25$/h","admin.job_notes":"Notes","admin.job_notes_ph":"Instructions","admin.create_btn":"Publier le job","admin.created_title":"Job publié !","admin.create_another":"Créer un autre job","admin.no_jobs":"Aucun job","admin.applicants":"Candidats","admin.no_applicants":"Aucun","admin.accept":"Accepter","admin.reject":"Rejeter","admin.delete_job":"Supprimer","admin.status_accepted":"Accepté","admin.status_rejected":"Rejeté","admin.status_pending":"En attente","admin.slots_full":"Complet","admin.spots_left":"places",
-    "emp.tab_available":"Jobs disponibles","emp.tab_mine":"Mes candidatures","emp.tab_appointments":"Prendre RDV","emp.my_appointments":"Mes RDV","emp.apply":"Postuler","emp.pending":"En attente","emp.accepted":"Accepté","emp.rejected":"Rejeté","emp.no_jobs":"Aucun job","emp.no_applications":"Aucune candidature","emp.full_badge":"Complet","emp.book_appointment":"Réserver","emp.slot_type_online":"En ligne","emp.slot_type_onsite":"Présentiel","emp.cancel":"Annuler","emp.apply_success":"Candidature envoyée !","emp.slot_booked":"Rendez-vous réservé","emp.slot_cancelled":"Rendez-vous annulé","admin.job_created":"Job créé avec succès","admin.slot_created":"Créneau ajouté"
-  };
+ // ==================== TRADUCTIONS (4 langues complètes) ====================
+const TR = {
+  fr: {
+    // Navigation
+    "nav.about": "À propos",
+    "nav.services": "Services",
+    "nav.why": "Pourquoi nous",
+    "nav.careers": "Carrières",
+    "nav.contact": "Contact",
+    "nav.employee": "Connexion Employé",
+    // Hero
+    "hero.badge": "Service de nettoyage premium à Montréal",
+    "hero.desc": "Entretien ménager léger, lourd et commercial — professionnel, fiable et minutieux à Pointe-aux-Trembles et dans tout le Grand Montréal.",
+    "hero.cta1": "Obtenir une soumission",
+    "hero.cta2": "Découvrir nos services",
+    "hero.stat1t": "Léger",
+    "hero.stat1d": "Entretien régulier, tâches quotidiennes",
+    "hero.stat2t": "Lourd",
+    "hero.stat2d": "Grand ménage saisonnier en profondeur",
+    "hero.stat3t": "Commercial",
+    "hero.stat3d": "Bureaux et espaces professionnels",
+    // About
+    "about.title": "À propos de nous",
+    "about.subtitle": "Entreprise locale au service des particuliers et professionnels",
+    "about.body": "Basés à Pointe-aux-Trembles, nous offrons des services de nettoyage adaptés à vos besoins. Notre équipe est formée, fiable et respecte vos espaces. Que ce soit pour un entretien régulier ou un grand ménage, nous garantissons un résultat impeccable.",
+    "about.f1": "Entretien léger et lourd",
+    "about.f2": "Soumissions rapides et gratuites",
+    "about.f3": "Résidentiel et commercial",
+    "about.f4": "Horaires flexibles (jours, soirs, week-ends)",
+    "about.zones_label": "Zones desservies :",
+    "about.zones": "Pointe-aux-Trembles, Rivière-des-Prairies, Montréal-Est, Anjou, et tout le Grand Montréal.",
+    // Services
+    "services.title": "Nos services",
+    "services.subtitle": "Une distinction claire pour répondre à tous vos besoins",
+    "services.tag_light": "Léger",
+    "services.tag_heavy": "Lourd",
+    "services.tag_commercial": "Commercial",
+    "services.s1t": "Nettoyage résidentiel",
+    "services.s1d": "Entretien courant – régulier ou ponctuel",
+    "services.s1l1": "Cuisinière, hotte, comptoirs",
+    "services.s1l2": "Salle de bain complète (douche, lavabo, WC)",
+    "services.s1l3": "Époussetage et surfaces",
+    "services.s1l4": "Aspirateur et lavage des planchers",
+    "services.s1l5": "Lessive (option)",
+    "services.s2t": "Grand ménage",
+    "services.s2d": "Nettoyage en profondeur – saisonnier ou pré-déménagement",
+    "services.s2l1": "Murs, plinthes, portes",
+    "services.s2l2": "Fenêtres intérieures et extérieures (accès facile)",
+    "services.s2l3": "Armoires et tiroirs (intérieur/extérieur)",
+    "services.s2l4": "Derrière les appareils électroménagers",
+    "services.s2l5": "Interrupteurs, prises, luminaires",
+    "services.s3t": "Nettoyage commercial",
+    "services.s3d": "Espaces professionnels, bureaux, commerces",
+    "services.s3l1": "Salles de réunion et espaces ouverts",
+    "services.s3l2": "Cuisines et salles de pause",
+    "services.s3l3": "Toilettes et vestiaires",
+    "services.s3l4": "Nettoyage des vitrines et surfaces",
+    "services.s3l5": "Gestion des déchets",
+    "services.diff_title": "Léger vs lourd – la différence",
+    "services.diff_light_title": "✨ Entretien léger",
+    "services.diff_heavy_title": "💪 Entretien lourd",
+    "services.diff_l1": "Visites régulières (1 à 7x/semaine)",
+    "services.diff_l2": "Nettoyage de surface (poussière, sols)",
+    "services.diff_l3": "Idéal pour un maintien quotidien",
+    "services.diff_l4": "Durée : 2 à 4 heures",
+    "services.diff_h1": "Saisonnier ou occasionnel (1 à 4x/an)",
+    "services.diff_h2": "Zones difficiles (dessous de meubles, joints)",
+    "services.diff_h3": "Parfait avant emménagement ou après chantier",
+    "services.diff_h4": "Durée : 4 à 8 heures",
+    // Why us
+    "why.title": "Pourquoi nous choisir",
+    "why.subtitle": "Qualité constante, transparence et respect de vos délais",
+    "why.f1": "Fiable et ponctuel",
+    "why.f2": "Devis rapide sans engagement",
+    "why.f3": "Personnel formé et assuré",
+    "why.f4": "Satisfaction garantie",
+    "why.f5": "Distinction claire léger/lourd",
+    "why.f6": "Horaires flexibles (soirs, week-ends)",
+    // Careers
+    "careers.title": "Rejoignez notre équipe",
+    "careers.subtitle": "Des opportunités pour les nettoyeurs professionnels",
+    "careers.body": "Vous souhaitez travailler avec Thanes Cleaning ? Créez votre compte employé pour postuler aux missions disponibles.",
+    "careers.login": "Connexion / Créer un compte",
+    // Contact
+    "contact.title": "Contactez-nous",
+    "contact.subtitle": "Un devis gratuit en 24h",
+    "contact.box_title": "Coordonnées",
+    "contact.phone_label": "Téléphone :",
+    "contact.zone_label": "Zone :",
+    "contact.zone_val": "Pointe-aux-Trembles & Grand Montréal",
+    // Formulaire (les labels sont statiques dans le HTML, mais on garde pour les boutons et messages)
+    "form.title": "Demande de soumission",
+    "form.name": "Nom",
+    "form.name_ph": "Votre nom",
+    "form.phone": "Téléphone",
+    "form.service_label": "Service",
+    "form.svc1": "Entretien léger",
+    "form.svc2": "Grand ménage (lourd)",
+    "form.svc3": "Nettoyage commercial",
+    "form.message": "Message",
+    "form.message_ph": "Détails de votre demande",
+    "form.submit": "Envoyer",
+    "form.sending": "Envoi...",
+    "form.success_title": "Message envoyé !",
+    "form.success_body": "Nous vous répondrons rapidement.",
+    // Footer
+    "footer.cta": "Nettoyage professionnel à Montréal – Devis gratuit",
+    "footer.rights": "Tous droits réservés",
+    // Portail
+    "portal.title": "Portail Employé",
+    "portal.subtitle_login": "Connectez-vous pour accéder à votre espace.",
+    "portal.loading_msg": "Pour accéder à votre espace, connectez-vous ou créez un compte.",
+    "portal.login_btn": "Se connecter",
+    "portal.signup_btn": "Créer un compte",
+    "portal.loading_hint": "Une fenêtre sécurisée s'ouvrira.",
+    "portal.logout": "Déconnexion",
+    "portal.welcome": "Bienvenue",
+    // Admin
+    "admin.tab_jobs": "Gérer les jobs",
+    "admin.tab_create": "Créer un job",
+    "admin.tab_slots": "Créneaux RDV",
+    "admin.job_date": "Date",
+    "admin.job_time": "Heure",
+    "admin.job_type": "Type",
+    "admin.job_address": "Adresse",
+    "admin.job_address_ph": "123 rue Principale",
+    "admin.job_slots": "Employés requis",
+    "admin.job_pay": "Rémunération",
+    "admin.job_pay_ph": "25$/h",
+    "admin.job_notes": "Notes",
+    "admin.job_notes_ph": "Instructions",
+    "admin.create_btn": "Publier le job",
+    "admin.created_title": "Job publié !",
+    "admin.create_another": "Créer un autre job",
+    "admin.no_jobs": "Aucun job",
+    "admin.applicants": "Candidats",
+    "admin.no_applicants": "Aucun",
+    "admin.accept": "Accepter",
+    "admin.reject": "Rejeter",
+    "admin.delete_job": "Supprimer",
+    "admin.status_accepted": "Accepté",
+    "admin.status_rejected": "Rejeté",
+    "admin.status_pending": "En attente",
+    "admin.slots_full": "Complet",
+    "admin.spots_left": "places",
+    // Employee
+    "emp.tab_available": "Jobs disponibles",
+    "emp.tab_mine": "Mes candidatures",
+    "emp.tab_appointments": "Prendre RDV",
+    "emp.my_appointments": "Mes RDV",
+    "emp.apply": "Postuler",
+    "emp.pending": "En attente",
+    "emp.accepted": "Accepté",
+    "emp.rejected": "Rejeté",
+    "emp.no_jobs": "Aucun job",
+    "emp.no_applications": "Aucune candidature",
+    "emp.full_badge": "Complet",
+    "emp.book_appointment": "Réserver",
+    "emp.slot_type_online": "En ligne",
+    "emp.slot_type_onsite": "Présentiel",
+    "emp.cancel": "Annuler",
+    "emp.apply_success": "Candidature envoyée !",
+    "emp.slot_booked": "Rendez-vous réservé",
+    "emp.slot_cancelled": "Rendez-vous annulé",
+    "admin.job_created": "Job créé avec succès",
+    "admin.slot_created": "Créneau ajouté"
+  },
+  en: {
+    "nav.about": "About",
+    "nav.services": "Services",
+    "nav.why": "Why us",
+    "nav.careers": "Careers",
+    "nav.contact": "Contact",
+    "nav.employee": "Employee Login",
+    "hero.badge": "Premium cleaning service in Montreal",
+    "hero.desc": "Light, heavy and commercial housekeeping — professional, reliable and meticulous in Pointe-aux-Trembles and throughout Greater Montreal.",
+    "hero.cta1": "Get a quote",
+    "hero.cta2": "Discover our services",
+    "hero.stat1t": "Light",
+    "hero.stat1d": "Regular maintenance, daily tasks",
+    "hero.stat2t": "Heavy",
+    "hero.stat2d": "Seasonal deep cleaning",
+    "hero.stat3t": "Commercial",
+    "hero.stat3d": "Offices and professional spaces",
+    "about.title": "About us",
+    "about.subtitle": "Local company serving individuals and professionals",
+    "about.body": "Based in Pointe-aux-Trembles, we offer cleaning services tailored to your needs. Our team is trained, reliable and respectful of your spaces. Whether for regular maintenance or a deep clean, we guarantee impeccable results.",
+    "about.f1": "Light and heavy cleaning",
+    "about.f2": "Fast and free quotes",
+    "about.f3": "Residential and commercial",
+    "about.f4": "Flexible hours (days, evenings, weekends)",
+    "about.zones_label": "Service areas:",
+    "about.zones": "Pointe-aux-Trembles, Rivière-des-Prairies, Montréal-Est, Anjou, and all Greater Montreal.",
+    "services.title": "Our services",
+    "services.subtitle": "A clear distinction to meet all your needs",
+    "services.tag_light": "Light",
+    "services.tag_heavy": "Heavy",
+    "services.tag_commercial": "Commercial",
+    "services.s1t": "Residential cleaning",
+    "services.s1d": "Regular or occasional maintenance",
+    "services.s1l1": "Stove, hood, counters",
+    "services.s1l2": "Complete bathroom (shower, sink, toilet)",
+    "services.s1l3": "Dusting and surfaces",
+    "services.s1l4": "Vacuuming and floor washing",
+    "services.s1l5": "Laundry (optional)",
+    "services.s2t": "Deep cleaning",
+    "services.s2d": "Seasonal or pre-move deep cleaning",
+    "services.s2l1": "Walls, baseboards, doors",
+    "services.s2l2": "Interior and exterior windows (easy access)",
+    "services.s2l3": "Cabinets and drawers (inside/outside)",
+    "services.s2l4": "Behind appliances",
+    "services.s2l5": "Switches, outlets, lights",
+    "services.s3t": "Commercial cleaning",
+    "services.s3d": "Offices, shops, professional spaces",
+    "services.s3l1": "Meeting rooms and open spaces",
+    "services.s3l2": "Kitchens and break rooms",
+    "services.s3l3": "Toilets and changing rooms",
+    "services.s3l4": "Storefront and surface cleaning",
+    "services.s3l5": "Waste management",
+    "services.diff_title": "Light vs heavy – the difference",
+    "services.diff_light_title": "✨ Light cleaning",
+    "services.diff_heavy_title": "💪 Deep cleaning",
+    "services.diff_l1": "Regular visits (1 to 7x/week)",
+    "services.diff_l2": "Surface cleaning (dust, floors)",
+    "services.diff_l3": "Ideal for daily maintenance",
+    "services.diff_l4": "Duration: 2 to 4 hours",
+    "services.diff_h1": "Seasonal or occasional (1 to 4x/year)",
+    "services.diff_h2": "Difficult areas (under furniture, joints)",
+    "services.diff_h3": "Perfect before moving or after renovation",
+    "services.diff_h4": "Duration: 4 to 8 hours",
+    "why.title": "Why choose us",
+    "why.subtitle": "Constant quality, transparency and respect for deadlines",
+    "why.f1": "Reliable and punctual",
+    "why.f2": "Quick quote without obligation",
+    "why.f3": "Trained and insured staff",
+    "why.f4": "Satisfaction guaranteed",
+    "why.f5": "Clear distinction light/heavy",
+    "why.f6": "Flexible hours (evenings, weekends)",
+    "careers.title": "Join our team",
+    "careers.subtitle": "Opportunities for professional cleaners",
+    "careers.body": "Want to work with Thanes Cleaning? Create your employee account to apply for available missions.",
+    "careers.login": "Login / Create an account",
+    "contact.title": "Contact us",
+    "contact.subtitle": "Free quote within 24 hours",
+    "contact.box_title": "Contact information",
+    "contact.phone_label": "Phone:",
+    "contact.zone_label": "Service area:",
+    "contact.zone_val": "Pointe-aux-Trembles & Greater Montreal",
+    "form.title": "Request a quote",
+    "form.name": "Name",
+    "form.name_ph": "Your name",
+    "form.phone": "Phone",
+    "form.service_label": "Service",
+    "form.svc1": "Light cleaning",
+    "form.svc2": "Deep cleaning",
+    "form.svc3": "Commercial cleaning",
+    "form.message": "Message",
+    "form.message_ph": "Details of your request",
+    "form.submit": "Send",
+    "form.sending": "Sending...",
+    "form.success_title": "Message sent!",
+    "form.success_body": "We will answer you quickly.",
+    "footer.cta": "Professional cleaning in Montreal – Free quote",
+    "footer.rights": "All rights reserved",
+    "portal.title": "Employee Portal",
+    "portal.subtitle_login": "Log in to access your space.",
+    "portal.loading_msg": "To access your space, log in or create an account.",
+    "portal.login_btn": "Log in",
+    "portal.signup_btn": "Create an account",
+    "portal.loading_hint": "A secure window will open.",
+    "portal.logout": "Logout",
+    "portal.welcome": "Welcome",
+    "admin.tab_jobs": "Manage jobs",
+    "admin.tab_create": "Create a job",
+    "admin.tab_slots": "Appointment slots",
+    "admin.job_date": "Date",
+    "admin.job_time": "Time",
+    "admin.job_type": "Type",
+    "admin.job_address": "Address",
+    "admin.job_address_ph": "123 Main Street",
+    "admin.job_slots": "Employees needed",
+    "admin.job_pay": "Pay",
+    "admin.job_pay_ph": "$25/h",
+    "admin.job_notes": "Notes",
+    "admin.job_notes_ph": "Instructions",
+    "admin.create_btn": "Publish job",
+    "admin.created_title": "Job published!",
+    "admin.create_another": "Create another job",
+    "admin.no_jobs": "No jobs",
+    "admin.applicants": "Applicants",
+    "admin.no_applicants": "None",
+    "admin.accept": "Accept",
+    "admin.reject": "Reject",
+    "admin.delete_job": "Delete",
+    "admin.status_accepted": "Accepted",
+    "admin.status_rejected": "Rejected",
+    "admin.status_pending": "Pending",
+    "admin.slots_full": "Full",
+    "admin.spots_left": "spots left",
+    "emp.tab_available": "Available jobs",
+    "emp.tab_mine": "My applications",
+    "emp.tab_appointments": "Book appointment",
+    "emp.my_appointments": "My appointments",
+    "emp.apply": "Apply",
+    "emp.pending": "Pending",
+    "emp.accepted": "Accepted",
+    "emp.rejected": "Rejected",
+    "emp.no_jobs": "No jobs",
+    "emp.no_applications": "No applications",
+    "emp.full_badge": "Full",
+    "emp.book_appointment": "Book",
+    "emp.slot_type_online": "Online",
+    "emp.slot_type_onsite": "On site",
+    "emp.cancel": "Cancel",
+    "emp.apply_success": "Application sent!",
+    "emp.slot_booked": "Appointment booked",
+    "emp.slot_cancelled": "Appointment cancelled",
+    "admin.job_created": "Job created successfully",
+    "admin.slot_created": "Slot added"
+  },
+  es: {
+    "nav.about": "Acerca de",
+    "nav.services": "Servicios",
+    "nav.why": "Por qué nosotros",
+    "nav.careers": "Carreras",
+    "nav.contact": "Contacto",
+    "nav.employee": "Inicio de sesión empleados",
+    "hero.badge": "Servicio de limpieza premium en Montreal",
+    "hero.desc": "Mantenimiento doméstico ligero, pesado y comercial — profesional, confiable y minucioso en Pointe-aux-Trembles y todo el Gran Montreal.",
+    "hero.cta1": "Obtener presupuesto",
+    "hero.cta2": "Descubrir nuestros servicios",
+    "hero.stat1t": "Ligero",
+    "hero.stat1d": "Mantenimiento regular, tareas diarias",
+    "hero.stat2t": "Pesado",
+    "hero.stat2d": "Limpieza profunda estacional",
+    "hero.stat3t": "Comercial",
+    "hero.stat3d": "Oficinas y espacios profesionales",
+    "about.title": "Acerca de nosotros",
+    "about.subtitle": "Empresa local al servicio de particulares y profesionales",
+    "about.body": "Con sede en Pointe-aux-Trembles, ofrecemos servicios de limpieza adaptados a sus necesidades. Nuestro equipo está capacitado, es confiable y respeta sus espacios. Ya sea para mantenimiento regular o limpieza profunda, garantizamos resultados impecables.",
+    "about.f1": "Limpieza ligera y pesada",
+    "about.f2": "Presupuestos rápidos y gratuitos",
+    "about.f3": "Residencial y comercial",
+    "about.f4": "Horarios flexibles (días, tardes, fines de semana)",
+    "about.zones_label": "Zonas atendidas:",
+    "about.zones": "Pointe-aux-Trembles, Rivière-des-Prairies, Montréal-Est, Anjou y todo el Gran Montreal.",
+    "services.title": "Nuestros servicios",
+    "services.subtitle": "Una distinción clara para satisfacer todas sus necesidades",
+    "services.tag_light": "Ligero",
+    "services.tag_heavy": "Pesado",
+    "services.tag_commercial": "Comercial",
+    "services.s1t": "Limpieza residencial",
+    "services.s1d": "Mantenimiento regular o puntual",
+    "services.s1l1": "Cocina, campana, encimeras",
+    "services.s1l2": "Baño completo (ducha, lavabo, WC)",
+    "services.s1l3": "Desempolvado y superficies",
+    "services.s1l4": "Aspirado y lavado de pisos",
+    "services.s1l5": "Lavandería (opcional)",
+    "services.s2t": "Limpieza profunda",
+    "services.s2d": "Limpieza profunda estacional o pre-mudanza",
+    "services.s2l1": "Paredes, rodapiés, puertas",
+    "services.s2l2": "Ventanas interiores y exteriores (acceso fácil)",
+    "services.s2l3": "Armarios y cajones (interior/exterior)",
+    "services.s2l4": "Detrás de los electrodomésticos",
+    "services.s2l5": "Interruptores, enchufes, lámparas",
+    "services.s3t": "Limpieza comercial",
+    "services.s3d": "Oficinas, tiendas, espacios profesionales",
+    "services.s3l1": "Salas de reuniones y espacios abiertos",
+    "services.s3l2": "Cocinas y salas de descanso",
+    "services.s3l3": "Aseos y vestuarios",
+    "services.s3l4": "Limpieza de escaparates y superficies",
+    "services.s3l5": "Gestión de residuos",
+    "services.diff_title": "Ligero vs pesado – la diferencia",
+    "services.diff_light_title": "✨ Limpieza ligera",
+    "services.diff_heavy_title": "💪 Limpieza profunda",
+    "services.diff_l1": "Visitas regulares (1 a 7x/semana)",
+    "services.diff_l2": "Limpieza superficial (polvo, pisos)",
+    "services.diff_l3": "Ideal para mantenimiento diario",
+    "services.diff_l4": "Duración: 2 a 4 horas",
+    "services.diff_h1": "Estacional u ocasional (1 a 4x/año)",
+    "services.diff_h2": "Zonas difíciles (debajo de muebles, juntas)",
+    "services.diff_h3": "Perfecto antes de mudanza o después de obras",
+    "services.diff_h4": "Duración: 4 a 8 horas",
+    "why.title": "Por qué elegirnos",
+    "why.subtitle": "Calidad constante, transparencia y respeto a los plazos",
+    "why.f1": "Confiables y puntuales",
+    "why.f2": "Presupuesto rápido sin compromiso",
+    "why.f3": "Personal formado y asegurado",
+    "why.f4": "Satisfacción garantizada",
+    "why.f5": "Distinción clara ligero/pesado",
+    "why.f6": "Horarios flexibles (tardes, fines de semana)",
+    "careers.title": "Únete a nuestro equipo",
+    "careers.subtitle": "Oportunidades para limpiadores profesionales",
+    "careers.body": "¿Quieres trabajar con Thanes Cleaning? Crea tu cuenta de empleado para postular a las misiones disponibles.",
+    "careers.login": "Iniciar sesión / Crear cuenta",
+    "contact.title": "Contáctenos",
+    "contact.subtitle": "Presupuesto gratuito en 24 horas",
+    "contact.box_title": "Coordenadas",
+    "contact.phone_label": "Teléfono:",
+    "contact.zone_label": "Zona:",
+    "contact.zone_val": "Pointe-aux-Trembles & Gran Montreal",
+    "form.title": "Solicitar presupuesto",
+    "form.name": "Nombre",
+    "form.name_ph": "Su nombre",
+    "form.phone": "Teléfono",
+    "form.service_label": "Servicio",
+    "form.svc1": "Limpieza ligera",
+    "form.svc2": "Limpieza profunda",
+    "form.svc3": "Limpieza comercial",
+    "form.message": "Mensaje",
+    "form.message_ph": "Detalles de su solicitud",
+    "form.submit": "Enviar",
+    "form.sending": "Enviando...",
+    "form.success_title": "¡Mensaje enviado!",
+    "form.success_body": "Le responderemos rápidamente.",
+    "footer.cta": "Limpieza profesional en Montreal – Presupuesto gratuito",
+    "footer.rights": "Todos los derechos reservados",
+    "portal.title": "Portal Empleado",
+    "portal.subtitle_login": "Inicie sesión para acceder a su espacio.",
+    "portal.loading_msg": "Para acceder a su espacio, inicie sesión o cree una cuenta.",
+    "portal.login_btn": "Iniciar sesión",
+    "portal.signup_btn": "Crear cuenta",
+    "portal.loading_hint": "Se abrirá una ventana segura.",
+    "portal.logout": "Cerrar sesión",
+    "portal.welcome": "Bienvenido",
+    "admin.tab_jobs": "Gestionar trabajos",
+    "admin.tab_create": "Crear trabajo",
+    "admin.tab_slots": "Horarios citas",
+    "admin.job_date": "Fecha",
+    "admin.job_time": "Hora",
+    "admin.job_type": "Tipo",
+    "admin.job_address": "Dirección",
+    "admin.job_address_ph": "123 Calle Principal",
+    "admin.job_slots": "Empleados necesarios",
+    "admin.job_pay": "Pago",
+    "admin.job_pay_ph": "25$/h",
+    "admin.job_notes": "Notas",
+    "admin.job_notes_ph": "Instrucciones",
+    "admin.create_btn": "Publicar trabajo",
+    "admin.created_title": "¡Trabajo publicado!",
+    "admin.create_another": "Crear otro trabajo",
+    "admin.no_jobs": "No hay trabajos",
+    "admin.applicants": "Candidatos",
+    "admin.no_applicants": "Ninguno",
+    "admin.accept": "Aceptar",
+    "admin.reject": "Rechazar",
+    "admin.delete_job": "Eliminar",
+    "admin.status_accepted": "Aceptado",
+    "admin.status_rejected": "Rechazado",
+    "admin.status_pending": "Pendiente",
+    "admin.slots_full": "Completo",
+    "admin.spots_left": "plazas libres",
+    "emp.tab_available": "Trabajos disponibles",
+    "emp.tab_mine": "Mis postulaciones",
+    "emp.tab_appointments": "Reservar cita",
+    "emp.my_appointments": "Mis citas",
+    "emp.apply": "Postular",
+    "emp.pending": "Pendiente",
+    "emp.accepted": "Aceptado",
+    "emp.rejected": "Rechazado",
+    "emp.no_jobs": "No hay trabajos",
+    "emp.no_applications": "Sin postulaciones",
+    "emp.full_badge": "Completo",
+    "emp.book_appointment": "Reservar",
+    "emp.slot_type_online": "En línea",
+    "emp.slot_type_onsite": "Presencial",
+    "emp.cancel": "Cancelar",
+    "emp.apply_success": "¡Postulación enviada!",
+    "emp.slot_booked": "Cita reservada",
+    "emp.slot_cancelled": "Cita cancelada",
+    "admin.job_created": "Trabajo creado con éxito",
+    "admin.slot_created": "Horario agregado"
+  },
+  ht: {
+    "nav.about": "Sou nou",
+    "nav.services": "Sèvis",
+    "nav.why": "Poukisa nou",
+    "nav.careers": "Karyè",
+    "nav.contact": "Kontak",
+    "nav.employee": "Koneksyon Anplwaye",
+    "hero.badge": "Sèvis netwayaj premium nan Monreyal",
+    "hero.desc": "Antretyen kay lejè, lou ak komèsyal — pwofesyonèl, serye ak metikuleu nan Pointe-aux-Trembles ak nan tout Grand Monreyal.",
+    "hero.cta1": "Jwenn yon estimasyon",
+    "hero.cta2": "Dekouvri sèvis nou yo",
+    "hero.stat1t": "Lejè",
+    "hero.stat1d": "Antretyen regilye, travay chak jou",
+    "hero.stat2t": "Lou",
+    "hero.stat2d": "Gwo netwayaj sezon an pwofondè",
+    "hero.stat3t": "Komèsyal",
+    "hero.stat3d": "Biwo ak espas pwofesyonèl",
+    "about.title": "Sou nou",
+    "about.subtitle": "Konpayi lokal pou moun ak pwofesyonèl",
+    "about.body": "Baze nan Pointe-aux-Trembles, nou ofri sèvis netwayaj adapte a bezwen ou yo. Ekip nou an gen fòmasyon, serye epi li respekte espas ou yo. Kit se pou antretyen regilye oswa gwo netwayaj, nou garanti yon rezilta enkreyab.",
+    "about.f1": "Netwayaj lejè ak lou",
+    "about.f2": "Estimasyon rapid ak gratis",
+    "about.f3": "Rezidansyèl ak komèsyal",
+    "about.f4": "Orè fleksib (jou, aswè, wikenn)",
+    "about.zones_label": "Zòn ki dessèvi:",
+    "about.zones": "Pointe-aux-Trembles, Rivière-des-Prairies, Montréal-Est, Anjou, ak tout Grand Monreyal.",
+    "services.title": "Sèvis nou",
+    "services.subtitle": "Yon distenksyon klè pou satisfè tout bezwen ou yo",
+    "services.tag_light": "Lejè",
+    "services.tag_heavy": "Lou",
+    "services.tag_commercial": "Komèsyal",
+    "services.s1t": "Netwayaj rezidansyèl",
+    "services.s1d": "Antretyen regilye oswa okazyonèl",
+    "services.s1l1": "Recho, lenn, konptwa",
+    "services.s1l2": "Saldeben konplè (douch, lavabo, WC)",
+    "services.s1l3": "Pousyè ak sifas",
+    "services.s1l4": "Aspiratè ak lave planche",
+    "services.s1l5": "Lesiv (opsyonèl)",
+    "services.s2t": "Gwo netwayaj",
+    "services.s2d": "Netwayaj pwofon sezon an oswa anvan demenajman",
+    "services.s2l1": "Miray, plent, pòt",
+    "services.s2l2": "Fenèt anndan ak deyò (aksè fasil)",
+    "services.s2l3": "Armwa ak tiwa (anndan/deyò)",
+    "services.s2l4": "Dèyè aparèy elektromenaje",
+    "services.s2l5": "Switch, priz, limyè",
+    "services.s3t": "Netwayaj komèsyal",
+    "services.s3d": "Biwo, boutik, espas pwofesyonèl",
+    "services.s3l1": "Sal reyinyon ak espas ouvè",
+    "services.s3l2": "Kwizin ak sal repo",
+    "services.s3l3": "Twalèt ak vestye",
+    "services.s3l4": "Netwayaj vitrin ak sifas",
+    "services.s3l5": "Jesyon fatra",
+    "services.diff_title": "Lejè vs lou – diferans lan",
+    "services.diff_light_title": "✨ Netwayaj lejè",
+    "services.diff_heavy_title": "💪 Netwayaj lou",
+    "services.diff_l1": "Vizit regilye (1 a 7x/semèn)",
+    "services.diff_l2": "Netwayaj sifas (pousyè, planche)",
+    "services.diff_l3": "Ideal pou antretyen chak jou",
+    "services.diff_l4": "Dire: 2 a 4 èdtan",
+    "services.diff_h1": "Sezonye oswa okazyonèl (1 a 4x/ane)",
+    "services.diff_h2": "Zòn difisil (anba mèb, jwenti)",
+    "services.diff_h3": "Pafè anvan demenajman oswa apre travay",
+    "services.diff_h4": "Dire: 4 a 8 èdtan",
+    "why.title": "Poukisa chwazi nou",
+    "why.subtitle": "Bon jan kalite konstan, transparans ak respè dat limit",
+    "why.f1": "Serye ak ponktiyèl",
+    "why.f2": "Estimasyon rapid san angajman",
+    "why.f3": "Pèsonèl ki resevwa fòmasyon ak asirans",
+    "why.f4": "Satisfaksyon garanti",
+    "why.f5": "Distenksyon klè lejè/lou",
+    "why.f6": "Orè fleksib (aswè, wikenn)",
+    "careers.title": "Antre nan ekip nou an",
+    "careers.subtitle": "Opòtinite pou netwayè pwofesyonèl",
+    "careers.body": "Ou vle travay ak Thanes Cleaning? Kreye kont anplwaye ou pou postile pou misyon ki disponib yo.",
+    "careers.login": "Konekte / Kreye yon kont",
+    "contact.title": "Kontakte nou",
+    "contact.subtitle": "Yon estimasyon gratis nan 24 èdtan",
+    "contact.box_title": "Kowòdone",
+    "contact.phone_label": "Telefòn:",
+    "contact.zone_label": "Zòn:",
+    "contact.zone_val": "Pointe-aux-Trembles & Grand Monreyal",
+    "form.title": "Mande yon estimasyon",
+    "form.name": "Non",
+    "form.name_ph": "Non ou",
+    "form.phone": "Telefòn",
+    "form.service_label": "Sèvis",
+    "form.svc1": "Netwayaj lejè",
+    "form.svc2": "Gwo netwayaj (lou)",
+    "form.svc3": "Netwayaj komèsyal",
+    "form.message": "Mesaj",
+    "form.message_ph": "Detay sou demann ou",
+    "form.submit": "Voye",
+    "form.sending": "Voye...",
+    "form.success_title": "Mesaj voye!",
+    "form.success_body": "N ap reponn ou byen vit.",
+    "footer.cta": "Netwayaj pwofesyonèl nan Monreyal – Estimasyon gratis",
+    "footer.rights": "Tout dwa rezève",
+    "portal.title": "Portal Anplwaye",
+    "portal.subtitle_login": "Konekte pou w jwenn aksè a espas ou.",
+    "portal.loading_msg": "Pou jwenn aksè a espas ou, konekte oswa kreye yon kont.",
+    "portal.login_btn": "Konekte",
+    "portal.signup_btn": "Kreye yon kont",
+    "portal.loading_hint": "Yon fenèt sekirize ap louvri.",
+    "portal.logout": "Dekonekte",
+    "portal.welcome": "Byenveni",
+    "admin.tab_jobs": "Jere travay yo",
+    "admin.tab_create": "Kreye yon travay",
+    "admin.tab_slots": "Plaj randevou",
+    "admin.job_date": "Dat",
+    "admin.job_time": "Lè",
+    "admin.job_type": "Kalite",
+    "admin.job_address": "Adrès",
+    "admin.job_address_ph": "123 Rue Principale",
+    "admin.job_slots": "Anplwaye ki nesesè",
+    "admin.job_pay": "Peman",
+    "admin.job_pay_ph": "25$/h",
+    "admin.job_notes": "Nòt",
+    "admin.job_notes_ph": "Enstriksyon",
+    "admin.create_btn": "Pibliye travay",
+    "admin.created_title": "Travay pibliye!",
+    "admin.create_another": "Kreye yon lòt travay",
+    "admin.no_jobs": "Pa gen travay",
+    "admin.applicants": "Kandida",
+    "admin.no_applicants": "Okenn",
+    "admin.accept": "Aksepte",
+    "admin.reject": "Rejte",
+    "admin.delete_job": "Efase",
+    "admin.status_accepted": "Aksepte",
+    "admin.status_rejected": "Rejte",
+    "admin.status_pending": "Annatant",
+    "admin.slots_full": "Konplè",
+    "admin.spots_left": "plas kite",
+    "emp.tab_available": "Travay disponib",
+    "emp.tab_mine": "Kandida mwen yo",
+    "emp.tab_appointments": "Pran randevou",
+    "emp.my_appointments": "Randevou mwen",
+    "emp.apply": "Postile",
+    "emp.pending": "Annatant",
+    "emp.accepted": "Aksepte",
+    "emp.rejected": "Rejte",
+    "emp.no_jobs": "Pa gen travay",
+    "emp.no_applications": "Pa gen kandida",
+    "emp.full_badge": "Konplè",
+    "emp.book_appointment": "Reserve",
+    "emp.slot_type_online": "An liy",
+    "emp.slot_type_onsite": "Prezan",
+    "emp.cancel": "Anile",
+    "emp.apply_success": "Kandida voye!",
+    "emp.slot_booked": "Randevou reserve",
+    "emp.slot_cancelled": "Randevou anile",
+    "admin.job_created": "Travay kreye avèk siksè",
+    "admin.slot_created": "Plaj ajoute"
+  }
+};
   let LANG = 'fr';
   function t(k) { return (TR[LANG] && TR[LANG][k]) || TR.fr[k] || k; }
   function applyTR() { document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n)); document.querySelectorAll('[data-i18n-placeholder]').forEach(el => el.placeholder = t(el.dataset.i18nPlaceholder)); }
-  function setLang(l) { LANG = l; applyTR(); }
+function setLang(l) {
+  LANG = l;
+  applyTR();
+  // Mettre à jour les indicateurs de langue (drapeau + texte)
+  const langNames = { fr: 'FR', en: 'EN', es: 'ES', ht: 'HT' };
+  const flags = { fr: 'ca', en: 'ca', es: 'es', ht: 'ht' };
+  document.getElementById('label-nav').textContent = langNames[l];
+  document.getElementById('label-float').textContent = langNames[l];
+  document.getElementById('flag-nav').className = `fi fi-${flags[l]}`;
+  document.getElementById('flag-float').className = `fi fi-${flags[l]}`;
+  document.documentElement.lang = l;
+  // Fermer tous les menus déroulants
+  document.getElementById('dd-nav')?.classList.remove('open');
+  document.getElementById('dd-float')?.classList.remove('open');
+}
   function toggleLang(id) { document.getElementById('dd-'+id).classList.toggle('open'); }
   document.addEventListener('click', e => { if (!e.target.closest('.lang-switcher') && !e.target.closest('.lang-float')) { document.getElementById('dd-nav')?.classList.remove('open'); document.getElementById('dd-float')?.classList.remove('open'); } });
   function toggleMobileMenu() { document.getElementById('hamburger').classList.toggle('open'); document.getElementById('mobile-menu').classList.toggle('open'); }
   function closeMobileMenu() { document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobile-menu').classList.remove('open'); }
   function showToast(msg, type = 'success') { const t = document.createElement('div'); t.className = 'toast toast-' + (type === 'success' ? 'success' : 'error'); t.textContent = msg; document.body.appendChild(t); setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 400); }, 3000); }
-  document.getElementById('soumission-form')?.addEventListener('submit', async (e) => { e.preventDefault(); const btn = document.getElementById('submit-btn'); btn.style.opacity = '.7'; btn.style.pointerEvents = 'none'; btn.querySelector('span').textContent = t('form.sending'); const fd = new FormData(e.target); fd.set('form-name', 'soumission'); await fetch(window.location.pathname, { method: 'POST', body: new URLSearchParams(fd).toString() }); e.target.style.display = 'none'; document.getElementById('form-success').style.display = 'block'; });
+  document.getElementById('soumission-form')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.style.opacity = '.7';
+  btn.style.pointerEvents = 'none';
+  btn.querySelector('span').textContent = t('form.sending');
+
+  const formData = new FormData(e.target);
+  const data = {
+    nom: formData.get('nom'),
+    email: formData.get('email'),
+    telephone: formData.get('telephone'),
+    service: formData.get('service'),
+    message: formData.get('message'),
+    langue: LANG
+  };
+
+  try {
+    const response = await fetch('/.netlify/functions/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const result = await response.json();
+    if (result.success) {
+      e.target.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      throw new Error(result.error);
+    }
+  } catch (err) {
+    showToast('Erreur lors de l\'envoi. Veuillez réessayer.', 'error');
+    console.error(err);
+  } finally {
+    btn.style.opacity = '1';
+    btn.style.pointerEvents = 'auto';
+    btn.querySelector('span').textContent = t('form.submit');
+  }
+});
   const API = '/.netlify/functions';
   async function apiGet(path) { const r = await fetch(API + path); return r.json(); }
   async function apiPost(path, body) { const r = await fetch(API + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }); return r.json(); }
