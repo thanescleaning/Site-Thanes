@@ -562,7 +562,62 @@
     </div>
     <div id="portal-authenticated" style="display:none;">
       <div class="portal-user"><i class="fa-solid fa-circle-user"></i><div class="portal-user-info"><strong id="portal-username">Employé</strong><span id="portal-email-display"></span></div><button class="portal-logout" onclick="logoutUser()"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="portal.logout">Déconnexion</span></button></div>
-      <div id="admin-tabs" style="display:none;"><div class="portal-tabs"><button class="portal-tab active" onclick="switchTab(this,'tab-admin-jobs')"><i class="fa-solid fa-briefcase"></i> <span data-i18n="admin.tab_jobs">Gérer les jobs</span></button><button class="portal-tab" onclick="switchTab(this,'tab-admin-create')"><i class="fa-solid fa-plus-circle"></i> <span data-i18n="admin.tab_create">Créer un job</span></button><button class="portal-tab" onclick="switchTab(this,'tab-admin-slots')"><i class="fa-solid fa-calendar-alt"></i> <span data-i18n="admin.tab_slots">Créneaux RDV</span></button></div><div class="tab-content active" id="tab-admin-jobs"><div id="admin-jobs-list" class="job-list"></div></div><div class="tab-content" id="tab-admin-create"><div class="create-form" id="create-form-wrap"><div class="form-row"><label><span data-i18n="admin.job_date">Date</span><input type="date" id="aj-date" required></label><label><span data-i18n="admin.job_time">Heure</span><input type="time" id="aj-time" value="09:00"></label></div><label><span data-i18n="admin.job_type">Type</span><select id="aj-type"><option>Entretien léger (régulier)</option><option>Entretien lourd (grand ménage)</option><option>Nettoyage commercial</option></select></label><label><span data-i18n="admin.job_address">Adresse</span><input type="text" id="aj-address" required data-i18n-placeholder="admin.job_address_ph"></label><div class="form-row"><label><span data-i18n="admin.job_slots">Employés requis</span><input type="number" id="aj-slots" min="1" value="1"></label><label><span data-i18n="admin.job_pay">Rémunération</span><input type="text" id="aj-pay" data-i18n-placeholder="admin.job_pay_ph"></label></div><label><span data-i18n="admin.job_notes">Notes</span><textarea id="aj-notes" rows="3" data-i18n-placeholder="admin.job_notes_ph"></textarea></label><button class="btn" onclick="createJob()"><i class="fa-solid fa-plus-circle"></i> <span data-i18n="admin.create_btn">Publier le job</span></button></div><div id="create-success" style="display:none;text-align:center;padding:28px 16px;"><i class="fa-solid fa-circle-check" style="font-size:2.6rem;color:#22c55e;"></i><h4 data-i18n="admin.created_title">Job publié !</h4><button class="btn" style="margin-top:14px;" onclick="resetCreateForm()"><i class="fa-solid fa-plus"></i> <span data-i18n="admin.create_another">Créer un autre job</span></button></div></div><div class="tab-content" id="tab-admin-slots"><div class="create-form" style="margin-bottom:20px;"><div class="form-row"><label>Date <input type="date" id="slot-date" required></label><label>Heure début <input type="time" id="slot-start" required></label></div><div class="form-row"><label>Durée (min) <input type="number" id="slot-duration" value="30" step="15"></label><label>Places max <input type="number" id="slot-places" value="1" min="1"></label></div><label>Type <select id="slot-type"><option value="online">En ligne</option><option value="onsite">Présentiel</option></select></label><button class="btn" onclick="createSlot()"><i class="fa-solid fa-plus-circle"></i> Ajouter créneau</button></div><hr><h3>Créneaux existants</h3><div id="slots-list" class="slot-list"></div></div></div>
+     <div id="admin-tabs" style="display:none;">
+  <div class="portal-tabs">
+    <button class="portal-tab active" onclick="switchTab(this,'tab-admin-jobs')"><i class="fa-solid fa-briefcase"></i> <span data-i18n="admin.tab_jobs">Gérer les jobs</span></button>
+    <button class="portal-tab" onclick="switchTab(this,'tab-admin-create')"><i class="fa-solid fa-plus-circle"></i> <span data-i18n="admin.tab_create">Créer un job</span></button>
+    <button class="portal-tab" onclick="switchTab(this,'tab-admin-slots')"><i class="fa-solid fa-calendar-alt"></i> <span data-i18n="admin.tab_slots">Créneaux RDV</span></button>
+    <button class="portal-tab" onclick="switchTab(this,'tab-admin-appointments')"><i class="fa-solid fa-calendar-check"></i> <span data-i18n="admin.tab_appointments">Réservations</span></button>
+  </div>
+
+  <div class="tab-content active" id="tab-admin-jobs">
+    <div id="admin-jobs-list" class="job-list"></div>
+  </div>
+
+  <div class="tab-content" id="tab-admin-create">
+    <div class="create-form" id="create-form-wrap">
+      <div class="form-row">
+        <label><span data-i18n="admin.job_date">Date</span><input type="date" id="aj-date" required></label>
+        <label><span data-i18n="admin.job_time">Heure</span><input type="time" id="aj-time" value="09:00"></label>
+      </div>
+      <label><span data-i18n="admin.job_type">Type</span><select id="aj-type"><option>Entretien léger (régulier)</option><option>Entretien lourd (grand ménage)</option><option>Nettoyage commercial</option></select></label>
+      <label><span data-i18n="admin.job_address">Adresse</span><input type="text" id="aj-address" required data-i18n-placeholder="admin.job_address_ph"></label>
+      <div class="form-row">
+        <label><span data-i18n="admin.job_slots">Employés requis</span><input type="number" id="aj-slots" min="1" value="1"></label>
+        <label><span data-i18n="admin.job_pay">Rémunération</span><input type="text" id="aj-pay" data-i18n-placeholder="admin.job_pay_ph"></label>
+      </div>
+      <label><span data-i18n="admin.job_notes">Notes</span><textarea id="aj-notes" rows="3" data-i18n-placeholder="admin.job_notes_ph"></textarea></label>
+      <button class="btn" onclick="createJob()"><i class="fa-solid fa-plus-circle"></i> <span data-i18n="admin.create_btn">Publier le job</span></button>
+    </div>
+    <div id="create-success" style="display:none;text-align:center;padding:28px 16px;">
+      <i class="fa-solid fa-circle-check" style="font-size:2.6rem;color:#22c55e;"></i>
+      <h4 data-i18n="admin.created_title">Job publié !</h4>
+      <button class="btn" style="margin-top:14px;" onclick="resetCreateForm()"><i class="fa-solid fa-plus"></i> <span data-i18n="admin.create_another">Créer un autre job</span></button>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-admin-slots">
+    <div class="create-form" style="margin-bottom:20px;">
+      <div class="form-row">
+        <label>Date <input type="date" id="slot-date" required></label>
+        <label>Heure début <input type="time" id="slot-start" required></label>
+      </div>
+      <div class="form-row">
+        <label>Durée (min) <input type="number" id="slot-duration" value="30" step="15"></label>
+        <label>Places max <input type="number" id="slot-places" value="1" min="1"></label>
+      </div>
+      <label>Type <select id="slot-type"><option value="online">En ligne</option><option value="onsite">Présentiel</option></select></label>
+      <button class="btn" onclick="createSlot()"><i class="fa-solid fa-plus-circle"></i> Ajouter créneau</button>
+    </div>
+    <hr>
+    <h3>Créneaux existants</h3>
+    <div id="slots-list" class="slot-list"></div>
+  </div>
+
+  <div class="tab-content" id="tab-admin-appointments">
+    <div id="admin-appointments-list" class="slot-list"></div>
+  </div>
+</div>
       <div id="employee-tabs" style="display:none;"><div class="portal-tabs"><button class="portal-tab active" onclick="switchTab(this,'tab-emp-available')"><i class="fa-solid fa-calendar-days"></i> <span data-i18n="emp.tab_available">Jobs disponibles</span></button><button class="portal-tab" onclick="switchTab(this,'tab-emp-mine')"><i class="fa-solid fa-list-check"></i> <span data-i18n="emp.tab_mine">Mes candidatures</span></button><button class="portal-tab" onclick="switchTab(this,'tab-emp-appointments')"><i class="fa-solid fa-calendar-plus"></i> <span data-i18n="emp.tab_appointments">Prendre RDV</span></button><button class="portal-tab" onclick="switchTab(this,'tab-emp-myappointments')"><i class="fa-solid fa-calendar-check"></i> <span data-i18n="emp.my_appointments">Mes RDV</span></button></div><div class="tab-content active" id="tab-emp-available"><div id="emp-jobs-list" class="job-list"></div></div><div class="tab-content" id="tab-emp-mine"><div id="emp-mine-list" class="job-list"></div></div><div class="tab-content" id="tab-emp-appointments"><div id="available-slots-list" class="slot-list"></div></div><div class="tab-content" id="tab-emp-myappointments"><div id="my-appointments-list" class="slot-list"></div></div></div>
     </div>
   </div>
@@ -1297,12 +1352,35 @@ function setLang(l) {
     location.reload();
   }
 }
-  function switchTab(btn, tabId) { const panel = btn.closest('.portal-tabs').parentElement; panel.querySelectorAll('.portal-tab').forEach(b => b.classList.remove('active')); panel.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active')); btn.classList.add('active'); document.getElementById(tabId).classList.add('active'); if (tabId === 'tab-admin-jobs') renderAdminJobs(); if (tabId === 'tab-admin-slots') renderSlotsList(); if (tabId === 'tab-emp-available') renderEmpJobs(); if (tabId === 'tab-emp-mine') renderEmpMine(); if (tabId === 'tab-emp-appointments') renderAvailableSlots(); if (tabId === 'tab-emp-myappointments') renderMyAppointments(); }
+  function switchTab(btn, tabId) { const panel = btn.closest('.portal-tabs').parentElement; panel.querySelectorAll('.portal-tab').forEach(b => b.classList.remove('active')); panel.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active')); btn.classList.add('active'); document.getElementById(tabId).classList.add('active'); if (tabId === 'tab-admin-jobs') renderAdminJobs(); if (tabId === 'tab-admin-slots') renderSlotsList(); if (tabId === 'tab-emp-available') renderEmpJobs(); if (tabId === 'tab-emp-mine') renderEmpMine(); if (tabId === 'tab-emp-appointments') renderAvailableSlots(); if (tabId === 'tab-emp-myappointments') renderMyAppointments();if (tabId === 'tab-admin-appointments') renderAdminAppointments(); }
   function escapeHtml(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function escapeAttr(s) { return String(s || '').replace(/'/g, "\\'"); }
   function fmtDate(date, time) { try { const d = new Date(date + 'T' + time); if (isNaN(d)) return date + ' ' + time; return d.toLocaleDateString('fr-CA', { weekday: 'short', month: 'short', day: 'numeric' }) + ' ' + d.toLocaleTimeString('fr-CA', { hour: '2-digit', minute: '2-digit' }); } catch (e) { return date + ' ' + time; } }
   function barCls(ratio) { return ratio >= 1 ? 'full-bar' : ratio >= 0.6 ? 'warn-bar' : ''; }
   async function renderAdminJobs() { const list = document.getElementById('admin-jobs-list'); list.innerHTML = '<div class="section-empty"><i class="fa-solid fa-spinner fa-spin"></i> Chargement…</div>'; try { const { jobs } = await apiGet('/airtable-jobs'); if (!jobs || !jobs.length) { list.innerHTML = '<div class="section-empty"><i class="fa-solid fa-briefcase"></i> ' + t('admin.no_jobs') + '</div>'; return; } list.innerHTML = jobs.map(job => { const applicants = typeof job.applicants === 'string' ? JSON.parse(job.applicants || '[]') : (job.applicants || []); const acc = applicants.filter(a => a.status === 'accepted').length; const full = acc >= (job.slots || 1); const ratio = acc / (job.slots || 1); const pct = Math.min(100, Math.round(ratio * 100)); const pending = applicants.filter(a => a.status === 'pending').length; const dot = pending > 0 ? '<span class="notif-dot"></span>' : ''; const bc = barCls(ratio); const appRows = applicants.length ? applicants.map(a => `<div class="applicant-row"><div><div class="applicant-name">${escapeHtml(a.name)}</div><div class="applicant-email">${escapeHtml(a.email)}</div></div><span class="applicant-status-badge st-${a.status}">${t('admin.status_' + a.status)}</span><div class="applicant-btns">${a.status !== 'accepted' && !full ? `<button class="btn btn-sm" onclick="reviewApplicant('${escapeAttr(job.id)}','${escapeAttr(a.email)}','accepted')">${t('admin.accept')}</button>` : ''}${a.status !== 'rejected' ? `<button class="btn btn-sm btn-danger" onclick="reviewApplicant('${escapeAttr(job.id)}','${escapeAttr(a.email)}','rejected')">${t('admin.reject')}</button>` : ''}</div></div>`).join('') : `<div>${t('admin.no_applicants')}</div>`; return `<div class="job-card${full ? ' full' : ''}"><div class="job-card-top"><div><div class="job-title">${escapeHtml(job.type)}</div><div class="job-meta"><span class="job-chip"><i class="fa-solid fa-calendar"></i> ${fmtDate(job.date, job.time)}</span><span class="job-chip"><i class="fa-solid fa-location-dot"></i> ${escapeHtml(job.address)}</span>${job.pay ? `<span class="job-chip pay">${escapeHtml(job.pay)}</span>` : ''}</div>${job.notes ? `<div style="margin-top:6px;font-size:.84rem;color:var(--muted);">${escapeHtml(job.notes)}</div>` : ''}</div><button class="btn btn-sm btn-danger" onclick="deleteJob('${escapeAttr(job.id)}')">${t('admin.delete_job')}</button></div><div class="capacity-wrap"><div class="capacity-label"><span>${t('admin.applicants')} ${dot}</span><span class="cap-count${full ? ' full' : ''}"><b>${acc}</b>/${job.slots} ${full ? '— ' + t('admin.slots_full') : t('admin.spots_left')}</span></div><div class="capacity-bar-bg"><div class="capacity-bar-fill ${bc}" style="width:${pct}%"></div></div></div><div class="applicants-section"><h4>${t('admin.applicants')}</h4>${appRows}</div></div>`; }).join(''); } catch (e) { console.error(e); list.innerHTML = '<div class="section-empty">Erreur chargement</div>'; } }
+async function renderAdminAppointments() {
+  const container = document.getElementById('admin-appointments-list');
+  if (!container) return;
+  container.innerHTML = '<div class="section-empty"><i class="fa-solid fa-spinner fa-spin"></i> Chargement…</div>';
+  try {
+    const { appointments } = await apiGet('/airtable-appointments-all');
+    if (!appointments || !appointments.length) {
+      container.innerHTML = '<div class="section-empty"><i class="fa-solid fa-calendar-xmark"></i> Aucune réservation</div>';
+      return;
+    }
+    container.innerHTML = appointments.map(app => `
+      <div class="slot-card">
+        <div>
+          <strong>${app.slotDate} à ${app.slotStart}</strong> (${app.slotType === 'online' ? 'En ligne' : 'Présentiel'})<br>
+          Employé : ${escapeHtml(app.employeeName)} (${escapeHtml(app.employeeEmail)})
+        </div>
+      </div>
+    `).join('');
+  } catch (e) {
+    console.error(e);
+    container.innerHTML = '<div class="section-empty">Erreur chargement</div>';
+  }
+}
 async function reviewApplicant(jobId, email, status) {
   const res = await apiPatch('/airtable-jobs', {
     jobId,
