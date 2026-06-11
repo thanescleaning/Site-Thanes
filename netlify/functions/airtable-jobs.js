@@ -8,7 +8,6 @@ exports.handler = async (event) => {
   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
   const url = `https://api.airtable.com/v0/${baseId}/${table}`;
 
-  // GET - lister les jobs (public)
   if (event.httpMethod === 'GET') {
     try {
       const resp = await axios.get(url, { headers });
@@ -20,21 +19,31 @@ exports.handler = async (event) => {
     }
   }
 
-  // POST - créer un job (admin seulement)
   if (event.httpMethod === 'POST') {
     try {
-      const { date, time, type, address, slots, pay, notes, adminEmail } = JSON.parse(event.body);
+      const body = JSON.parse(event.body);
+      console.log('📥 Données reçues pour création job:', body);
+      const { date, time, type, address, slots, pay, notes, adminEmail } = body;
       if (adminEmail !== 'thanescleaning@gmail.com') return { statusCode: 403, body: 'Unauthorized' };
-      const fields = { id: 'job_' + Date.now(), date, time, type, address, slots: parseInt(slots), pay, notes, applicants: '[]', createdAt: new Date().toISOString() };
+      
+      const fields = { 
+        date, time, type, address, 
+        slots: parseInt(slots), 
+        pay, notes, 
+        applicants: '[]' 
+      };
+      console.log('📤 Envoi à Airtable:', JSON.stringify({ fields }, null, 2));
+      
       const resp = await axios.post(url, { fields }, { headers });
+      console.log('✅ Réponse Airtable:', resp.data);
       return { statusCode: 200, body: JSON.stringify({ success: true, job: { id: resp.data.id, ...resp.data.fields } }) };
     } catch (err) {
-      console.error(err);
-      return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+      console.error('❌ Erreur Airtable:', err.response?.data || err.message);
+      return { statusCode: 500, body: JSON.stringify({ error: err.response?.data?.error?.message || err.message }) };
     }
   }
 
-  // PATCH - modifier le statut d'un candidat (admin seulement)
+  // PATCH et DELETE inchangés (mais vous pouvez aussi ajouter des logs)
   if (event.httpMethod === 'PATCH') {
     try {
       const { jobId, applicantEmail, status, adminEmail } = JSON.parse(event.body);
@@ -53,7 +62,6 @@ exports.handler = async (event) => {
     }
   }
 
-  // DELETE - supprimer un job (admin seulement)
   if (event.httpMethod === 'DELETE') {
     try {
       const { jobId, adminEmail } = JSON.parse(event.body);

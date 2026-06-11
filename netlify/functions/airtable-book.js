@@ -8,17 +8,19 @@ exports.handler = async (event) => {
   const appointmentsTable = 'appointments';
   const slotsTable = 'slots';
 
-  // POST : réserver un créneau (employé)
   if (event.httpMethod === 'POST') {
     try {
-      const { slotId, employeeEmail, employeeName } = JSON.parse(event.body);
+      const body = JSON.parse(event.body);
+      console.log('📥 Réservation reçue:', body);
+      const { slotId, employeeEmail, employeeName } = body;
 
-      // 1. Récupérer le créneau
+      // Récupérer le créneau
       const slotUrl = `https://api.airtable.com/v0/${baseId}/${slotsTable}/${slotId}`;
       const slotResp = await axios.get(slotUrl, { headers });
       const slot = slotResp.data.fields;
+      console.log('📋 Créneau trouvé:', slot);
 
-      // 2. Compter les réservations existantes
+      // Vérifier les places
       const appsUrl = `https://api.airtable.com/v0/${baseId}/${appointmentsTable}?filterByFormula={slotId}="${slotId}"`;
       const appsResp = await axios.get(appsUrl, { headers });
       const taken = appsResp.data.records.length;
@@ -26,13 +28,13 @@ exports.handler = async (event) => {
         return { statusCode: 400, body: JSON.stringify({ error: 'Slot complet' }) };
       }
 
-      // 3. Vérifier que l'employé n'a pas déjà réservé
+      // Vérifier doublon
       const userApps = appsResp.data.records.filter(r => r.fields.employeeEmail === employeeEmail);
       if (userApps.length > 0) {
         return { statusCode: 400, body: JSON.stringify({ error: 'Déjà réservé' }) };
       }
 
-      // 4. Créer la réservation (sans champ 'id' personnalisé)
+      // Créer la réservation (sans id personnalisé)
       const fields = {
         slotId,
         employeeEmail,
@@ -42,29 +44,27 @@ exports.handler = async (event) => {
         slotType: slot.type,
         bookedAt: new Date().toISOString()
       };
-      await axios.post(`https://api.airtable.com/v0/${baseId}/${appointmentsTable}`, { fields }, { headers });
+      console.log('📤 Envoi à Airtable (appointments):', fields);
+      const postResp = await axios.post(`https://api.airtable.com/v0/${baseId}/${appointmentsTable}`, { fields }, { headers });
+      console.log('✅ Réservation créée:', postResp.data);
 
       return { statusCode: 200, body: JSON.stringify({ success: true }) };
     } catch (err) {
-      console.error(err);
-      return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+      console.error('❌ Erreur Airtable:', err.response?.data || err.message);
+      return { statusCode: 500, body: JSON.stringify({ error: err.response?.data?.error?.message || err.message }) };
     }
   }
 
-  // DELETE : annuler une réservation (employé propriétaire ou admin)
   if (event.httpMethod === 'DELETE') {
     try {
       const { appointmentId, employeeEmail, adminEmail } = JSON.parse(event.body);
-
       const appUrl = `https://api.airtable.com/v0/${baseId}/${appointmentsTable}/${appointmentId}`;
       const app = await axios.get(appUrl, { headers });
       const isOwner = app.data.fields.employeeEmail === employeeEmail;
       const isAdmin = (adminEmail === 'thanescleaning@gmail.com');
-
       if (!isOwner && !isAdmin) {
         return { statusCode: 403, body: JSON.stringify({ error: 'Non autorisé' }) };
       }
-
       await axios.delete(appUrl, { headers });
       return { statusCode: 200, body: JSON.stringify({ success: true }) };
     } catch (err) {
